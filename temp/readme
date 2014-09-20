@@ -1,0 +1,192 @@
+This is development [kol1.0] started with the copy of kol0.3
+kol0.3 was ussed to generate figures of HFSP LA meeting talk.
+The kol development (GRASP learning) is resumed on Jan 19th 2002.
+The goal is to finish it till 25th.
+----
+Changes I make (this is not exhaustive but anyway)
+
+I changed the J2 joint constrained from from 90 - (-90) 20-(-90)
+(this is the wing move of a duck or chicken)
+----
+kol2.0
+
+given the pdf representation the data generation was wrong.
+the simple 1d->nd case does not work. So I impelemented a different
+approach (my_pdf). This looks ok.
+Now there is LearnPDF.java which is used for testing the learning
+and generation. Very useful...
+----
+kol2.5
+
+looks OKs
+This is only tested with LearnPDF.
+it works for 2D pdf ~ histograms (approximately)
+
+The network became very simple:
+it just computes a normalized histogram of the reward yielding
+inputs!!
+One interesting (bug?) when I set the randomWeights to init to
+very small weights, everything dies of and the network settles to
+all zero output. If it is normalized (or assigned bigger values)
+then it works 
+
+softVAR is only effective if softmax is setto realsoftmax (and it is
+inverse of the Variance actually)
+GVAR is the gausball variance to mark the fired region.
+
+Problem: When the incoming inputs are counted by the weights
+the # active inputs will effect the histogram. 
+Solution: normalize the reinforcement rule such that if the
+n percent of the input lines are active then increse the weights
+proportional to 1/n 
+HOW: Add tot activity calculation in PopulationCode.
+     also you can abstract the output1,2,3 business by registering
+     the input to a layer in PopulationCode, then everything maybe done as
+     handrot.input1 which maybe more readable
+---
+kol2.5
+
+in PopulationCode the prec field is now computed by /(size+1) instead of (size)
+This was making the end limit not completed of a variable
+----
+kol3.0
+Trying to make the arm learn. 
+advancepass had a bug. It did net3 which erased the gauss balls
+so no learning happened. But why it was there think about it....
+You have to find why the updates dont accumlate or erase the early 
+one!!
+----
+kol3.2.1
+
+This one is using harcoresoftmax and weight normalization.
+It looks like it MAY do conditional pdf representation
+but I did not test it much. Just convert everything to softmax
+and weight normalization to match kol2.3-ok LearnPDF standard
+This can be dead branch.
+In the next [kol3.3] I will try full histogram approach (no 
+normalization etc] with multiplicative joining
+I discovered a bugous stuff. When I pick a value from the distrution
+I apply decode to get the value represented. Which uses the
+firings as coefficients. Thus if you generate a random index
+with no firing over it, the decoding gives a zero value.
+It should be changed with pref_value. I did this in nextNoisyMotorPlan
+but not otheri places. If I use nextNoisyMotorPlan from LearnPDF
+it does not look like working great. I dont know whether it is due 
+to pref_value substitution.
+...
+I think it is because of that I tried to use nextMotorPlan it works
+OK. IF I use pickNoisyRotation it looks better, but it is not the
+thing we want to do. It just learns the rotation layer.
+---
+kol3.3:
+I got rid of output1,2,3 and use directly . notation
+Now using the Resource.java for parameters. Fill that up.
+Also debug level is used now [to avoid print mess]
+---
+kol3.4
+
+First time two layer learning succeeded!!
+To see use ibmjava LearnPDF. 
+In pickNoisyRotation there is the pref_value vs. decode problem again.
+(If it is not random it should be OK.) You should check all decode's to
+see you do something wrong with the randomly generated data.
+----
+kol3.5.1 had many book keeping changes.
+And it should be pretty OK.
+----
+kol3.6 can give you some neat learning results.
+However the grasps that is generated does not look great.
+OK for Ph.D.
+TODO:
+-Reading the saved weight files
+-interactive single action generation
+ . from the pdf
+ . or manually specified
+ . thumb intersection cound +2, cant tell is it bogous thumb
+   intersection or not
+   
+---
+kol3.7
+
+This one thumb forces are learned (the index force is fixed)
+It works so so, but nothing great come out.
+So I stopped this stuff.
+---
+kol3.9
+I implemented a gradient descent for finding best finger forces given the
+contacts. It looks great. (I think the first impl.is kol3.8)
+But I found a bug when converting graspCost to reward.
+This is fixed after kol3.9 (kol3.9 in my laptop and gzipped must be
+buggy)
+I also noticed there can be a bug in contact list forming. Thumb
+maybe counted twice (lliterally!!)
+Not fixed yet.
+-----
+kol3.10
+
+YES! The first big fixed! The second bug, did not check yet.
+This one is working good!
+I corrected this bug too. (Hand.java:contact())
+It looks like it is OK. (no difference, probably because
+of the  searchNewton, simply it will return the same
+with multiple identical forces)
+One issues for later:
+What is the good weighting (costNewton() in ContactList)
+of nettorque and netforce. As the object gets bigger
+net torque gets bigger relative to the force.
+---
+kol3.11
+is great
+---
+kol3.12
+think about what is the grasp plan. If the final conf of grasp is plan
+then OK. otherwise you need to plan the reach direction according to
+collision. It is not that hard to do. When you do REACH1 just turn on
+collision detection. If collision happends cancel the program. It will
+be little bir slower but. It will definetl learn not to try object crossing
+moves.
+An other issue is when the hand finishes it is too much in the object,
+should reduce the step or make a collision lastok trick that you use
+in reach2 phase in Object3d.java
+---
+kol3.14-kol3.15
+Now the input coding includes the object position!
+Also the HV gadgets are changed to spherical control (it was x,y,z) now it
+is par,mer,rad. The min-max values are read from the resource.
+The input coding in Motor is also par-mer-rad. 
+I have tried to train the system to learn and generalize over object positions
+Then I noticed the random gradient search creates different reaches which require
+different wrist orientations even the target is reached. So first I tried to use
+jacobian transpsoe so that the target will always be reached in the same config.
+But it is slow and has some singularities so I changed my mind (I did not try to trai
+with the Jac Trans reaches long though)
+Now in 3.15 there is a soft constraint setting (Graspable/Object3d) which
+can be specified in resource file and set in the simulator commandline.
+The constraint says that the arms should  (angle J2) should be away from the
+body. (No body collision). It generates better looking reaches, and I hope that it
+will reduce the variation in the final configuration using random search.
+
+--
+Kol3.16
+uses jac. transpose with MIDDLE0 to center approach (for pent.seg basically)
+The learning looks pretty OK. Location generalization looks fine.
+But you may need to consider the upating of offset weights. Now they are
+updated for each grasp with a very small amount to average the quality of
+the reach approach. A better and faster scheme can be to wait until
+all the wrist grasps are performed and update the offsets with the MAX of
+the reinforcement. (This will be faster and faster convergence and better)
+Kol3.16-test is a snapshot of Kol3.16. 
+I made a small change so that the object is not placed to the learned grid
+to test the generalization.
+Also in Resource file I made the PDF threshold bigger. This controls
+how much the dirstribution should be respected.
+I copied over the Motor.java so the only difference is the Resource file
+which is not a problem.
+I think Kol3.16 results for power (I used those nicely) and 
+coin results are used index0 as the Reach2Target
+Kol3.17 has coin results with index2 (indextip) as the reach2target
+Well they are not great but OK.
+The plate looks pretty nice. I got some snapshots and one animation.
+Check more. Looks like learning is stabilized. The offset maps looks
+settled as well.
+

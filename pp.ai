@@ -1,0 +1,2629 @@
+%!PS-Adobe-1.0
+%%DocumentFonts: Courier
+%%Title: Object3d.java (mpage)
+%%Creator: mpage
+%%CreationDate: Thu Mar 25 13:37:27 2004
+%%Pages: (atend)
+%%BoundingBox: 20 20 596 776
+%%EndComments
+
+/mp_stm usertime def
+/mp_pgc statusdict begin pagecount end def
+statusdict begin /jobname (Object3d.java) def end
+/Courier findfont 11 scalefont setfont
+(a) stringwidth pop /mp_a_x exch def
+(\t'a' length ) print mp_a_x ==  flush
+%%EndProlog
+%%Page: 1 1
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+0 mp_a_x mul 840 moveto (import java.awt.*;) show
+0 mp_a_x mul 828 moveto (import java.util.*;) show
+0 mp_a_x mul 816 moveto (import java.awt.*;) show
+0 mp_a_x mul 804 moveto (import java.lang.*;) show
+0 mp_a_x mul 792 moveto (import java.util.Vector;) show
+0 mp_a_x mul 780 moveto (import java.util.Enumeration;) show
+0 mp_a_x mul 768 moveto (import java.io.*;) show
+0 mp_a_x mul 744 moveto (/**) show
+1 mp_a_x mul 732 moveto (*) show
+1 mp_a_x mul 720 moveto (* @author Erhan Oztop, 2001-2002 <br>) show
+1 mp_a_x mul 708 moveto (* <br>) show
+1 mp_a_x mul 696 moveto (* Source code by Erhan Oztop \(erhan@atr.co.jp\) <br>) show
+1 mp_a_x mul 684 moveto (* Copyright August 2002 via <br>) show
+1 mp_a_x mul 672 moveto (* University of Southern California Ph.D. publication copyright <br>) show
+1 mp_a_x mul 660 moveto (*/) show
+0 mp_a_x mul 648 moveto (class Object3d  ) show
+0 mp_a_x mul 636 moveto ({) show
+1 mp_a_x mul 612 moveto (public int[] udef_i;) show
+1 mp_a_x mul 600 moveto (public int udef_ic=0;) show
+1 mp_a_x mul 576 moveto (public int[] udef_d;) show
+1 mp_a_x mul 564 moveto (public int udef_dc=0;) show
+1 mp_a_x mul 540 moveto (public Point3d[] udef_P;) show
+1 mp_a_x mul 528 moveto (public int udef_Pc=0;) show
+1 mp_a_x mul 504 moveto (public Vector userPoints=new Vector\(10\);) show
+1 mp_a_x mul 492 moveto (public int[] hindex=null; // plane list for this object) show
+1 mp_a_x mul 480 moveto (//public Point[][] hplist=null; // plane list for this object) show
+1 mp_a_x mul 468 moveto (public Plane[] hplist=null; // plane list for this object) show
+1 mp_a_x mul 456 moveto (public int hpc=0; // # of items in hplist) show
+1 mp_a_x mul 444 moveto (public Point3d objectCenter=new Point3d\(0,0,0\);) show
+4 mp_a_x mul 432 moveto (public double objectRadius=0; // radius of the sphere containing plane centers) show
+1 mp_a_x mul 408 moveto (public boolean noshow=false;) show
+0 mp_a_x mul 384 moveto (/** Object view depth */) show
+1 mp_a_x mul 372 moveto (public double objdepth;) show
+1 mp_a_x mul 348 moveto (public int offx=0;  //these are offsets in two 2 for drawing) show
+1 mp_a_x mul 336 moveto (public int offy=0; ) show
+1 mp_a_x mul 288 moveto (Segment seg[]=null;  // all segments) show
+1 mp_a_x mul 276 moveto (int segc=0;) show
+1 mp_a_x mul 264 moveto (Segment root=null;) show
+1 mp_a_x mul 240 moveto (Spline[]   jointpath=null; ) show
+1 mp_a_x mul 228 moveto (double[] teta1;) show
+1 mp_a_x mul 216 moveto (double[] teta2;) show
+1 mp_a_x mul 204 moveto (double[] midteta;) show
+1 mp_a_x mul 192 moveto (Trajectory lasttr=null;) show
+1 mp_a_x mul 156 moveto (//not used for now) show
+1 mp_a_x mul 144 moveto (//this returns reference to reference) show
+1 mp_a_x mul 132 moveto (public Point3d[] getuserPoints\(\)) show
+1 mp_a_x mul 120 moveto ({) show
+2 mp_a_x mul 108 moveto (Vector v=userPoints;) show
+2 mp_a_x mul 96 moveto (int n=v.size\(\);) show
+2 mp_a_x mul 84 moveto (Point3d[] L=new Point3d[n];) show
+2 mp_a_x mul 72 moveto (n=0;) show
+2 mp_a_x mul 60 moveto (Enumeration e=v.elements\(\);) show
+2 mp_a_x mul 48 moveto (while \(e.hasMoreElements\(\)\)) show
+2 mp_a_x mul 36 moveto ({) show
+3 mp_a_x mul 24 moveto (Point3d p=\(Point3d\)e.nextElement\(\);) show
+3 mp_a_x mul 12 moveto (L[n++]=p; //p.duplicate\(\);) show
+2 mp_a_x mul 0 moveto (}) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+2 mp_a_x mul 852 moveto (if \(HV.DLEV>0\) System.out.println\("returnin userPoints with "+n+" elements"\);) show
+2 mp_a_x mul 840 moveto (if \(HV.DLEV>0\) for \(int i=0;i<n;i++\) System.out.println\(L[i].str\(\)\);) show
+2 mp_a_x mul 828 moveto (return L;) show
+1 mp_a_x mul 816 moveto (}) show
+1 mp_a_x mul 792 moveto (public void setPlaneProperties\(\)) show
+1 mp_a_x mul 780 moveto ({) show
+3 mp_a_x mul 768 moveto (int u=0;) show
+3 mp_a_x mul 756 moveto (objectCenter.x=0;) show
+3 mp_a_x mul 744 moveto (objectCenter.y=0;) show
+3 mp_a_x mul 732 moveto (objectCenter.z=0;) show
+3 mp_a_x mul 720 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 708 moveto ({ int k=hindex[i];) show
+5 mp_a_x mul 696 moveto (if \(k>=1000\) continue;) show
+5 mp_a_x mul 672 moveto (u++;) show
+5 mp_a_x mul 660 moveto (hplist[k].setCenter\(\);) show
+5 mp_a_x mul 648 moveto (hplist[k].setGeom\(\);) show
+5 mp_a_x mul 636 moveto (VA._add\(objectCenter,hplist[k].CP\); ) show
+3 mp_a_x mul 612 moveto (}) show
+3 mp_a_x mul 600 moveto (VA._scale\(objectCenter,1.0/u\);) show
+3 mp_a_x mul 588 moveto (objectRadius=0;) show
+3 mp_a_x mul 576 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 564 moveto ({ int k=hindex[i];) show
+5 mp_a_x mul 552 moveto (if \(k>=1000\) continue;) show
+5 mp_a_x mul 540 moveto (double r=VA.dist\(hplist[k].CP,objectCenter\);) show
+5 mp_a_x mul 528 moveto (if \(r>objectRadius\) objectRadius =r;) show
+3 mp_a_x mul 516 moveto (}) show
+0 mp_a_x mul 504 moveto (//choose the normals outward) show
+3 mp_a_x mul 492 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 480 moveto ({ int k=hindex[i];) show
+5 mp_a_x mul 468 moveto (if \(k>=1000\) continue;) show
+5 mp_a_x mul 456 moveto (hplist[k].adjustCenterSide\(objectCenter\);) show
+3 mp_a_x mul 444 moveto (}) show
+1 mp_a_x mul 408 moveto (}) show
+3 mp_a_x mul 396 moveto (/* assumes plane properties are set */) show
+3 mp_a_x mul 384 moveto (public double estimateSize\(\) {) show
+7 mp_a_x mul 372 moveto (double sum=0;) show
+7 mp_a_x mul 360 moveto (int u=0;) show
+7 mp_a_x mul 348 moveto (for \(int i=0;i<hpc;i++\)) show
+11 mp_a_x mul 336 moveto ({ int k=hindex[i];) show
+11 mp_a_x mul 324 moveto (if \(k>=1000\) continue;) show
+11 mp_a_x mul 312 moveto (u++;) show
+11 mp_a_x mul 300 moveto (sum+=VA.dist\(hplist[k].CP,objectCenter\);) show
+11 mp_a_x mul 288 moveto (}) show
+7 mp_a_x mul 276 moveto (sum/=u;) show
+7 mp_a_x mul 264 moveto (return sum*2;   ) show
+3 mp_a_x mul 252 moveto (}) show
+0 mp_a_x mul 216 moveto (// returns true if the point is inside or on the surface of the object) show
+0 mp_a_x mul 204 moveto (private Point3d intemp=new Point3d\(0,0,0\);) show
+0 mp_a_x mul 192 moveto (public boolean inside\(Point3d p\)) show
+1 mp_a_x mul 180 moveto ({) show
+2 mp_a_x mul 168 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 156 moveto ({ int k=hindex[i];) show
+5 mp_a_x mul 144 moveto (if \(k>=1000\) continue;) show
+5 mp_a_x mul 132 moveto (intemp.x=p.x - objectCenter.x;) show
+5 mp_a_x mul 120 moveto (intemp.y=p.y - objectCenter.y;) show
+5 mp_a_x mul 108 moveto (intemp.z=p.z - objectCenter.z;) show
+5 mp_a_x mul 96 moveto (double v=VA.inner\(p,hplist[k].normal\)+hplist[k].D;) show
+5 mp_a_x mul 84 moveto (double v1=hplist[k].objectCenterValue;) show
+5 mp_a_x mul 72 moveto (//System.out.println\("inner with plane:"+k+"  "+Elib.nice\(v,1e5\)+" : "+Elib.nice\(v1,1e5\)\);) show
+5 mp_a_x mul 60 moveto (if \(v*v1<0\) return false;) show
+3 mp_a_x mul 48 moveto (}) show
+2 mp_a_x mul 36 moveto (return true;) show
+1 mp_a_x mul 24 moveto (}) show
+1 mp_a_x mul 12 moveto (public void adduserPoints\(Point3d p\)) show
+1 mp_a_x mul 0 moveto ({) show
+grestore
+restore
+showpage
+%%Page: 2 2
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+2 mp_a_x mul 852 moveto (Point3d cur=p.duplicate\(\);) show
+2 mp_a_x mul 840 moveto (userPoints.addElement\(cur\);) show
+1 mp_a_x mul 828 moveto (}) show
+4 mp_a_x mul 804 moveto (// o is generally the object to be grasped) show
+0 mp_a_x mul 792 moveto (public double segmentCollision\(Object3d o\)) show
+0 mp_a_x mul 780 moveto ({) show
+1 mp_a_x mul 756 moveto (for \(int i=0;i<segc;i++\)) show
+2 mp_a_x mul 744 moveto ({) show
+3 mp_a_x mul 732 moveto (if \(o.inside\(seg[i].limb_pos\)\) ) show
+6 mp_a_x mul 720 moveto (return \(5000.0/VA.dist\(seg[i].limb_pos,o.objectCenter\)+1\) ;) show
+3 mp_a_x mul 708 moveto (if \(o.inside\(VA.center\(seg[i].limb_pos,seg[i].joint_pos\)\)\)) show
+6 mp_a_x mul 696 moveto (return \(5000.0/VA.dist\(seg[i].limb_pos,o.objectCenter\)+1\) ;) show
+2 mp_a_x mul 684 moveto (}) show
+2 mp_a_x mul 672 moveto (return 0;) show
+0 mp_a_x mul 660 moveto (}) show
+0 mp_a_x mul 636 moveto (public double new_segmentCollision\(Segment seg, Object3d o\)) show
+0 mp_a_x mul 624 moveto ({) show
+2 mp_a_x mul 612 moveto (if \(o.inside\(seg.limb_pos\)\) ) show
+6 mp_a_x mul 600 moveto (return \(5000.0/VA.dist\(seg.limb_pos,o.objectCenter\)+1\) ;) show
+2 mp_a_x mul 588 moveto (if \(o.inside\(VA.center\(seg.limb_pos,seg.joint_pos\)\)\)) show
+6 mp_a_x mul 576 moveto (return \(5000.0/VA.dist\(seg.limb_pos,o.objectCenter\)+1\) ;) show
+2 mp_a_x mul 552 moveto (for \(int i=0;i<seg.noch;i++\)) show
+2 mp_a_x mul 540 moveto ({) show
+6 mp_a_x mul 528 moveto (double v=new_segmentCollision\(seg.child[i],o\);) show
+6 mp_a_x mul 516 moveto (if \(v>0\) return v; ) show
+2 mp_a_x mul 504 moveto (}) show
+2 mp_a_x mul 492 moveto (return 0;) show
+0 mp_a_x mul 480 moveto (}) show
+4 mp_a_x mul 468 moveto (/*) show
+4 mp_a_x mul 456 moveto (TODO:) show
+4 mp_a_x mul 444 moveto (start and end: convert to par,mer,R triplets.) show
+4 mp_a_x mul 432 moveto (implement a I/O routines to save/load the map) show
+4 mp_a_x mul 420 moveto (use the map for other reaches \(beforeAction forexample can be?\)) show
+0 mp_a_x mul 408 moveto (q    */) show
+4 mp_a_x mul 384 moveto (private CfgCell[][][] workCell;) show
+4 mp_a_x mul 372 moveto (private int clx,cly,clz,maxclx,maxcly,maxclz;) show
+4 mp_a_x mul 360 moveto (private Point3d start,end;) show
+4 mp_a_x mul 348 moveto (private Segment endeff=null;) show
+4 mp_a_x mul 336 moveto (public CfgCell[][][] makeInvKinMap\(int cellx,int celly,int cellz, Point3d start,Point3d end\)) show
+4 mp_a_x mul 324 moveto ({) show
+8 mp_a_x mul 312 moveto (mapping=true;) show
+8 mp_a_x mul 300 moveto (endeff=getJoint\("J4"\);) show
+8 mp_a_x mul 288 moveto (Mars.clearStars\(\);) show
+8 mp_a_x mul 276 moveto (this.start=start.duplicate\(\);) show
+8 mp_a_x mul 264 moveto (this.end=end.duplicate\(\);) show
+8 mp_a_x mul 252 moveto (maxclx=cellx; maxcly=celly; maxclz=cellz;) show
+8 mp_a_x mul 240 moveto (clx=cly=clz=0;) show
+8 mp_a_x mul 228 moveto (workCell=new CfgCell[cellx][celly][cellz];) show
+8 mp_a_x mul 216 moveto (HV.self.setGrasp\("REACHONLY"\);) show
+8 mp_a_x mul 204 moveto (startReach\(\);) show
+8 mp_a_x mul 180 moveto (return null;) show
+4 mp_a_x mul 168 moveto (}) show
+0 mp_a_x mul 144 moveto (/** check whether the object is in either side of P. 1: is normal side \(check\)) show
+0 mp_a_x mul 132 moveto (-1:other side 0: means mixed \(object intersects plane. Note that this is an) show
+0 mp_a_x mul 120 moveto (approximation not all the vertex of the object is checked. Only the plane) show
+0 mp_a_x mul 108 moveto (centers are used */) show
+0 mp_a_x mul 96 moveto (public int sideOF\(Plane p\) {) show
+4 mp_a_x mul 84 moveto (int allc=0;) show
+4 mp_a_x mul 72 moveto (int neg=0;) show
+4 mp_a_x mul 60 moveto (int pos=0;) show
+4 mp_a_x mul 36 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 24 moveto ({ int k=hindex[i];) show
+5 mp_a_x mul 12 moveto (if \(k>=1000\) continue;) show
+5 mp_a_x mul 0 moveto (double v = VA.inner\(p.normal, hplist[k].CP\)+p.D;) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+5 mp_a_x mul 852 moveto (if \(v>0\) pos++;) show
+5 mp_a_x mul 840 moveto (else if \(v<0\) neg++;) show
+5 mp_a_x mul 828 moveto (else {pos++; neg++;}) show
+5 mp_a_x mul 816 moveto (allc++;) show
+3 mp_a_x mul 804 moveto (}) show
+4 mp_a_x mul 792 moveto (if \(neg==allc\) return -1;) show
+4 mp_a_x mul 780 moveto (if \(pos==allc\) return 1 ;) show
+4 mp_a_x mul 768 moveto (return 0;) show
+0 mp_a_x mul 756 moveto (}) show
+4 mp_a_x mul 732 moveto (public void startReach\(\)) show
+4 mp_a_x mul 720 moveto ({) show
+8 mp_a_x mul 696 moveto (root.resetJoints\(\);) show
+8 mp_a_x mul 684 moveto (Point3d tar=new Point3d\(0,0,0\);) show
+8 mp_a_x mul 672 moveto (tar.x=start.x+clx*\(end.x-start.x\)/\(maxclx-1\);) show
+8 mp_a_x mul 660 moveto (tar.y=start.y+cly*\(end.y-start.y\)/\(maxcly-1\);) show
+8 mp_a_x mul 648 moveto (tar.z=start.z+clz*\(end.z-start.z\)/\(maxclz-1\);) show
+8 mp_a_x mul 636 moveto (Mars.addStar\(tar\);) show
+8 mp_a_x mul 624 moveto (HV.self.setTargetPosition\(\(int\)\(0.5+tar.x\),\(int\)\(0.5+tar.y\),\(int\)\(0.5+tar.z\)\);) show
+8 mp_a_x mul 612 moveto (HV.self.toggleReach\("visual"\);) show
+4 mp_a_x mul 600 moveto (}) show
+4 mp_a_x mul 588 moveto (public void setCell\(double err\)) show
+4 mp_a_x mul 576 moveto ({   ) show
+5 mp_a_x mul 564 moveto (if \(err>2\) {workCell[clx][cly][cly]=null;}) show
+5 mp_a_x mul 552 moveto (else ) show
+9 mp_a_x mul 540 moveto ({) show
+4 mp_a_x mul 528 moveto (double[] a=new double[segc];) show
+4 mp_a_x mul 516 moveto (storeAngles\(a\);) show
+4 mp_a_x mul 504 moveto (workCell[clx][cly][cly]=new CfgCell\(endeff.limb_pos,a,a.length\);) show
+9 mp_a_x mul 492 moveto (}) show
+4 mp_a_x mul 480 moveto (nextCell\(\);) show
+4 mp_a_x mul 468 moveto (}) show
+4 mp_a_x mul 456 moveto (public void endInvKinMap\(\)) show
+4 mp_a_x mul 444 moveto ({) show
+8 mp_a_x mul 432 moveto (System.out.println\("Inverse Kinematics map formed."\);) show
+8 mp_a_x mul 420 moveto (//restoreChildren\("J4"\);) show
+8 mp_a_x mul 408 moveto (mapping=false;) show
+4 mp_a_x mul 396 moveto (}) show
+4 mp_a_x mul 384 moveto (public void nextCell\(\)) show
+4 mp_a_x mul 372 moveto ({) show
+8 mp_a_x mul 360 moveto (clx++;) show
+8 mp_a_x mul 348 moveto (if \(clx>=maxclx\) {) show
+12 mp_a_x mul 336 moveto (clx=0; cly++;) show
+12 mp_a_x mul 324 moveto (if \(cly>=maxcly\) {) show
+16 mp_a_x mul 312 moveto (cly=0; clz++;) show
+16 mp_a_x mul 300 moveto (if \(clz>=maxclz\) {) show
+20 mp_a_x mul 288 moveto (endInvKinMap\(\);) show
+20 mp_a_x mul 276 moveto (return;) show
+16 mp_a_x mul 264 moveto (}) show
+12 mp_a_x mul 252 moveto (}) show
+8 mp_a_x mul 240 moveto (}) show
+8 mp_a_x mul 228 moveto (startReach\(\);) show
+4 mp_a_x mul 216 moveto (}) show
+1 mp_a_x mul 192 moveto (//children of s will be truncated. Can be restored later.) show
+1 mp_a_x mul 180 moveto (public void truncateChildren\(String s\)) show
+1 mp_a_x mul 168 moveto ({) show
+2 mp_a_x mul 156 moveto (Segment end=getJoint\(s\);) show
+2 mp_a_x mul 144 moveto (if \(end==null\) return;) show
+2 mp_a_x mul 132 moveto (end.truncateChildren\(\);) show
+1 mp_a_x mul 120 moveto (}) show
+4 mp_a_x mul 96 moveto (static Point3d[] sPN = new Point3d[5];) show
+4 mp_a_x mul 84 moveto (static Plane[] sPL = new Plane[5];) show
+4 mp_a_x mul 72 moveto (synchronized public int segmentIntersection\(Segment seg,Plane[] pl,Point3d[] pn\) {) show
+8 mp_a_x mul 48 moveto (Point3d P1=seg.joint_pos;) show
+8 mp_a_x mul 36 moveto (Point3d P2=seg.limb_pos;) show
+8 mp_a_x mul 24 moveto (double d =VA.dist\(P1,P2\);) show
+8 mp_a_x mul 12 moveto (int k=lineIntersection\(P1, VA.subtract\(P2,P1\),sPL,sPN\);) show
+8 mp_a_x mul 0 moveto (if \(k==0\) return k;) show
+grestore
+restore
+showpage
+%%Page: 3 3
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 852 moveto (int r=0;) show
+8 mp_a_x mul 840 moveto (for \(int i=0;i<k;i++\) {) show
+12 mp_a_x mul 828 moveto (if \(VA.dist\(sPN[i],P1\) <= d && VA.dist\(sPN[i],P2\) <= d\) {) show
+16 mp_a_x mul 816 moveto (pl[r]=sPL[i];) show
+16 mp_a_x mul 804 moveto (pn[r++]=sPN[i];) show
+12 mp_a_x mul 792 moveto (}) show
+8 mp_a_x mul 780 moveto (}) show
+8 mp_a_x mul 768 moveto (return r;) show
+4 mp_a_x mul 756 moveto (}) show
+1 mp_a_x mul 744 moveto (/** returns the intersections \(for now 2\) of the object with the line ) show
+4 mp_a_x mul 732 moveto (passing through) show
+4 mp_a_x mul 720 moveto (point p with direction vector u.*/) show
+1 mp_a_x mul 708 moveto (synchronized public int lineIntersection\(Point3d p, Point3d u,Plane[] PL, Point3d[] PN\)) show
+1 mp_a_x mul 696 moveto ({) show
+2 mp_a_x mul 684 moveto (Point3d[] res=PN;) show
+3 mp_a_x mul 672 moveto (int c=0;) show
+2 mp_a_x mul 660 moveto (if \(HV.DLEV>2\) System.out.println\("\\n\\n        The intersection of point "+p.str\(\)+" with direction "+u.str\(\)+" with box planes are:"\);) show
+2 mp_a_x mul 648 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 636 moveto ({) show
+5 mp_a_x mul 624 moveto (int k=hindex[i];) show
+5 mp_a_x mul 612 moveto (if \(k>=1000\) continue; //ignore merger) show
+5 mp_a_x mul 600 moveto (Plane pl=hplist[k];) show
+5 mp_a_x mul 588 moveto (Point3d P=pl.intersection\(p,u\);) show
+7 mp_a_x mul 576 moveto (if \(HV.DLEV>2\) System.out.println\("        "+k+"\) "+pl.str\(\)\);) show
+5 mp_a_x mul 564 moveto (if \(P!=null\)) show
+5 mp_a_x mul 552 moveto ({ if \(HV.DLEV>2\) System.out.println\("           INTERSECTING at "+P.str\(\)\); ) show
+7 mp_a_x mul 540 moveto (//Mars.addComet\(P,root.limb_pos,5\);) show
+7 mp_a_x mul 528 moveto (///Mars.addStar\(P\);) show
+6 mp_a_x mul 516 moveto (} else ) show
+5 mp_a_x mul 504 moveto ({ if \(HV.DLEV>2\) System.out.println\("           NONE\\n "\);) show
+7 mp_a_x mul 492 moveto (continue; ) show
+5 mp_a_x mul 480 moveto (}) show
+5 mp_a_x mul 468 moveto (if \(HV.DLEV>2\) System.out.println\(""\);) show
+5 mp_a_x mul 444 moveto (if \(pl.contained\(P\) \)) show
+7 mp_a_x mul 432 moveto ({ if \(HV.DLEV>2\) System.out.println\("         The above intersection is contained in the plane\\n\\n"\);) show
+0 mp_a_x mul 420 moveto (//         if \(c>1\) {) show
+0 mp_a_x mul 408 moveto (//  ) show
+11 mp_a_x mul 408 moveto (if \(VA.dist2\(P,res[0]\)  <  VA.dist2\(P,res[1]\)\) {) show
+0 mp_a_x mul 396 moveto (//                 PL[0]=pl;) show
+0 mp_a_x mul 384 moveto (//  ) show
+15 mp_a_x mul 384 moveto (res[0]=P;) show
+0 mp_a_x mul 372 moveto (//  ) show
+11 mp_a_x mul 372 moveto (} else {) show
+0 mp_a_x mul 360 moveto (//  ) show
+15 mp_a_x mul 360 moveto (PL[1]=pl;) show
+0 mp_a_x mul 348 moveto (//  ) show
+15 mp_a_x mul 348 moveto (res[1]=P;) show
+0 mp_a_x mul 336 moveto (//  ) show
+11 mp_a_x mul 336 moveto (}) show
+0 mp_a_x mul 324 moveto (//         } else {) show
+0 mp_a_x mul 312 moveto (//  ) show
+11 mp_a_x mul 312 moveto (PL[c]=pl;) show
+0 mp_a_x mul 300 moveto (//  ) show
+11 mp_a_x mul 300 moveto (res[c++]=P;) show
+0 mp_a_x mul 288 moveto (//         }) show
+7 mp_a_x mul 264 moveto (PL[c]=pl;) show
+7 mp_a_x mul 252 moveto (res[c++]=P;) show
+7 mp_a_x mul 240 moveto (}) show
+3 mp_a_x mul 228 moveto (}) show
+2 mp_a_x mul 216 moveto (if \(c==0\) { if \(HV.DLEV>2\) System.out.println\("!@!@!@@@@@@ Nothing in object !!!"+hpc+" planes"\);) show
+11 mp_a_x mul 204 moveto (}) show
+2 mp_a_x mul 192 moveto (if \(c==1\)  { if \(HV.DLEV>2\) System.out.println\("@@@@@@ Only 1 in object !!!"+hpc+" planes"\);) show
+15 mp_a_x mul 180 moveto (res[1]=res[0];) show
+12 mp_a_x mul 168 moveto (} ) show
+2 mp_a_x mul 156 moveto (if \(c>2\)   { if \(HV.DLEV>2\) System.out.println\("@@@@@@ More than 2  in object !!!"+hpc+" planes"\);) show
+12 mp_a_x mul 144 moveto (} ) show
+2 mp_a_x mul 132 moveto (if \(c==2\)   { if \(HV.DLEV>2\) System.out.println\("@@@@@@ OK.  2 points in object !!!"+hpc+" planes"\);) show
+12 mp_a_x mul 120 moveto (} ) show
+2 mp_a_x mul 96 moveto (return c;) show
+1 mp_a_x mul 84 moveto (}) show
+1 mp_a_x mul 72 moveto (public void restoreChildren\(String s\)) show
+1 mp_a_x mul 60 moveto ({) show
+2 mp_a_x mul 48 moveto (Segment end=getJoint\(s\);) show
+2 mp_a_x mul 36 moveto (if \(end==null\) return;) show
+2 mp_a_x mul 24 moveto (end.restoreChildren\(\);) show
+1 mp_a_x mul 12 moveto (}) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+1 mp_a_x mul 852 moveto (public void enablePanels\(\)) show
+1 mp_a_x mul 840 moveto ({ ) show
+2 mp_a_x mul 828 moveto (for \(int i=0;i<segc;i++\) seg[i].enablePanel\(\);) show
+2 mp_a_x mul 816 moveto (root.updateAllPanel\(\);) show
+1 mp_a_x mul 804 moveto (}) show
+1 mp_a_x mul 792 moveto (public void disablePanels\(\)) show
+1 mp_a_x mul 780 moveto ({ ) show
+2 mp_a_x mul 768 moveto (for \(int i=0;i<segc;i++\) seg[i].disablePanel\(\);) show
+1 mp_a_x mul 756 moveto (}) show
+1 mp_a_x mul 744 moveto (public void setJointConstraint\(Segment s,double min,double max\)) show
+1 mp_a_x mul 732 moveto ({ ) show
+2 mp_a_x mul 720 moveto (s.minbeta=min;) show
+2 mp_a_x mul 708 moveto (s.maxbeta=max;) show
+2 mp_a_x mul 696 moveto (s.jointconstraint=true;) show
+1 mp_a_x mul 684 moveto (}) show
+4 mp_a_x mul 672 moveto (/** checks if the joint constraint would be hit if rotated ang radians.*/) show
+4 mp_a_x mul 660 moveto (public boolean hitConstraint\(Segment seg, double ang\) {) show
+8 mp_a_x mul 648 moveto (if \(!seg.jointconstraint\) return false;) show
+8 mp_a_x mul 636 moveto (if \(seg.beta+ang > seg.maxbeta\)) show
+12 mp_a_x mul 624 moveto (return true;) show
+8 mp_a_x mul 612 moveto (if \(seg.beta+ang < seg.minbeta\)) show
+12 mp_a_x mul 600 moveto (return true;) show
+8 mp_a_x mul 588 moveto (return false;) show
+4 mp_a_x mul 576 moveto (}) show
+1 mp_a_x mul 564 moveto (public void constrainedRotate\(Segment seg,double ang\)) show
+1 mp_a_x mul 552 moveto ({) show
+2 mp_a_x mul 540 moveto (if \(seg.jointconstraint\)) show
+2 mp_a_x mul 528 moveto ({ //System.out.println\("Ok constrained:"+seg.minbeta+","+seg.maxbeta\);) show
+4 mp_a_x mul 516 moveto (if \(seg.beta+ang > seg.maxbeta\)) show
+7 mp_a_x mul 504 moveto ({ ang=seg.maxbeta-seg.beta; }) show
+4 mp_a_x mul 492 moveto (if \(seg.beta+ang < seg.minbeta\)) show
+7 mp_a_x mul 480 moveto ({ ang=seg.minbeta-seg.beta;  }) show
+2 mp_a_x mul 468 moveto (}) show
+2 mp_a_x mul 456 moveto (if \(ang==0\)  {if \(seg.seg_pan!=null\) seg.update_panel\(\);}) show
+2 mp_a_x mul 444 moveto (else seg.rotateJoint\(ang\); // this update automatically) show
+1 mp_a_x mul 432 moveto (}) show
+1 mp_a_x mul 408 moveto (public int collisionRotate\(Segment seg,double ang,Object3d o\)) show
+1 mp_a_x mul 396 moveto ({) show
+2 mp_a_x mul 384 moveto (double save=seg.beta;) show
+2 mp_a_x mul 372 moveto (if \(seg.blocked\) return 1; //it has collided before) show
+2 mp_a_x mul 360 moveto (if \(seg.jointconstraint\)) show
+2 mp_a_x mul 348 moveto ({ //System.out.println\("Ok constrained:"+seg.minbeta+","+seg.maxbeta\);) show
+4 mp_a_x mul 336 moveto (if \(seg.beta+ang > seg.maxbeta\)) show
+7 mp_a_x mul 324 moveto ({ ang=seg.maxbeta-seg.beta; }) show
+4 mp_a_x mul 312 moveto (if \(seg.beta+ang < seg.minbeta\)) show
+7 mp_a_x mul 300 moveto ({ ang=seg.minbeta-seg.beta;  }) show
+2 mp_a_x mul 288 moveto (}) show
+2 mp_a_x mul 264 moveto (if \(ang==0\)  {   // if at the joint limit) show
+6 mp_a_x mul 252 moveto (if \(seg.seg_pan!=null\) seg.update_panel\(\);) show
+6 mp_a_x mul 240 moveto (seg.blocked=true; ) show
+6 mp_a_x mul 228 moveto (return 1;) show
+2 mp_a_x mul 216 moveto (}) show
+2 mp_a_x mul 204 moveto (else seg.rotateJoint\(ang\); // this update automatically) show
+2 mp_a_x mul 192 moveto (double colv=new_segmentCollision\(seg,o\);) show
+2 mp_a_x mul 180 moveto (//System.out.println\("Collision value:"+colv\);) show
+2 mp_a_x mul 168 moveto (if \(colv>0.0001\) {) show
+6 mp_a_x mul 156 moveto (seg.blocked=true;) show
+6 mp_a_x mul 144 moveto (return 1;) show
+6 mp_a_x mul 132 moveto (///////// seg.rotateJoint\(-ang\); ) show
+7 mp_a_x mul 120 moveto (//System.out.println\("Collision occured."\);) show
+2 mp_a_x mul 108 moveto (}) show
+2 mp_a_x mul 96 moveto (return 0;) show
+0 mp_a_x mul 84 moveto (}) show
+1 mp_a_x mul 60 moveto (public void setJointAngle\(Segment seg,double ang\)) show
+1 mp_a_x mul 48 moveto ({) show
+2 mp_a_x mul 36 moveto (seg.rotateJoint\(ang-seg.beta\);) show
+1 mp_a_x mul 24 moveto (}) show
+1 mp_a_x mul 0 moveto (public void set2doffset\(int ox,int oy\)) show
+grestore
+restore
+showpage
+%%Page: 4 4
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+1 mp_a_x mul 852 moveto ({ offx=ox; offy=oy;}) show
+1 mp_a_x mul 828 moveto (public void setupObject\(\)) show
+1 mp_a_x mul 816 moveto ({) show
+3 mp_a_x mul 804 moveto (seg=root.seg;) show
+3 mp_a_x mul 792 moveto (segc=root.segc;) show
+3 mp_a_x mul 780 moveto (hplist=root.plane;) show
+3 mp_a_x mul 768 moveto (hpc=root.planec;) show
+3 mp_a_x mul 756 moveto (hindex=new int[hpc];) show
+3 mp_a_x mul 744 moveto (if \(HV.DLEV>0\) System.out.println\("********************** Total planes:"+hpc\);) show
+3 mp_a_x mul 732 moveto (for \(int i=0;i<hpc;i++\) hindex[i]=i;) show
+3 mp_a_x mul 720 moveto (jointpath=new Spline[segc];) show
+3 mp_a_x mul 708 moveto (setPlaneProperties\(\); ) show
+1 mp_a_x mul 696 moveto (}) show
+1 mp_a_x mul 672 moveto (public void paintAllSurfaces\(int fillc, int linec\)) show
+1 mp_a_x mul 660 moveto ({) show
+2 mp_a_x mul 648 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 636 moveto ({) show
+3 mp_a_x mul 624 moveto (hplist[i].fill_color=fillc;) show
+3 mp_a_x mul 612 moveto (hplist[i].line_color=linec;) show
+3 mp_a_x mul 600 moveto (}) show
+1 mp_a_x mul 588 moveto (}) show
+1 mp_a_x mul 552 moveto (// this merge stuff is an quick hack to merge two objects to have) show
+1 mp_a_x mul 540 moveto (// their planes sorted together. Maybe inefficient. ) show
+1 mp_a_x mul 528 moveto (// Can be extended easily though) show
+1 mp_a_x mul 516 moveto (Object3d merged=null; ) show
+1 mp_a_x mul 504 moveto (public void mergeObject\(Object3d m\)) show
+1 mp_a_x mul 492 moveto ({) show
+2 mp_a_x mul 480 moveto (hindex=new int[hpc+m.hpc];) show
+2 mp_a_x mul 468 moveto (for \(int i=0;i<hpc;i++\) hindex[i]=i;) show
+2 mp_a_x mul 456 moveto (for \(int i=0;i<m.hpc;i++\) hindex[hpc+i]=1000+i;) show
+2 mp_a_x mul 444 moveto (hpc+=m.hpc;) show
+2 mp_a_x mul 432 moveto (merged=m;) show
+1 mp_a_x mul 420 moveto (}) show
+1 mp_a_x mul 396 moveto (public void discardMerged\(\)) show
+1 mp_a_x mul 384 moveto ({) show
+3 mp_a_x mul 372 moveto (hpc=root.planec;) show
+3 mp_a_x mul 360 moveto (for \(int i=0;i<hpc;i++\) hindex[i]=i;) show
+3 mp_a_x mul 348 moveto (merged=null;) show
+1 mp_a_x mul 336 moveto (}) show
+1 mp_a_x mul 312 moveto (public double[] getAngleList\(\)) show
+1 mp_a_x mul 300 moveto ({double a[]=new double[segc];) show
+2 mp_a_x mul 288 moveto (for \(int i=0;i<segc;i++\)) show
+5 mp_a_x mul 276 moveto (a[i]=seg[i].beta;) show
+2 mp_a_x mul 264 moveto (return a; ) show
+1 mp_a_x mul 252 moveto (}) show
+1 mp_a_x mul 240 moveto (public Object3d\(String s\)) show
+1 mp_a_x mul 228 moveto ({) show
+2 mp_a_x mul 216 moveto (this\(s,0,1\);) show
+1 mp_a_x mul 204 moveto (}) show
+1 mp_a_x mul 180 moveto (public Object3d\(String s,int pipesidec,double piperad\)) show
+1 mp_a_x mul 168 moveto ({) show
+1 mp_a_x mul 156 moveto (//+100 are very bad. I was just trying something remove them) show
+2 mp_a_x mul 144 moveto (root=new Segment\(s,2*pipesidec+100,15*\(pipesidec+3\)+100\); ) show
+34 mp_a_x mul 132 moveto (//extra stuff required) show
+2 mp_a_x mul 120 moveto (if \(pipesidec>0\) root.setupSolid\(pipesidec,piperad,true\);  // later will be read from file) show
+2 mp_a_x mul 96 moveto (if \(root==null\) System.err.println\("Cannot create Segment from file:"+s+"!!"\);) show
+2 mp_a_x mul 84 moveto (setupObject\(\);) show
+2 mp_a_x mul 72 moveto (if \(HV.DLEV>0\) System.out.println\("Total planes added:"+root.planec\);) show
+1 mp_a_x mul 60 moveto (}) show
+1 mp_a_x mul 36 moveto (private ObjectFrame of=null;) show
+1 mp_a_x mul 24 moveto (void showObjectFrame\(\)) show
+1 mp_a_x mul 12 moveto ({) show
+2 mp_a_x mul 0 moveto (of=new ObjectFrame\(this\);) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+2 mp_a_x mul 852 moveto (of.show\(\);) show
+2 mp_a_x mul 840 moveto (of.setBounds\(600,100,400,500\);) show
+2 mp_a_x mul 828 moveto (of.resize\(400,500\);) show
+1 mp_a_x mul 816 moveto (}) show
+1 mp_a_x mul 792 moveto (void closeObjectFrame\(\)) show
+1 mp_a_x mul 780 moveto ({) show
+2 mp_a_x mul 768 moveto (if \(of==null\) return;) show
+2 mp_a_x mul 756 moveto (of.closeSelf\(\);) show
+2 mp_a_x mul 744 moveto (of=null;) show
+1 mp_a_x mul 732 moveto (}) show
+1 mp_a_x mul 708 moveto (void toggleObjectFrame\(\)) show
+1 mp_a_x mul 696 moveto ({) show
+2 mp_a_x mul 684 moveto (if \(of==null\) showObjectFrame\(\);) show
+2 mp_a_x mul 672 moveto (else closeObjectFrame\(\);) show
+1 mp_a_x mul 660 moveto (}) show
+1 mp_a_x mul 612 moveto (int getSegmentIndex\(String name\)) show
+1 mp_a_x mul 600 moveto ({ for \(int i=0;i<segc;i++\)) show
+5 mp_a_x mul 588 moveto (if \(seg[i].label.equals\(name\)\) return i;) show
+3 mp_a_x mul 576 moveto (return -1;) show
+1 mp_a_x mul 564 moveto (}) show
+1 mp_a_x mul 528 moveto (Segment getJoint\(String name\)) show
+1 mp_a_x mul 516 moveto ({ return root.getJoint\(name\); }) show
+1 mp_a_x mul 492 moveto (void project\(Eye eye\)) show
+1 mp_a_x mul 480 moveto ({ root.project\(eye\); }) show
+0 mp_a_x mul 456 moveto (// assumes hplistp[i][5].x containing the correct depth for planes!!) show
+0 mp_a_x mul 444 moveto (public void updateObjectDepth\(\)) show
+1 mp_a_x mul 432 moveto ({) show
+2 mp_a_x mul 420 moveto (objdepth=0; ) show
+2 mp_a_x mul 408 moveto (for \(int i=0;i<hpc;i++\) if \(hindex[i]>=1000\) objdepth+=merged.hplist[hindex[i]-1000].depth;) show
+27 mp_a_x mul 396 moveto (else objdepth+=hplist[hindex[i]].depth;) show
+2 mp_a_x mul 384 moveto (objdepth/=hpc;) show
+1 mp_a_x mul 372 moveto (}) show
+0 mp_a_x mul 360 moveto (/*) show
+0 mp_a_x mul 348 moveto (public void sortPlanes\(int mode\)) show
+1 mp_a_x mul 336 moveto ({) show
+2 mp_a_x mul 324 moveto (root.updateDepth\(Mars.eye,mode\);) show
+2 mp_a_x mul 312 moveto (for \(int i=0;i<hpc-1;i++\)) show
+3 mp_a_x mul 300 moveto (for\(int j=i+1;j<hpc;j++\)) show
+4 mp_a_x mul 288 moveto ({) show
+5 mp_a_x mul 276 moveto (if \(hplist[hindex[i]].depth < hplist[hindex[j]].depth\)) show
+6 mp_a_x mul 264 moveto ({int t=hindex[j];) show
+7 mp_a_x mul 252 moveto (hindex[j]=hindex[i];) show
+7 mp_a_x mul 240 moveto (hindex[i]=t;) show
+6 mp_a_x mul 228 moveto (}) show
+4 mp_a_x mul 216 moveto (}) show
+1 mp_a_x mul 204 moveto (}) show
+0 mp_a_x mul 192 moveto (*/) show
+0 mp_a_x mul 168 moveto (//this is a quick cheat to merger objects for sorting planes) show
+0 mp_a_x mul 156 moveto (public void sortPlanes\(int mode\)) show
+1 mp_a_x mul 144 moveto ({int ii=0,jj=0; ) show
+2 mp_a_x mul 132 moveto (double depi=0,depj=0;) show
+2 mp_a_x mul 120 moveto (root.updateDepth\(Mars.eye,mode\);) show
+2 mp_a_x mul 108 moveto (if \(merged!=null\) { merged.root.updateDepth\(Mars.eye,mode\);) show
+22 mp_a_x mul 96 moveto (merged.paintAllSurfaces\(6,7\); }) show
+2 mp_a_x mul 84 moveto (for \(int i=0;i<hpc-1;i++\)) show
+3 mp_a_x mul 72 moveto (for\(int j=i+1;j<hpc;j++\)) show
+4 mp_a_x mul 60 moveto ({) show
+5 mp_a_x mul 48 moveto (ii=hindex[i]; ) show
+5 mp_a_x mul 36 moveto (if \(ii>=1000\) depi=merged.hplist[ii-1000].depth;) show
+13 mp_a_x mul 24 moveto (else  depi=hplist[ii].depth;) show
+5 mp_a_x mul 12 moveto (jj=hindex[j];) show
+5 mp_a_x mul 0 moveto (if \(jj>=1000\) depj=merged.hplist[jj-1000].depth;) show
+grestore
+restore
+showpage
+%%Page: 5 5
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+13 mp_a_x mul 852 moveto (else  depj=hplist[jj].depth;) show
+5 mp_a_x mul 828 moveto (if \(depi < depj\)) show
+6 mp_a_x mul 816 moveto ({int t=hindex[j];) show
+7 mp_a_x mul 804 moveto (hindex[j]=hindex[i];) show
+7 mp_a_x mul 792 moveto (hindex[i]=t;) show
+6 mp_a_x mul 780 moveto (}) show
+4 mp_a_x mul 768 moveto (}) show
+1 mp_a_x mul 756 moveto (}) show
+0 mp_a_x mul 720 moveto (int[] xx=new int[100]; //max 100 sided polygon!) show
+0 mp_a_x mul 708 moveto (int[] yy=new int[100];) show
+0 mp_a_x mul 684 moveto (public void drawWire\(Graphics g, Segment seg\)) show
+1 mp_a_x mul 672 moveto ({) show
+2 mp_a_x mul 660 moveto (Plane[] HPL;) show
+2 mp_a_x mul 648 moveto (if \(noshow\) return;) show
+2 mp_a_x mul 636 moveto (if \(merged!=null\) merged.project\(Mars.eye\);) show
+2 mp_a_x mul 624 moveto (g.setColor\(HVCanvas.foreColor\);) show
+2 mp_a_x mul 612 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 600 moveto ({ int ii=hindex[i];) show
+5 mp_a_x mul 588 moveto (if \(ii>=1000\)  {HPL=merged.hplist; ii-=1000;}) show
+13 mp_a_x mul 576 moveto (else  HPL=hplist;) show
+5 mp_a_x mul 564 moveto (int N=hplist[ii].N;) show
+5 mp_a_x mul 552 moveto (for \(int k=0;k<N;k++\)) show
+7 mp_a_x mul 540 moveto ({) show
+8 mp_a_x mul 528 moveto (xx[k]=Mars.midx+HPL[ii].r[k].x+offx;) show
+8 mp_a_x mul 516 moveto (yy[k]=Mars.midy-HPL[ii].r[k].y+offy;) show
+7 mp_a_x mul 504 moveto (}) show
+5 mp_a_x mul 492 moveto (g.drawPolygon\(xx,yy,N\);) show
+3 mp_a_x mul 480 moveto (}) show
+1 mp_a_x mul 468 moveto (}) show
+0 mp_a_x mul 456 moveto (public void drawWire\(Graphics g\)) show
+1 mp_a_x mul 444 moveto ({ drawWire\(g,root\); }) show
+0 mp_a_x mul 420 moveto (public void drawSolid\(Graphics g, Segment seg\)) show
+1 mp_a_x mul 408 moveto ({) show
+2 mp_a_x mul 396 moveto (Plane[] HPL;) show
+2 mp_a_x mul 384 moveto (int fill,line;) show
+2 mp_a_x mul 372 moveto (if \(noshow\) return;) show
+2 mp_a_x mul 360 moveto (if \(merged!=null\) merged.project\(Mars.eye\);) show
+2 mp_a_x mul 348 moveto (//System.out.println\("drawSolid!!"\);) show
+2 mp_a_x mul 336 moveto (//System.out.println\("hpc:"+hpc\);) show
+2 mp_a_x mul 324 moveto (for \(int i=0;i<hpc;i++\)) show
+3 mp_a_x mul 312 moveto ({ int ii=hindex[i];) show
+5 mp_a_x mul 300 moveto (if \(ii>=1000\)  {HPL=merged.hplist; ii-=1000;}) show
+13 mp_a_x mul 288 moveto (else  HPL=hplist;) show
+5 mp_a_x mul 276 moveto (int N=HPL[ii].N;) show
+5 mp_a_x mul 264 moveto (for \(int k=0;k<N;k++\)) show
+7 mp_a_x mul 252 moveto ({) show
+8 mp_a_x mul 240 moveto (xx[k]=Mars.midx+HPL[ii].r[k].x+offx;) show
+8 mp_a_x mul 228 moveto (yy[k]=Mars.midy-HPL[ii].r[k].y+offy;) show
+7 mp_a_x mul 216 moveto (}) show
+5 mp_a_x mul 204 moveto (fill=HPL[ii].fill_color;) show
+5 mp_a_x mul 192 moveto (line=HPL[ii].line_color;) show
+5 mp_a_x mul 168 moveto (g.setColor\(HV.pal.C[fill]\);) show
+5 mp_a_x mul 156 moveto (g.fillPolygon\(xx,yy,N\);) show
+5 mp_a_x mul 144 moveto (if \(line!=-1 \)) show
+5 mp_a_x mul 132 moveto ({) show
+5 mp_a_x mul 120 moveto (g.setColor\(HV.pal.C[line]\);) show
+5 mp_a_x mul 108 moveto (g.drawPolygon\(xx,yy,N\);) show
+5 mp_a_x mul 96 moveto (}) show
+3 mp_a_x mul 84 moveto (}) show
+1 mp_a_x mul 72 moveto (}) show
+0 mp_a_x mul 48 moveto (public void drawSolid\(Graphics g\)) show
+1 mp_a_x mul 36 moveto ({ drawSolid\(g,root\); }) show
+0 mp_a_x mul 12 moveto (public void drawSkel\(Graphics g\)) show
+1 mp_a_x mul 0 moveto ({ drawSkel\(g,root\); }) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+0 mp_a_x mul 840 moveto (public void drawSkel\(Graphics g, Segment seg\)) show
+1 mp_a_x mul 828 moveto ({) show
+2 mp_a_x mul 816 moveto (if \(noshow\) return;) show
+2 mp_a_x mul 804 moveto (if \(merged!=null\) merged.project\(Mars.eye\);) show
+0 mp_a_x mul 792 moveto (/*  if \(seg.label.equals\("PINKY"\) || seg.label.equals\("RING"\) ||) show
+5 mp_a_x mul 780 moveto (seg.label.equals\("MIDDLE"\)  || seg.label.equals\("INDEX"\) ||) show
+5 mp_a_x mul 768 moveto (seg.label.equals\("THUMB"\)\)) show
+2 mp_a_x mul 756 moveto ({  g.setColor\(Color.green\);) show
+5 mp_a_x mul 744 moveto (g.drawString\(seg.label, offx+Mars.midx+seg.limb_pos2d.x, Mars.midy-seg.limb_pos2d.y\);) show
+2 mp_a_x mul 732 moveto (}) show
+0 mp_a_x mul 720 moveto (*/) show
+2 mp_a_x mul 708 moveto (g.setColor\(HVCanvas.foreColor\);) show
+2 mp_a_x mul 696 moveto (g.drawLine\(offx+Mars.midx+seg.joint_pos2d.x,offy+Mars.midy-seg.joint_pos2d.y,) show
+13 mp_a_x mul 684 moveto (offx+Mars.midx+seg.limb_pos2d.x,offy+Mars.midy-seg.limb_pos2d.y\);) show
+1 mp_a_x mul 672 moveto (g.drawLine\(offx+1+Mars.midx+seg.joint_pos2d.x,offy+Mars.midy-seg.joint_pos2d.y,) show
+13 mp_a_x mul 660 moveto (offx+1+Mars.midx+seg.limb_pos2d.x,offy+Mars.midy-seg.limb_pos2d.y\);) show
+2 mp_a_x mul 648 moveto (g.setColor\(Color.green\);) show
+2 mp_a_x mul 636 moveto (g.drawLine\(offx+Mars.midx+seg.joint_pos2d.x,offy+Mars.midy-seg.joint_pos2d.y,) show
+13 mp_a_x mul 624 moveto (offx+1+Mars.midx+seg.joint_pos2d.x,offy+Mars.midy-seg.joint_pos2d.y\);) show
+2 mp_a_x mul 600 moveto (for \(int i=0;i<seg.noch;i++\)) show
+4 mp_a_x mul 588 moveto (drawSkel\(g,seg.child[i]\);) show
+1 mp_a_x mul 576 moveto (}) show
+0 mp_a_x mul 552 moveto (synchronized public void rect_moveto\(Point3d newposition\)) show
+1 mp_a_x mul 540 moveto ({) show
+5 mp_a_x mul 528 moveto (double dx=newposition.x - objectCenter.x; //root.joint_pos.x;) show
+5 mp_a_x mul 516 moveto (double dy=newposition.y - objectCenter.y;  // root.joint_pos.y;) show
+5 mp_a_x mul 504 moveto (double dz=newposition.z - objectCenter.z; // root.joint_pos.z;) show
+2 mp_a_x mul 492 moveto (root._translate\(dx,dy,dz\);) show
+2 mp_a_x mul 480 moveto (setPlaneProperties\(\);) show
+1 mp_a_x mul 468 moveto (} ) show
+0 mp_a_x mul 444 moveto (synchronized public void rect_moveto\(double x,double y,double z\)) show
+1 mp_a_x mul 432 moveto ({) show
+2 mp_a_x mul 420 moveto (double dx=x - objectCenter.x; // root.joint_pos.x;) show
+2 mp_a_x mul 408 moveto (double dy=y - objectCenter.y;  //root.joint_pos.y;) show
+2 mp_a_x mul 396 moveto (double dz=z - objectCenter.z; // root.joint_pos.z;) show
+2 mp_a_x mul 384 moveto (root._translate\(dx,dy,dz\);) show
+2 mp_a_x mul 372 moveto (setPlaneProperties\(\);) show
+1 mp_a_x mul 360 moveto (}) show
+0 mp_a_x mul 336 moveto (synchronized public void moveto\(double x,double y,double z\)) show
+0 mp_a_x mul 324 moveto ({) show
+4 mp_a_x mul 312 moveto (Point3d q=HV.self.rHand.root.joint_pos;) show
+4 mp_a_x mul 276 moveto (double rad=z;) show
+4 mp_a_x mul 264 moveto (double par=x;) show
+4 mp_a_x mul 252 moveto (double mer=y;) show
+4 mp_a_x mul 240 moveto (System.out.println\("move to spheric:  par:"+par*180/Math.PI+" mer:"+mer*180/Math.PI+" rad:"+rad\);) show
+4 mp_a_x mul 228 moveto (double xx=q.x + rad*Math.cos\(par\)*Math.sin\(mer\);) show
+4 mp_a_x mul 216 moveto (double yy=q.y + rad*Math.sin\(par\);) show
+4 mp_a_x mul 204 moveto (double zz=q.z + rad*Math.cos\(par\)*Math.cos\(mer\); ) show
+4 mp_a_x mul 180 moveto (double dx=xx - objectCenter.x; //root.joint_pos.x;) show
+4 mp_a_x mul 168 moveto (double dy=yy - objectCenter.y; //root.joint_pos.y;) show
+4 mp_a_x mul 156 moveto (double dz=zz - objectCenter.z; //root.joint_pos.z;) show
+4 mp_a_x mul 144 moveto (root._translate\(dx,dy,dz\);) show
+4 mp_a_x mul 132 moveto (setPlaneProperties\(\);) show
+0 mp_a_x mul 120 moveto (}) show
+0 mp_a_x mul 108 moveto (synchronized public void moveto\(Point3d R\) {) show
+4 mp_a_x mul 96 moveto (moveto\(R.x,R.y,R.z\);) show
+0 mp_a_x mul 84 moveto (}) show
+0 mp_a_x mul 60 moveto (public void project\(\)) show
+1 mp_a_x mul 48 moveto ({) show
+2 mp_a_x mul 36 moveto (root.project\(Mars.eye\);) show
+1 mp_a_x mul 24 moveto (}) show
+grestore
+restore
+showpage
+%%Page: 6 6
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+3 mp_a_x mul 840 moveto (double zeroError=3.0;) show
+3 mp_a_x mul 828 moveto (double[][] betas;) show
+0 mp_a_x mul 816 moveto (/** use a .cfg files destination configuration and install it */) show
+0 mp_a_x mul 804 moveto (public void installCfg\(String nm\)) show
+1 mp_a_x mul 792 moveto ({) show
+2 mp_a_x mul 780 moveto (Gesture fake=doGesture\(nm\);) show
+2 mp_a_x mul 768 moveto (if \(fake==null\) {System.out.println\(nm+" cannot be opened."\); return;}) show
+2 mp_a_x mul 756 moveto (double[] angles=new double[segc];) show
+2 mp_a_x mul 744 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 732 moveto (angles[i]=betas[i][2];) show
+2 mp_a_x mul 720 moveto (fake=null;) show
+2 mp_a_x mul 708 moveto (restoreAngles\(angles\);) show
+2 mp_a_x mul 696 moveto (root.updateAllPanel\(\);) show
+2 mp_a_x mul 684 moveto (HV.cv.refreshDisplay\(\);) show
+1 mp_a_x mul 672 moveto (}) show
+0 mp_a_x mul 660 moveto (public double reach_speed=1;) show
+0 mp_a_x mul 648 moveto (public double reach_deltat=1;) show
+0 mp_a_x mul 636 moveto (public double reach_basetime=0.01;) show
+4 mp_a_x mul 624 moveto (/** ERH2001: looks like only for .cfg gesture execution */) show
+0 mp_a_x mul 612 moveto (public Gesture doGesture\(String nm\)) show
+1 mp_a_x mul 600 moveto ({) show
+3 mp_a_x mul 588 moveto (betas=new double[segc][4];) show
+3 mp_a_x mul 576 moveto (double[] x=new double[5],y=new double[5];) show
+3 mp_a_x mul 564 moveto (for \(int i=0;i<segc;i++\) betas[i][0]=betas[i][1]=betas[i][2]=betas[i][3]=0;) show
+3 mp_a_x mul 552 moveto (String gname="";) show
+3 mp_a_x mul 528 moveto (String t[]=new String[2];) show
+3 mp_a_x mul 516 moveto (int tc=0,linec=0, mode=0;) show
+3 mp_a_x mul 504 moveto (String s,u;) show
+3 mp_a_x mul 480 moveto (try {) show
+3 mp_a_x mul 468 moveto (//DataInputStream in = Elib.openfileREAD\(nm\);) show
+2 mp_a_x mul 456 moveto (DataInputStream in = Elib.openURLfile\(HV.baseURL,nm\);) show
+3 mp_a_x mul 432 moveto (if \(in==null\) return null ;) show
+3 mp_a_x mul 420 moveto (linec=0;) show
+3 mp_a_x mul 408 moveto (while \(null!=\(s=in.readLine\(\)\)\)) show
+3 mp_a_x mul 396 moveto ({) show
+4 mp_a_x mul 384 moveto (linec++;) show
+4 mp_a_x mul 372 moveto (if \(s.equals\(""\)\) continue;) show
+4 mp_a_x mul 360 moveto (if \(s.charAt\(0\) == '#'\) continue;) show
+4 mp_a_x mul 348 moveto (StringTokenizer st= new StringTokenizer\(s," "\);) show
+4 mp_a_x mul 336 moveto (tc=0;) show
+4 mp_a_x mul 324 moveto (while \(st.hasMoreTokens\(\)\)) show
+4 mp_a_x mul 312 moveto ({) show
+5 mp_a_x mul 300 moveto (u = st.nextToken\(\);) show
+5 mp_a_x mul 288 moveto (if \(u.equals\("Speed"\)\)) show
+5 mp_a_x mul 276 moveto ({ ) show
+6 mp_a_x mul 264 moveto (reach_speed= Elib.toDouble\(st.nextToken\(\)\);) show
+6 mp_a_x mul 252 moveto (reach_deltat= reach_basetime*speed;) show
+6 mp_a_x mul 240 moveto (break;) show
+5 mp_a_x mul 228 moveto (}) show
+5 mp_a_x mul 216 moveto (if \(u.equals\("Gesture"\) || u.equals\("Name"\)\)) show
+5 mp_a_x mul 204 moveto ({ ) show
+6 mp_a_x mul 192 moveto (gname= st.nextToken\(\);) show
+6 mp_a_x mul 180 moveto (break;) show
+5 mp_a_x mul 168 moveto (}) show
+5 mp_a_x mul 156 moveto (if \(tc==0\)) show
+6 mp_a_x mul 144 moveto ({ int k=findSegment\(u\);) show
+8 mp_a_x mul 132 moveto (if \(k<0\)) show
+9 mp_a_x mul 120 moveto ({) show
+10 mp_a_x mul 108 moveto (System.err.println\("Cannot find joint "+u+" in the current segments. Line:"+linec\);) show
+9 mp_a_x mul 96 moveto (break;) show
+8 mp_a_x mul 84 moveto (}) show
+8 mp_a_x mul 72 moveto (betas[k][0]= 1;  //drive it) show
+8 mp_a_x mul 60 moveto (betas[k][1]= Elib.toDouble\(st.nextToken\(\)\)*Math.PI/180;) show
+8 mp_a_x mul 48 moveto (betas[k][2]= Elib.toDouble\(st.nextToken\(\)\)*Math.PI/180;) show
+8 mp_a_x mul 36 moveto (betas[k][3]= speed*\(betas[k][2]- betas[k][1]\)/100;) show
+8 mp_a_x mul 12 moveto (if \(betas[k][0]<0\) jointpath[k]=null;) show
+8 mp_a_x mul 0 moveto (else) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 852 moveto ({) show
+0 mp_a_x mul 828 moveto (/*) show
+10 mp_a_x mul 816 moveto (int NN=3;) show
+10 mp_a_x mul 804 moveto (for \(int r=0;r<NN;r++\)) show
+10 mp_a_x mul 792 moveto ({) show
+11 mp_a_x mul 780 moveto (x[r]=r*\(1.0/NN\);) show
+11 mp_a_x mul 768 moveto (y[r]=betas[k][1]+r*\(betas[k][2]-betas[k][1]\)/NN;) show
+11 mp_a_x mul 756 moveto (jointpath[k]=new Spline\(NN,x,y\);) show
+10 mp_a_x mul 744 moveto (} ) show
+0 mp_a_x mul 732 moveto (*/) show
+9 mp_a_x mul 696 moveto (x[0]=0.0; y[0]=betas[k][1];) show
+9 mp_a_x mul 684 moveto (x[1]=0.1; y[1]=0.15*\(betas[k][2]- betas[k][1]\)+ betas[k][1];) show
+9 mp_a_x mul 672 moveto (x[2]=0.5; y[2]=0.55*\(betas[k][2]- betas[k][1]\)+ betas[k][1];) show
+9 mp_a_x mul 660 moveto (x[3]=1.0; y[3]=betas[k][2];) show
+9 mp_a_x mul 648 moveto (jointpath[k]=new Spline\(3,x,y\);) show
+8 mp_a_x mul 612 moveto (}) show
+5 mp_a_x mul 600 moveto (}) show
+5 mp_a_x mul 588 moveto (tc++;) show
+4 mp_a_x mul 576 moveto (}) show
+2 mp_a_x mul 564 moveto (}) show
+2 mp_a_x mul 552 moveto (in.close\(\);) show
+2 mp_a_x mul 540 moveto (} catch \(IOException e\)) show
+5 mp_a_x mul 528 moveto ({ System.err.println\(nm+" : Viewer.readShape\(\) : EXCEPTION "+e\);}) show
+2 mp_a_x mul 504 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 492 moveto ({) show
+4 mp_a_x mul 480 moveto (if \(betas[i][0]>0\) s= betas[i][1] + " .. " + betas[i][2];) show
+15 mp_a_x mul 468 moveto (else   s="no drive";) show
+4 mp_a_x mul 456 moveto (if \(HV.DLEV>0\) System.out.println\(seg[i].label+" : "+s\);) show
+2 mp_a_x mul 444 moveto (}) show
+2 mp_a_x mul 420 moveto (time=0;) show
+2 mp_a_x mul 408 moveto (teta1=null;) show
+2 mp_a_x mul 396 moveto (Gesture gesTh=new Gesture\(this,jointpath,reach_speed,gname\);) show
+2 mp_a_x mul 384 moveto (return gesTh;) show
+1 mp_a_x mul 372 moveto (}) show
+1 mp_a_x mul 348 moveto (double time=0;) show
+1 mp_a_x mul 336 moveto (double endtime=1.0,basetimestep=0.01; ) show
+1 mp_a_x mul 324 moveto (public void tickGesture\(Gesture g,Spline[] jointpath,double speed\)) show
+1 mp_a_x mul 312 moveto ({) show
+5 mp_a_x mul 288 moveto (// if \(HV.DLEV>0\)i) show
+2 mp_a_x mul 276 moveto (System.out.println\("Gesture executing time:"+time+" speed:"+speed\);) show
+2 mp_a_x mul 264 moveto (int c=0 ;) show
+2 mp_a_x mul 240 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 228 moveto ({ if \(jointpath[i]==null\) continue;) show
+5 mp_a_x mul 216 moveto (constrainedRotate\(seg[i],jointpath[i].eval\(time\)-seg[i].beta\);) show
+3 mp_a_x mul 204 moveto (}) show
+2 mp_a_x mul 192 moveto (if \(teta1==null\)  { ) show
+6 mp_a_x mul 180 moveto (teta1=new double[segc];) show
+6 mp_a_x mul 168 moveto (storeAngles\(teta1\);) show
+2 mp_a_x mul 156 moveto (}) show
+3 mp_a_x mul 144 moveto (time+=speed*basetimestep;) show
+3 mp_a_x mul 132 moveto (if \(HV.traceon\) Mars.addStar\(\);) show
+3 mp_a_x mul 108 moveto (if \(time>endtime && HV.self.newgest==g\) ) show
+7 mp_a_x mul 96 moveto (HV.self.toggleGesture\(""\); //to make HV aware of this) show
+3 mp_a_x mul 84 moveto (if \(time>endtime\) ) show
+3 mp_a_x mul 72 moveto ({) show
+4 mp_a_x mul 60 moveto (if \(of!=null\)) show
+4 mp_a_x mul 48 moveto (if \(of.testgest==g\) of.stopGesture\(\); //to make HV aware of this) show
+4 mp_a_x mul 36 moveto (if \(HV.traceon\) Mars.velocityProfile\(\);) show
+4 mp_a_x mul 24 moveto (double[] sol=getAngleList\(\);) show
+4 mp_a_x mul 12 moveto (lasttr=trimTrajectory\(sol\);) show
+0 mp_a_x mul 0 moveto (/*) show
+grestore
+restore
+showpage
+%%Page: 7 7
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+4 mp_a_x mul 852 moveto (Point3d[] l=Mars.getStars\(\);) show
+4 mp_a_x mul 840 moveto (Trajectory tr=new Trajectory\(l\);) show
+4 mp_a_x mul 828 moveto (if \(HV.DLEV>0\) System.out.println\("Timewraped [0,1]:"\);) show
+4 mp_a_x mul 816 moveto (for \(int i=0;i<50;i++\)) show
+5 mp_a_x mul 804 moveto (System.out.println\(tr.timewrap\(i/49.0\)\);) show
+0 mp_a_x mul 792 moveto (*/) show
+3 mp_a_x mul 780 moveto (}) show
+1 mp_a_x mul 756 moveto (}) show
+1 mp_a_x mul 732 moveto (public int get_segIndex\(String name\)) show
+1 mp_a_x mul 720 moveto ({) show
+2 mp_a_x mul 708 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 696 moveto (if \(seg[i].label.equals\(name\)\) return i;) show
+1 mp_a_x mul 684 moveto (return -1;) show
+1 mp_a_x mul 672 moveto (}) show
+1 mp_a_x mul 648 moveto (public void adjustPrecisionGrasp\(double[] beta\)) show
+1 mp_a_x mul 636 moveto ({) show
+2 mp_a_x mul 624 moveto (int e1,e2;) show
+2 mp_a_x mul 612 moveto (int in1 =get_segIndex\("INDEX1"\); ) show
+2 mp_a_x mul 600 moveto (int in2 =get_segIndex\("INDEX2"\); ) show
+2 mp_a_x mul 588 moveto (e1=get_segIndex\("MIDDLE1"\); e2=get_segIndex\("MIDDLE2"\); ) show
+2 mp_a_x mul 576 moveto (beta[e1]=beta[in1]-4*Math.PI/180;) show
+2 mp_a_x mul 564 moveto (beta[e2]=beta[in2]-4*Math.PI/180;) show
+2 mp_a_x mul 552 moveto (e1=get_segIndex\("RING1"\); e2=get_segIndex\("RING2"\); ) show
+2 mp_a_x mul 540 moveto (beta[e1]=beta[in1]-6*Math.PI/180;) show
+2 mp_a_x mul 528 moveto (beta[e2]=beta[in2]-4*Math.PI/180;) show
+2 mp_a_x mul 516 moveto (e1=get_segIndex\("PINKY1"\); e2=get_segIndex\("PINKY2"\); ) show
+2 mp_a_x mul 504 moveto (beta[e1]=beta[in1]-7*Math.PI/180;) show
+2 mp_a_x mul 492 moveto (beta[e2]=beta[in2]-4*Math.PI/180;) show
+1 mp_a_x mul 480 moveto (}) show
+1 mp_a_x mul 456 moveto (public void restoreChildren\(double[] init, String s\)) show
+1 mp_a_x mul 444 moveto ({int i=0,k;) show
+2 mp_a_x mul 432 moveto (double[] bb=new double[segc];) show
+2 mp_a_x mul 420 moveto (storeAngles\(bb\);) show
+2 mp_a_x mul 408 moveto (Segment tr=null;) show
+2 mp_a_x mul 396 moveto (do) show
+2 mp_a_x mul 384 moveto ({ ) show
+4 mp_a_x mul 372 moveto (tr=seg[i];) show
+4 mp_a_x mul 360 moveto (setJointAngle\(tr,init[i]\);) show
+4 mp_a_x mul 348 moveto (i++;) show
+4 mp_a_x mul 336 moveto (k=i;) show
+2 mp_a_x mul 324 moveto (} while \(!tr.label.equals\(s\) && i<segc\);) show
+2 mp_a_x mul 312 moveto (restoreChildren\(s\);) show
+2 mp_a_x mul 288 moveto (for \(i=k-1;i>=0;i--\)) show
+3 mp_a_x mul 276 moveto (setJointAngle\(seg[i],bb[i]\);) show
+1 mp_a_x mul 264 moveto (}) show
+1 mp_a_x mul 252 moveto (public void restoreAngles\(double[] teta\)) show
+1 mp_a_x mul 240 moveto ({) show
+2 mp_a_x mul 228 moveto (for \(int i=0;i<segc;i++\) setJointAngle\(seg[i],teta[i]\);) show
+1 mp_a_x mul 216 moveto (}) show
+1 mp_a_x mul 204 moveto (public void storeAngles\(double[] teta\)) show
+1 mp_a_x mul 192 moveto ({) show
+2 mp_a_x mul 180 moveto (for \(int i=0;i<segc;i++\) teta[i]=seg[i].beta;) show
+1 mp_a_x mul 168 moveto (}) show
+0 mp_a_x mul 132 moveto (public void weighted_restoreAngles\(double[] teta, double W\)) show
+1 mp_a_x mul 120 moveto ({) show
+2 mp_a_x mul 108 moveto (for \(int i=0;i<segc;i++\) setJointAngle\(seg[i],W*teta[i]+\(1-W\)*seg[i].beta\);) show
+1 mp_a_x mul 96 moveto (}) show
+1 mp_a_x mul 72 moveto (public int ntick=0;) show
+1 mp_a_x mul 60 moveto (public Reach activeReachThread=null;) show
+1 mp_a_x mul 48 moveto (public String com="";) show
+1 mp_a_x mul 36 moveto (public int search_mode=0;) show
+1 mp_a_x mul 24 moveto (static final int VISUAL_SEARCH=0;) show
+1 mp_a_x mul 12 moveto (static final int SILENT_SEARCH=1;) show
+1 mp_a_x mul 0 moveto (static final int EXECUTE=2;) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+4 mp_a_x mul 852 moveto (static final int BABBLE=3;) show
+0 mp_a_x mul 840 moveto (static final int PDFGRASP=4;) show
+1 mp_a_x mul 828 moveto (public boolean callexe=false;) show
+1 mp_a_x mul 816 moveto (double[] save; ) show
+1 mp_a_x mul 804 moveto (boolean chopped=false;) show
+1 mp_a_x mul 792 moveto (public Reach fireSilentSearch\(\)) show
+1 mp_a_x mul 780 moveto ({) show
+2 mp_a_x mul 768 moveto (ntick=0;) show
+2 mp_a_x mul 756 moveto (slc=0;) show
+2 mp_a_x mul 744 moveto (lasttr=null;) show
+2 mp_a_x mul 732 moveto (save=new double[segc];) show
+2 mp_a_x mul 720 moveto (search_mode=SILENT_SEARCH;) show
+2 mp_a_x mul 708 moveto (System.out.println\("Finding joint angles silently..."\);) show
+2 mp_a_x mul 696 moveto (disablePanels\(\);) show
+2 mp_a_x mul 684 moveto (storeAngles\(save\);) show
+2 mp_a_x mul 672 moveto (/* kol.truncateChildren\(\);) show
+2 mp_a_x mul 660 moveto (chopped=true; */) show
+2 mp_a_x mul 648 moveto (activeReachThread= createReachThread\(""\);) show
+2 mp_a_x mul 636 moveto (return activeReachThread;) show
+1 mp_a_x mul 624 moveto (}) show
+1 mp_a_x mul 612 moveto (public Reach fireVisualSearch\(\)) show
+1 mp_a_x mul 600 moveto ({) show
+2 mp_a_x mul 588 moveto (lasttr=null;) show
+2 mp_a_x mul 576 moveto (ntick=0;) show
+2 mp_a_x mul 564 moveto (obj.beforeAction\(\);) show
+2 mp_a_x mul 552 moveto (search_mode=VISUAL_SEARCH;) show
+2 mp_a_x mul 540 moveto (/* kol.truncateChildren\(\);) show
+2 mp_a_x mul 528 moveto (chopped=true; */) show
+2 mp_a_x mul 516 moveto (activeReachThread= createReachThread\(""\);) show
+2 mp_a_x mul 504 moveto (return activeReachThread;) show
+1 mp_a_x mul 492 moveto (}) show
+0 mp_a_x mul 468 moveto (public int PDFgraspcINI=1;) show
+0 mp_a_x mul 456 moveto (boolean PDFwristgrasp=false;) show
+0 mp_a_x mul 444 moveto (int PDFgraspc=0;) show
+0 mp_a_x mul 420 moveto (synchronized public Reach firePDFwristgrasp\(\) {) show
+4 mp_a_x mul 408 moveto (Reach l=firePDFgrasp\(\);  ) show
+4 mp_a_x mul 396 moveto (PDFwristgrasp=true;   // use the same selection) show
+4 mp_a_x mul 384 moveto (return l;) show
+0 mp_a_x mul 372 moveto (}) show
+1 mp_a_x mul 348 moveto (synchronized  public Reach firePDFgrasp\(\) {) show
+9 mp_a_x mul 336 moveto (PDFwristgrasp=false;) show
+9 mp_a_x mul 324 moveto (PDFgraspc=PDFgraspcINI;) show
+8 mp_a_x mul 312 moveto (lasttr=null;) show
+8 mp_a_x mul 300 moveto (ntick=0;) show
+8 mp_a_x mul 288 moveto (lastOK=new double[segc];) show
+8 mp_a_x mul 276 moveto (reach1Config  = new double[segc];) show
+8 mp_a_x mul 264 moveto (reach2Config  = new double[segc];) show
+8 mp_a_x mul 252 moveto (rotateConfig  = new double[segc];) show
+8 mp_a_x mul 240 moveto (graspConfig   = new double[segc];) show
+8 mp_a_x mul 228 moveto (bestConfig    = new double[segc];) show
+8 mp_a_x mul 216 moveto (obj.beforeAction\(\);) show
+8 mp_a_x mul 192 moveto (search_mode=PDFGRASP;) show
+8 mp_a_x mul 180 moveto (newPDFgrasp=true;) show
+8 mp_a_x mul 168 moveto (activeReachThread= createReachThread\(""\);) show
+8 mp_a_x mul 156 moveto (return activeReachThread;) show
+5 mp_a_x mul 144 moveto (}) show
+4 mp_a_x mul 120 moveto (public Reach fireBabbleLearn\(\) {) show
+8 mp_a_x mul 108 moveto (lasttr=null;) show
+8 mp_a_x mul 96 moveto (ntick=0;) show
+8 mp_a_x mul 84 moveto (lastOK=new double[segc];) show
+8 mp_a_x mul 72 moveto (reach1Config  = new double[segc];) show
+8 mp_a_x mul 60 moveto (reach2Config  = new double[segc];) show
+8 mp_a_x mul 48 moveto (rotateConfig  = new double[segc];) show
+8 mp_a_x mul 36 moveto (graspConfig   = new double[segc];) show
+8 mp_a_x mul 24 moveto (bestConfig    = new double[segc];) show
+8 mp_a_x mul 12 moveto (obj.beforeAction\(\);) show
+8 mp_a_x mul 0 moveto (newBabbleAttempt=true;) show
+grestore
+restore
+showpage
+%%Page: 8 8
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 852 moveto (// let's do this from tick babble this time. obj.beforeAction\(\);) show
+8 mp_a_x mul 840 moveto (search_mode=BABBLE;) show
+8 mp_a_x mul 828 moveto (activeReachThread= createReachThread\(""\);) show
+8 mp_a_x mul 816 moveto (return activeReachThread;) show
+4 mp_a_x mul 804 moveto (}) show
+1 mp_a_x mul 780 moveto (public Reach fireExecution\(\)) show
+1 mp_a_x mul 768 moveto ({) show
+2 mp_a_x mul 756 moveto (ntick=0;) show
+2 mp_a_x mul 744 moveto (if \(lasttr==null\) ) show
+4 mp_a_x mul 732 moveto ({ ) show
+8 mp_a_x mul 720 moveto (// next 2 lines added new by ERH) show
+8 mp_a_x mul 708 moveto (HV.setInfo\("Ready.  * Please first do a VISREACH to use this function *"\);) show
+8 mp_a_x mul 696 moveto (if \(true\) return null;) show
+6 mp_a_x mul 684 moveto (callexe=true;) show
+6 mp_a_x mul 672 moveto (return fireSilentSearch\(\);) show
+4 mp_a_x mul 648 moveto (} else) show
+2 mp_a_x mul 636 moveto (System.out.println\("lastr is non null: executing..."\);) show
+2 mp_a_x mul 624 moveto (search_mode=EXECUTE;) show
+2 mp_a_x mul 612 moveto (obj.mask\("WRISTx"\);  //make it more general. ok for now) show
+2 mp_a_x mul 600 moveto (activeReachThread= createReachThread\(""\);) show
+2 mp_a_x mul 588 moveto (System.out.println\("NOW executing..."\);) show
+2 mp_a_x mul 576 moveto (return activeReachThread;) show
+1 mp_a_x mul 564 moveto (}) show
+4 mp_a_x mul 540 moveto (/** Instantiates a reach thread and starts it.*/) show
+1 mp_a_x mul 528 moveto (public Reach createReachThread\(String com\)) show
+1 mp_a_x mul 516 moveto ({) show
+2 mp_a_x mul 504 moveto (search_phase=0;) show
+2 mp_a_x mul 492 moveto (rtime=0;) show
+2 mp_a_x mul 480 moveto (reach_speed=Elib.toDouble\(HV.speedtxt.getText\(\)\);) show
+2 mp_a_x mul 468 moveto (reach_deltat=reach_speed*reach_basetime;) show
+2 mp_a_x mul 456 moveto (activeReachThread=new Reach\(this,lasttr,com\);) show
+2 mp_a_x mul 444 moveto (activeReachThread.start\(\);) show
+2 mp_a_x mul 432 moveto (return activeReachThread;) show
+1 mp_a_x mul 420 moveto (}) show
+1 mp_a_x mul 396 moveto (//you need  NONE search mode in case!) show
+4 mp_a_x mul 384 moveto (public double lasterr=0;) show
+1 mp_a_x mul 372 moveto (public void finalizeReach\(String com\)) show
+1 mp_a_x mul 360 moveto ({) show
+2 mp_a_x mul 348 moveto (//if \(search_mode==VISUAL_SEARCH\)) show
+3 mp_a_x mul 336 moveto (// obj.afterReach\(\);) show
+2 mp_a_x mul 312 moveto (HV.reachb.setBackground\(Color.white\);) show
+2 mp_a_x mul 300 moveto (HV.cv.refreshDisplay\(\);) show
+2 mp_a_x mul 288 moveto (HV.setInfoReady\(\);) show
+2 mp_a_x mul 264 moveto (if \(recordit\)) show
+2 mp_a_x mul 252 moveto ({) show
+6 mp_a_x mul 240 moveto (if \(dis<zeroError*3\)  // somehow the dis usually is not smaller than zeroError) show
+10 mp_a_x mul 228 moveto (Learn.writePattern\(\(Hand\)this,obj,"reach error:"+Elib.nice\(dis,1e4\)\);) show
+8 mp_a_x mul 216 moveto (else if \(HV.negativeExample\) ) show
+14 mp_a_x mul 204 moveto (Learn.writeNegPattern\(\(Hand\)this,obj,"reach error:"+Elib.nice\(dis,1e4\)\);) show
+6 mp_a_x mul 192 moveto (else System.out.println\(" *** Discarding this reach. dis :"+dis+" not requested as negative but dis is too big."\);) show
+3 mp_a_x mul 180 moveto (lasterr=dis;) show
+3 mp_a_x mul 168 moveto (// Learn.writeNegPattern\(\(Hand\)this,obj,"reach error:"+Elib.nice\(dis,1e4\)\);) show
+3 mp_a_x mul 144 moveto (//Learn.showParSplines\(\);) show
+2 mp_a_x mul 132 moveto (}) show
+2 mp_a_x mul 108 moveto (if \(recognize\)) show
+2 mp_a_x mul 96 moveto ({ ) show
+3 mp_a_x mul 84 moveto (String mirr=Learn.recognize\(HV.self.bp,\(Hand\)this,obj,HV.genInParName\(\)\);) show
+3 mp_a_x mul 72 moveto (System.out.println\(" ========> "+mirr+" <========"\);) show
+3 mp_a_x mul 60 moveto (HV.setInfo\("Ready. - Action recognized as "+mirr\);) show
+3 mp_a_x mul 48 moveto (//HV.updateRecBars\(Learn.lastout[0],Learn.lastout[1],Learn.lastout[2]\);) show
+3 mp_a_x mul 36 moveto (Learn.showtimeSeries\(HV.genOutName\(\)\); //of hidden and output layer) show
+5 mp_a_x mul 12 moveto (//HV.updateRecBars\(Learn.lastout[0],Learn.lastout[1],Learn.lastout[2]\); ) show
+5 mp_a_x mul 0 moveto (//cv.paint\(cv.getGraphics\(\)\); ) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+3 mp_a_x mul 852 moveto (HV.recbarReq=0;) show
+2 mp_a_x mul 840 moveto (}) show
+2 mp_a_x mul 828 moveto (String tip="EXECUTE";) show
+2 mp_a_x mul 816 moveto (if \(search_mode==VISUAL_SEARCH\) tip="VISUAL_SEARCH";) show
+2 mp_a_x mul 804 moveto (else if  \(search_mode==SILENT_SEARCH\) tip="SILENT_SEARCH";) show
+2 mp_a_x mul 780 moveto (HV.self.reportFinish\("   ===> \("+tip+"\) Grasp Final error:"+dis+".  "+com\);) show
+2 mp_a_x mul 768 moveto (if \(mapping\) {) show
+6 mp_a_x mul 756 moveto (System.out.println\("MAPPIN IS ON"\);) show
+6 mp_a_x mul 744 moveto (setCell\(dis\);) show
+2 mp_a_x mul 732 moveto (} ) show
+0 mp_a_x mul 720 moveto (}) show
+1 mp_a_x mul 696 moveto (synchronized boolean reachActive\(\)) show
+1 mp_a_x mul 684 moveto ({ ) show
+3 mp_a_x mul 672 moveto (if \(activeReachThread!=null\) return true; ) show
+3 mp_a_x mul 660 moveto (else return false;) show
+1 mp_a_x mul 648 moveto (}) show
+1 mp_a_x mul 624 moveto (synchronized boolean kill_ifActive\(\)) show
+1 mp_a_x mul 612 moveto ({ ) show
+3 mp_a_x mul 600 moveto (if \(activeReachThread!=null\)) show
+4 mp_a_x mul 588 moveto ({) show
+8 mp_a_x mul 576 moveto (//if \(babble\) obj.afterAction\(\); // connect the hand to the arm) show
+5 mp_a_x mul 564 moveto (activeReachThread.stopRGest\(\);) show
+5 mp_a_x mul 552 moveto (HV.reachb.setBackground\(Color.white\); //in case it is silentReach) show
+5 mp_a_x mul 540 moveto (activeReachThread=null;) show
+5 mp_a_x mul 528 moveto (return true;) show
+4 mp_a_x mul 516 moveto (}) show
+3 mp_a_x mul 504 moveto (else return false;) show
+1 mp_a_x mul 492 moveto (}) show
+1 mp_a_x mul 444 moveto (public Trajectory trimTrajectory\(double[] targetangles\)) show
+1 mp_a_x mul 432 moveto ({) show
+2 mp_a_x mul 420 moveto (int N=25; //not used) show
+2 mp_a_x mul 408 moveto (int c=0 ;) show
+2 mp_a_x mul 396 moveto (double time=0;) show
+2 mp_a_x mul 384 moveto (double dt=1.0/\(N-1\);) show
+2 mp_a_x mul 372 moveto (Point3d[] L=new Point3d[N];) show
+2 mp_a_x mul 360 moveto (double[] x=new double[5],y=new double[5];) show
+2 mp_a_x mul 336 moveto (teta2=targetangles;) show
+2 mp_a_x mul 324 moveto (//System.out.println\("step 2: convert teta sweeps into linear splines"\);) show
+2 mp_a_x mul 312 moveto (if \(obj!=null\) ) show
+4 mp_a_x mul 300 moveto (if \(obj.lastPlan==Graspable.PRECISION\) ) show
+6 mp_a_x mul 288 moveto (adjustPrecisionGrasp\(teta2\);) show
+2 mp_a_x mul 276 moveto (jointpath=Trajectory.jointSpline\(seg,teta1,teta2,segc\);) show
+0 mp_a_x mul 252 moveto (/** it turned out that 1\) this step has a bug ) show
+23 mp_a_x mul 240 moveto (2\) d|x|/dt is almost constant) show
+4 mp_a_x mul 228 moveto (so it looks like we can skip constant stepping) show
+3 mp_a_x mul 216 moveto (System.out.println\("step 3: do the linear sweep uMath.Math.sing the desired dt \(1/\(N-1\)\) to get X path."\);) show
+2 mp_a_x mul 204 moveto (for \(int i=0;i<segc;i++\) setJointAngle\(seg[i],teta1[i]\);) show
+2 mp_a_x mul 192 moveto (while \(time<=1\)) show
+2 mp_a_x mul 180 moveto ({) show
+3 mp_a_x mul 168 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 156 moveto ({ if \(jointpath[i]==null\) continue;) show
+5 mp_a_x mul 144 moveto (constrainedRotate\(seg[i],jointpath[i].eval\(time\)-seg[i].beta\);) show
+3 mp_a_x mul 132 moveto (}) show
+3 mp_a_x mul 120 moveto (L[c++]=kol.limb_pos.duplicate\(\);) show
+3 mp_a_x mul 108 moveto (time+=dt;) show
+2 mp_a_x mul 96 moveto (}) show
+2 mp_a_x mul 84 moveto (System.out.println\("step4: convert the PATH L, into the jointpathectory tr."\);) show
+2 mp_a_x mul 72 moveto (//Trajectory tr=new Trajectory\(L,c\);) show
+2 mp_a_x mul 48 moveto (if \(HV.DLEV>0\) System.out.println\("Timewraped [0,1]:"\);) show
+2 mp_a_x mul 36 moveto (for \(int i=0;i<50;i++\)) show
+4 mp_a_x mul 24 moveto (if \(HV.DLEV>0\) System.out.println\(tr.timewrap\(i/49.0\)\);) show
+2 mp_a_x mul 12 moveto (if \(HV.DLEV>0\) System.out.println\("Trajectory formed return the jointpathectory."\); ) show
+0 mp_a_x mul 0 moveto (*/) show
+grestore
+restore
+showpage
+%%Page: 9 9
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+2 mp_a_x mul 852 moveto (Trajectory tr=new Trajectory\(\); ) show
+2 mp_a_x mul 840 moveto (return tr;) show
+1 mp_a_x mul 828 moveto (}) show
+1 mp_a_x mul 804 moveto (double speed;) show
+1 mp_a_x mul 792 moveto (Segment kol;) show
+0 mp_a_x mul 768 moveto (/*) show
+1 mp_a_x mul 756 moveto (public double error\(\)) show
+1 mp_a_x mul 744 moveto ({double sum=0;) show
+2 mp_a_x mul 732 moveto (for \(int i=0;i<goalLimbc-1;i++\)) show
+3 mp_a_x mul 720 moveto (sum+=VA.dist\(targets[i], goalLimbs[i].limb_pos\); ) show
+2 mp_a_x mul 708 moveto (return sum;) show
+1 mp_a_x mul 696 moveto (}) show
+1 mp_a_x mul 672 moveto (public double error_arm\(\)) show
+1 mp_a_x mul 660 moveto ({) show
+2 mp_a_x mul 648 moveto (return 2*VA.dist\(targets[goalLimbc-1], goalLimbs[goalLimbc-1].limb_pos\);) show
+1 mp_a_x mul 636 moveto (}) show
+0 mp_a_x mul 600 moveto (*/) show
+1 mp_a_x mul 588 moveto (private int search_phase=0;) show
+1 mp_a_x mul 576 moveto (private boolean mapping=false;) show
+1 mp_a_x mul 564 moveto (private boolean recordit=false;) show
+1 mp_a_x mul 552 moveto (private boolean recognize=false;) show
+4 mp_a_x mul 540 moveto (private boolean nslrun=false;) show
+4 mp_a_x mul 528 moveto (private boolean babble=false;) show
+1 mp_a_x mul 516 moveto (Graspable obj;) show
+4 mp_a_x mul 504 moveto (/** ERH2001: Main reach/grasp starting entry. All kinds of reaches,) show
+7 mp_a_x mul 492 moveto (visearch, silet, execute, record etc. are started from here. */) show
+1 mp_a_x mul 480 moveto (public Reach doReach\(Graspable ob,String kind\)) show
+1 mp_a_x mul 468 moveto ({) show
+1 mp_a_x mul 456 moveto (Reach r=null;) show
+1 mp_a_x mul 444 moveto (callexe=false;) show
+1 mp_a_x mul 432 moveto (recordit=false; ) show
+1 mp_a_x mul 420 moveto (recognize=false;) show
+1 mp_a_x mul 408 moveto (nslrun=false;) show
+1 mp_a_x mul 396 moveto (Hand me=\(Hand\)this;) show
+1 mp_a_x mul 384 moveto (obj=ob;) show
+1 mp_a_x mul 372 moveto (me.makeNeutral\(\);) show
+2 mp_a_x mul 360 moveto (double[] pre_t=new double[5];) show
+2 mp_a_x mul 348 moveto (double[] pre_v=new double[5];) show
+2 mp_a_x mul 336 moveto (int pc=0;) show
+2 mp_a_x mul 324 moveto (pre_t[pc]=0;  pre_v[pc++]=0;) show
+2 mp_a_x mul 312 moveto (pre_t[pc]=0.5;  pre_v[pc++]=0.45;) show
+2 mp_a_x mul 300 moveto (pre_t[pc]=0.75;  pre_v[pc++]=1.2;) show
+2 mp_a_x mul 288 moveto (pre_t[pc]=1;  pre_v[pc++]=1;) show
+2 mp_a_x mul 276 moveto (kol=getJoint\("WRISTz"\);) show
+2 mp_a_x mul 264 moveto (teta1=new double[segc];) show
+2 mp_a_x mul 252 moveto (storeAngles\(teta1\);) show
+2 mp_a_x mul 240 moveto (dis=1e10;) show
+2 mp_a_x mul 228 moveto (HV.self.reportStart\("     Starting reach of type:"+kind\);) show
+2 mp_a_x mul 216 moveto (if \(kind.equals\("visual"\) \)) show
+5 mp_a_x mul 204 moveto (r=fireVisualSearch\(\);) show
+2 mp_a_x mul 192 moveto (else) show
+2 mp_a_x mul 180 moveto (if \(kind.equals\("silent"\) \)) show
+5 mp_a_x mul 168 moveto (r=fireSilentSearch\(\);) show
+2 mp_a_x mul 156 moveto (else) show
+2 mp_a_x mul 144 moveto (if \(kind.equals\("execute"\) \)) show
+5 mp_a_x mul 132 moveto (r=fireExecution\(\);) show
+2 mp_a_x mul 120 moveto (else) show
+2 mp_a_x mul 108 moveto (if \(kind.equals\("record"\) \)) show
+5 mp_a_x mul 96 moveto ({ recordit=true; ) show
+7 mp_a_x mul 84 moveto (System.out.println\("recorit =true done"\);) show
+7 mp_a_x mul 72 moveto (Learn.prepareForPattern\(\);) show
+7 mp_a_x mul 60 moveto (r=fireExecution\(\);) show
+5 mp_a_x mul 48 moveto (}) show
+2 mp_a_x mul 36 moveto (else) show
+2 mp_a_x mul 24 moveto (if \(kind.equals\("recognize"\) \)) show
+5 mp_a_x mul 12 moveto ({ recognize=true;) show
+7 mp_a_x mul 0 moveto (System.out.println\("recognize =true done"\);) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+7 mp_a_x mul 852 moveto (Learn.prepareForPattern\(\);) show
+7 mp_a_x mul 840 moveto (r=fireExecution\(\);) show
+5 mp_a_x mul 828 moveto (}) show
+2 mp_a_x mul 816 moveto (else) show
+2 mp_a_x mul 804 moveto (if \(kind.equals\("nslrun"\) \)) show
+5 mp_a_x mul 792 moveto ({ nslrun=true;) show
+7 mp_a_x mul 780 moveto (System.out.println\("nslrun =true done"\);       ) show
+7 mp_a_x mul 768 moveto (Learn.prepareForPattern\(\);) show
+7 mp_a_x mul 756 moveto (r=fireExecution\(\);) show
+5 mp_a_x mul 744 moveto (}) show
+2 mp_a_x mul 732 moveto (else ) show
+6 mp_a_x mul 720 moveto (if \(kind.equals\("babble"\) \) {) show
+10 mp_a_x mul 708 moveto (babble=true;) show
+10 mp_a_x mul 696 moveto (System.out.println\(" babble=true done ..."\);) show
+10 mp_a_x mul 684 moveto (// Motor.initBabble\(\);) show
+10 mp_a_x mul 672 moveto (r=fireBabbleLearn\(\);) show
+6 mp_a_x mul 660 moveto (}) show
+0 mp_a_x mul 648 moveto (else ) show
+4 mp_a_x mul 636 moveto (if \(kind.equals\("PDFgrasp"\) \) {) show
+8 mp_a_x mul 624 moveto (r=firePDFgrasp\(\);) show
+4 mp_a_x mul 612 moveto (}) show
+4 mp_a_x mul 600 moveto (if \(kind.equals\("PDFwristgrasp"\) \) {) show
+8 mp_a_x mul 588 moveto (r=firePDFwristgrasp\(\);) show
+4 mp_a_x mul 576 moveto (}) show
+2 mp_a_x mul 564 moveto (//if \(r!=null\) me.makeNeutral\(\);) show
+2 mp_a_x mul 552 moveto (return r;) show
+1 mp_a_x mul 540 moveto (}) show
+1 mp_a_x mul 504 moveto (public void clearTrajectory\(\)) show
+1 mp_a_x mul 492 moveto ({) show
+2 mp_a_x mul 480 moveto (lasttr=null;) show
+2 mp_a_x mul 468 moveto (//System.out.println\("Trajectory cleaned."\);) show
+1 mp_a_x mul 456 moveto (}) show
+4 mp_a_x mul 432 moveto (/** Called when executing a stored trajectory. */) show
+0 mp_a_x mul 420 moveto (double rtime=0;) show
+0 mp_a_x mul 408 moveto (public void tickReachGesture\(Reach r,Trajectory tr\)) show
+1 mp_a_x mul 396 moveto ({) show
+2 mp_a_x mul 384 moveto (dis=obj.grasp_error\(\);) show
+2 mp_a_x mul 372 moveto (//if \(HV.DLEV>0\) System.out.println\("Distance to target\(error\):"+Elib.nice\(dis,1e5\)\);) show
+2 mp_a_x mul 360 moveto (if \(rtime> 1.0\)) show
+3 mp_a_x mul 348 moveto ({ System.out.println\("Target must be reached."\);) show
+5 mp_a_x mul 336 moveto (System.out.println\("Distance to target\(error\):"+Elib.nice\(dis,1e5\)\);) show
+7 mp_a_x mul 324 moveto (// LETS calculate the forces) show
+7 mp_a_x mul 312 moveto (//mp=HV.mcirc.nextMotorPlan\(\(\(Hand\)this\),obj\);) show
+7 mp_a_x mul 300 moveto (//\(\(Hand\)this\).contact\(obj\);) show
+5 mp_a_x mul 288 moveto (kill_ifActive\(\);) show
+5 mp_a_x mul 276 moveto (return;) show
+3 mp_a_x mul 264 moveto (} else) show
+3 mp_a_x mul 252 moveto ({/*) show
+7 mp_a_x mul 240 moveto (if \(nslrun\) {) show
+11 mp_a_x mul 228 moveto (HV.self.nslL.sendCommand\("step 1"\); ) show
+11 mp_a_x mul 216 moveto (rtime=HV.self.nslL.getTime\(\); ) show
+11 mp_a_x mul 204 moveto (//System.out.println\("nsl time read:"+rtime\);) show
+7 mp_a_x mul 192 moveto (}) show
+5 mp_a_x mul 180 moveto (else ) show
+4 mp_a_x mul 168 moveto (*/ rtime+=reach_deltat;) show
+2 mp_a_x mul 144 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 132 moveto ({ if \(jointpath[i]==null\) continue;) show
+4 mp_a_x mul 120 moveto (// constrainedRotate\(seg[i],jointpath[i].eval\(rtime\)-seg[i].beta\);) show
+4 mp_a_x mul 108 moveto (//constrainedRotate\(seg[i],jointpath[i].eval\(tr.timewrap\(rtime\)\)-seg[i].beta\);) show
+4 mp_a_x mul 96 moveto (double mytime=rtime;) show
+5 mp_a_x mul 84 moveto (if \(seg[i].userTag!=Hand.HANDJOINT && HV.bellshape \)  //stretch time ) show
+7 mp_a_x mul 72 moveto (mytime=tr.stretchTime\(rtime\);) show
+4 mp_a_x mul 60 moveto (constrainedRotate\(seg[i],jointpath[i].eval\(mytime\) -seg[i].beta\);) show
+4 mp_a_x mul 36 moveto (}) show
+3 mp_a_x mul 24 moveto (}) show
+grestore
+restore
+showpage
+%%Page: 10 10
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+2 mp_a_x mul 852 moveto (if \(HV.traceon\) Mars.addStar\(\);) show
+2 mp_a_x mul 840 moveto (if \(recordit || recognize || nslrun\)) show
+6 mp_a_x mul 828 moveto (Learn.collect\(\(Hand\)this,obj\);) show
+2 mp_a_x mul 816 moveto (if \(recognize\)) show
+3 mp_a_x mul 804 moveto ({) show
+4 mp_a_x mul 792 moveto (String mirr;) show
+4 mp_a_x mul 780 moveto (int hh=\(int\)\(0.5+rtime/reach_deltat\);) show
+4 mp_a_x mul 768 moveto (//if \(hh%2==0 && hh>3\)) show
+4 mp_a_x mul 756 moveto (if \(hh>3\)) show
+5 mp_a_x mul 744 moveto ({) show
+6 mp_a_x mul 732 moveto (mirr=Learn.recognize\(HV.self.bp,\(Hand\)this,obj,HV.genInParName\(\)\);) show
+6 mp_a_x mul 720 moveto (System.out.println\(" --------> "+mirr+" <-------- \(at t="+Elib.nice\(rtime,1e3\)+"\)"\);) show
+0 mp_a_x mul 708 moveto (HV.setInfo\("Grasp in progress. - so far action looks like \(recognized as\)  "+mirr\);) show
+0 mp_a_x mul 696 moveto (HV.updateRecBars\(Learn.lastout[0],Learn.lastout[1],Learn.lastout[2]\);) show
+5 mp_a_x mul 684 moveto (}) show
+3 mp_a_x mul 672 moveto (} ) show
+3 mp_a_x mul 660 moveto (else) show
+3 mp_a_x mul 648 moveto (if \(nslrun\){) show
+7 mp_a_x mul 636 moveto (int hh=\(int\)\(0.5+rtime/reach_deltat\);) show
+7 mp_a_x mul 624 moveto (if \(hh>3\){) show
+11 mp_a_x mul 612 moveto (//System.out.println\("Transfering inputs.."\);) show
+11 mp_a_x mul 600 moveto (HV.self.transferInput\(HV.self.bp\);) show
+7 mp_a_x mul 588 moveto (}) show
+3 mp_a_x mul 576 moveto (}) show
+1 mp_a_x mul 540 moveto (}) show
+4 mp_a_x mul 516 moveto (// emulate infants attemp to babble for grasping.) show
+4 mp_a_x mul 504 moveto (Segment bj1=null;) show
+4 mp_a_x mul 492 moveto (Segment bj2=null;) show
+4 mp_a_x mul 480 moveto (Segment bj3=null;) show
+4 mp_a_x mul 468 moveto (Segment bj4=null;) show
+0 mp_a_x mul 444 moveto (int babbleStatus=0;) show
+0 mp_a_x mul 420 moveto (static int babble_REACH1ON=11;) show
+0 mp_a_x mul 408 moveto (static int babble_REACH1OK=12;) show
+0 mp_a_x mul 396 moveto (static int babble_REACH1FAIL=13;) show
+0 mp_a_x mul 384 moveto (static int babble_REACH2ON=15;) show
+0 mp_a_x mul 372 moveto (static int babble_REACH2OK=16;) show
+0 mp_a_x mul 360 moveto (static int babble_REACH2FAIL=17;) show
+0 mp_a_x mul 348 moveto (static int babble_GRASPON=21;) show
+0 mp_a_x mul 336 moveto (static int babble_GRASPOK=22;) show
+0 mp_a_x mul 324 moveto (static int babble_GRASPFAIL=23;) show
+0 mp_a_x mul 312 moveto (static int babble_ROTATEON=1;) show
+0 mp_a_x mul 300 moveto (static int babble_ROTATEOK=2;) show
+0 mp_a_x mul 288 moveto (static int babble_ROTATEFAIL=3;) show
+0 mp_a_x mul 276 moveto (String Reach2Target=Resource.getString\("Reach2Target"\);  // reach2 will try to hit the center with this) show
+0 mp_a_x mul 264 moveto (public double rotSave=-1, offSave=-1;) show
+0 mp_a_x mul 252 moveto (double rotRandomness=Resource.get\("rotRandomness"\);) show
+0 mp_a_x mul 240 moveto (double offRandomness=Resource.get\("offRandomness"\);) show
+0 mp_a_x mul 228 moveto (double costThreshold=Resource.get\("costThreshold"\);) show
+0 mp_a_x mul 216 moveto (double negReinforcement=Resource.get\("negReinforcement"\);) show
+0 mp_a_x mul 204 moveto (double weightSave=Resource.get\("weightSave"\);) show
+0 mp_a_x mul 192 moveto (double cRATE=0.15;     // firming the enclose speed parameter \(not read from mp\)) show
+0 mp_a_x mul 180 moveto (MotorPlan mp=null;) show
+0 mp_a_x mul 168 moveto (Hand h=null;) show
+0 mp_a_x mul 132 moveto (ParamsNode parnode=null;) show
+0 mp_a_x mul 120 moveto (String[] params={"hand-ori","error"};) show
+0 mp_a_x mul 108 moveto (public void PDFcondKill\(\) {) show
+4 mp_a_x mul 96 moveto (System.out.println\("Remaining WRIST errors:"+\(mp.bank-h.wristz.beta\)+","+\(mp.tilt-h.wristx.beta\)+","+\(mp.heading-h.wristy.beta\)\);) show
+4 mp_a_x mul 72 moveto (/*) show
+4 mp_a_x mul 60 moveto (constrainedRotate\(h.wristz, \(mp.bank-h.wristz.beta\)\); ) show
+4 mp_a_x mul 48 moveto (constrainedRotate\(h.wristx, \(mp.tilt-h.wristx.beta\)\);) show
+4 mp_a_x mul 36 moveto (constrainedRotate\(h.wristy, \(mp.heading-h.wristy.beta\)\);) show
+4 mp_a_x mul 24 moveto (*/) show
+4 mp_a_x mul 0 moveto (addWristData\(\);) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+4 mp_a_x mul 852 moveto (Spline sp[]=parnode.getSplines\(\);) show
+4 mp_a_x mul 840 moveto (Spline.showSplines_with\(sp,50," with linespoints"\);) show
+4 mp_a_x mul 828 moveto (if \(PDFgraspc<=0\) {) show
+8 mp_a_x mul 816 moveto (obj.afterAction\(\);) show
+8 mp_a_x mul 804 moveto (kill_ifActive\(\);) show
+4 mp_a_x mul 792 moveto (} else { ) show
+8 mp_a_x mul 780 moveto (newPDFgrasp=true;) show
+8 mp_a_x mul 768 moveto (HV.cv.refreshDisplay\(\);) show
+8 mp_a_x mul 756 moveto (System.out.println\(HV.setInfo\("Holding 1q000 ms....["+PDFgraspc+" grasps to go...]"\)\);) show
+8 mp_a_x mul 744 moveto (try{Thread.sleep\(1000\);} catch\(InterruptedException e\) {}) show
+4 mp_a_x mul 732 moveto (}) show
+0 mp_a_x mul 720 moveto (}) show
+0 mp_a_x mul 696 moveto (static double wristGain=0.5;) show
+0 mp_a_x mul 684 moveto (public void tickWrist\(Hand h,MotorPlan mp\) {) show
+4 mp_a_x mul 660 moveto (//System.out.println\("Wristx:"+h.wristx.beta+" -> "+mp.tilt\);) show
+4 mp_a_x mul 648 moveto (//  System.out.println\("Wristy:"+h.wristy.beta+" -> "+mp.heading\);) show
+4 mp_a_x mul 636 moveto (//System.out.println\("Wristz:"+h.wristz.beta+" -> "+mp.bank\);) show
+4 mp_a_x mul 600 moveto (constrainedRotate\(h.wristx, wristGain*\(mp.tilt-h.wristx.beta\)\);) show
+4 mp_a_x mul 588 moveto (//constrainedRotate\(h.wristy, wristGain*\(mp.heading-h.wristy.beta\)\);) show
+4 mp_a_x mul 576 moveto (constrainedRotate\(h.wristz, wristGain*\(mp.bank-h.wristz.beta\)\); ) show
+0 mp_a_x mul 564 moveto (}) show
+4 mp_a_x mul 540 moveto (boolean newPDFgrasp=false;) show
+4 mp_a_x mul 528 moveto (synchronized public void tickPDFgrasp\(\) { ) show
+8 mp_a_x mul 516 moveto (h=\(Hand\)this;) show
+8 mp_a_x mul 492 moveto (if \(newPDFgrasp\) { ) show
+12 mp_a_x mul 480 moveto (newPDFgrasp=false;) show
+12 mp_a_x mul 468 moveto (phaseStr[bab_ph_NONE]  ="NONE";) show
+12 mp_a_x mul 456 moveto (phaseStr[bab_ph_WRIST1]="WRIST1";) show
+12 mp_a_x mul 444 moveto (phaseStr[bab_ph_WRIST2]="WRIST2"; ) show
+12 mp_a_x mul 432 moveto (phaseStr[bab_ph_REACH1]="REACH1";) show
+12 mp_a_x mul 420 moveto (phaseStr[bab_ph_REACH2]="REACH2";) show
+12 mp_a_x mul 408 moveto (phaseStr[bab_ph_GRASP1]="GRASP1";) show
+12 mp_a_x mul 384 moveto (if \(initialConfig==null\)  {  // lets create our configuration ) show
+16 mp_a_x mul 372 moveto (initialConfig = new double[segc];) show
+16 mp_a_x mul 360 moveto (reach1Config  = new double[segc];) show
+16 mp_a_x mul 348 moveto (reach2Config  = new double[segc];) show
+12 mp_a_x mul 336 moveto (}) show
+12 mp_a_x mul 324 moveto (lasttr=new Trajectory\(\);  // this is the timewarping for REACH ) show
+12 mp_a_x mul 312 moveto (// button. Have to be sent to Reach but needs Jointpath as) show
+12 mp_a_x mul 300 moveto (// external to operate. Pretty much bad programming. ) show
+12 mp_a_x mul 276 moveto (infoStrC=0;  infoStr=null; // no old info) show
+12 mp_a_x mul 252 moveto (Hand h=\(\(Hand\)this\);) show
+12 mp_a_x mul 240 moveto (h.root.unBlock\(\); // reset the blocked fingers from prior babbles) show
+12 mp_a_x mul 228 moveto (h.resetJoints\(\);) show
+12 mp_a_x mul 204 moveto (pdf_phase=bab_ph_REACH1;) show
+12 mp_a_x mul 192 moveto (if \(bj1==null\) { ) show
+16 mp_a_x mul 180 moveto (bj1=getJoint\("J1"\);) show
+16 mp_a_x mul 168 moveto (bj2=getJoint\("J2"\);) show
+16 mp_a_x mul 156 moveto (bj3=getJoint\("J3"\);) show
+16 mp_a_x mul 144 moveto (bj4=getJoint\("J4"\);) show
+12 mp_a_x mul 132 moveto (}) show
+12 mp_a_x mul 120 moveto (//setJointAngle\(bj1,-Math.PI/2\);) show
+12 mp_a_x mul 108 moveto (//setJointAngle\(bj4,80*Math.PI/180\);) show
+8 mp_a_x mul 96 moveto (h.makeBabblePose\(\);) show
+8 mp_a_x mul 84 moveto (System.out.println\("PDFgraspc:"+PDFgraspc\);) show
+8 mp_a_x mul 72 moveto (HV.mcirc.updateInputLayer\(h,obj\);   ) show
+8 mp_a_x mul 48 moveto (if \(PDFwristgrasp\){) show
+12 mp_a_x mul 36 moveto (if \(mp==null\) ) show
+16 mp_a_x mul 24 moveto (mp=HV.mcirc.nextMotorPlan\(h,obj\);) show
+12 mp_a_x mul 12 moveto (HV.mcirc.updateWristLayer\(\);  // now can apply safepick) show
+12 mp_a_x mul 0 moveto (HV.mcirc.safe_pickRotation\(mp\);) show
+grestore
+restore
+showpage
+%%Page: 11 11
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 852 moveto (}) show
+8 mp_a_x mul 840 moveto (else) show
+12 mp_a_x mul 828 moveto (mp=HV.mcirc.nextMotorPlan\(h,obj\);) show
+8 mp_a_x mul 816 moveto (//--> Mars.addComet\(obj.objectCenter,mp.reachTarget,1\);) show
+8 mp_a_x mul 804 moveto (PDFgraspc--;) show
+8 mp_a_x mul 780 moveto (if \(HV.DLEV>0\) mp.printInfo\(\);) show
+8 mp_a_x mul 768 moveto (obj.reachoffset\(mp.reachOffset\);) show
+8 mp_a_x mul 756 moveto (obj.beforeAction\(\);) show
+8 mp_a_x mul 744 moveto (Mars.clearStars\(\);) show
+8 mp_a_x mul 732 moveto (// --> Mars.addStar\(mp.reachTarget\);) show
+8 mp_a_x mul 720 moveto (ntick=0;) show
+8 mp_a_x mul 708 moveto (storeAngles\(initialConfig\);) show
+8 mp_a_x mul 696 moveto (HV.cv.refreshDisplay\(\);) show
+8 mp_a_x mul 684 moveto (if \(parnode==null\) {) show
+12 mp_a_x mul 672 moveto (parnode=new ParamsNode\(100,params\);) show
+8 mp_a_x mul 660 moveto (} else parnode.reset\(\);) show
+8 mp_a_x mul 648 moveto (}) show
+8 mp_a_x mul 624 moveto (// ---------------- phase REACH1  ------------------------) show
+8 mp_a_x mul 612 moveto (if \(pdf_phase==bab_ph_REACH1\) {   // reach component) show
+12 mp_a_x mul 600 moveto (dis=obj.reach_error\(\);) show
+12 mp_a_x mul 588 moveto (double rate=\(Elib.cube\(dis/50\)+10\)*obj.BASERATE; // 0.0002;) show
+12 mp_a_x mul 576 moveto (if \(rate>obj.RATE_TH\) rate=obj.RATE_TH; //0.05) show
+12 mp_a_x mul 552 moveto (if \(dis<JACOBIAN_th\) jacobianTranspose\(babbleGradIt,1.2*rate\); ) show
+12 mp_a_x mul 540 moveto (else        gradientDescent_arm\(babbleGradIt,1.2*rate\); ) show
+12 mp_a_x mul 528 moveto (tickWrist\(h,mp\);) show
+12 mp_a_x mul 516 moveto (if \(dis<babbleZero\) {) show
+16 mp_a_x mul 504 moveto (pdf_chmod\(babble_REACH1OK\);) show
+12 mp_a_x mul 492 moveto (} else) show
+12 mp_a_x mul 480 moveto (if \(ntick>=babbleReach1MaxTick\) {) show
+16 mp_a_x mul 468 moveto (System.out.println\("Reach 1 \(Cannot reach 1st via point\)!"\);) show
+16 mp_a_x mul 444 moveto (PDFcondKill\(\);) show
+16 mp_a_x mul 432 moveto (return;) show
+12 mp_a_x mul 420 moveto (}) show
+11 mp_a_x mul 408 moveto (// ^^^^^^^^^^^^^^^^ phase REACH 1 ^^^^^^^^^^^^^^^^^^^^^^^^ ) show
+11 mp_a_x mul 396 moveto (// ---------------- phase REACH 2 -----------------------) show
+8 mp_a_x mul 384 moveto (} else if \(pdf_phase==bab_ph_REACH2\) {) show
+12 mp_a_x mul 372 moveto (if \(ntick==0\) {) show
+16 mp_a_x mul 360 moveto (//restoreAngles\(reach1Config\);) show
+12 mp_a_x mul 348 moveto (h.root.unBlock\(\);) show
+12 mp_a_x mul 336 moveto (storeAngles\(lastOK\);) show
+12 mp_a_x mul 324 moveto (//return;  // continue in next cycle) show
+12 mp_a_x mul 312 moveto (//) show
+12 mp_a_x mul 300 moveto (System.out.println\("================!!!!!!!!!!!!!PDF REACH2 stating!!!!!!!!!!!!===================="\);) show
+12 mp_a_x mul 288 moveto (constrainedRotate\(h.wristz, mp.bank-h.wristz.beta\); ) show
+12 mp_a_x mul 276 moveto (constrainedRotate\(h.wristx, mp.tilt-h.wristx.beta\);) show
+12 mp_a_x mul 264 moveto (obj.reachoffsetByName\(Reach2Target\);  // reach to the center) show
+12 mp_a_x mul 252 moveto (obj.beforeAction\(\);) show
+12 mp_a_x mul 240 moveto (HV.cv.refreshDisplay\(\);) show
+12 mp_a_x mul 228 moveto (if \(HV.DLEV>0\) System.out.println\("PDF-REACH2 has been started... "\);) show
+12 mp_a_x mul 216 moveto (HV.setInfo\(phaseStr[pdf_phase]+ ": PDF-REACH2 has been started..."\);) show
+12 mp_a_x mul 204 moveto (}) show
+12 mp_a_x mul 192 moveto (////tickWrist\(h,mp\);) show
+12 mp_a_x mul 180 moveto (//---------------- also enclose --------------) show
+12 mp_a_x mul 168 moveto (encloseTime++;) show
+12 mp_a_x mul 156 moveto (blockc=0;) show
+12 mp_a_x mul 144 moveto (blockc+=collisionRotate\(h.thumb         , mp.force[0][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 132 moveto (blockc+=collisionRotate\(h.thumb.child[0], mp.force[0][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 120 moveto (blockc+=collisionRotate\(h.thumb.child[0].child[0], mp.force[0][2]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 96 moveto (blockc+=collisionRotate\(h.index,          mp.force[1][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 84 moveto (blockc+=collisionRotate\(h.index.child[0], mp.force[1][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 60 moveto (blockc+=collisionRotate\(h.middle,          mp.force[2][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 48 moveto (blockc+=collisionRotate\(h.middle.child[0], mp.force[2][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 36 moveto (collisionRotate\(h.ring,            mp.force[2][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 24 moveto (collisionRotate\(h.ring.child[0],   mp.force[2][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 12 moveto (collisionRotate\(h.pinky,            mp.force[2][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 0 moveto (collisionRotate\(h.pinky.child[0],   mp.force[2][1]*mp.fingerRate,obj\);) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+12 mp_a_x mul 840 moveto (HV.cv.refreshDisplay\(\);) show
+12 mp_a_x mul 828 moveto (if \(blockc==0\) {) show
+16 mp_a_x mul 816 moveto (storeAngles\(lastOK\); ) show
+12 mp_a_x mul 804 moveto (} else System.out.println\("blockc:"+blockc\);  // no collision at all) show
+12 mp_a_x mul 792 moveto (// -------------------------------------------) show
+12 mp_a_x mul 768 moveto (dis=obj.reach_error\(\);) show
+12 mp_a_x mul 756 moveto (double rate=\(Elib.cube\(dis/50\)+10\)*obj.BASERATE; // 0.0002;) show
+12 mp_a_x mul 744 moveto (if \(rate>obj.RATE_TH\) rate=obj.RATE_TH; //0.05) show
+12 mp_a_x mul 732 moveto (if \(dis<JACOBIAN_th\) jacobianTranspose\(babbleGradIt,1.2*rate\); ) show
+12 mp_a_x mul 720 moveto (else        gradientDescent_arm\(babbleGradIt,1.2*rate\);) show
+12 mp_a_x mul 696 moveto (if \(dis<babbleZero\) {) show
+16 mp_a_x mul 684 moveto (System.out.println\("PDF Reach2  FAILED \(reached the center without collision!!!!"\);) show
+16 mp_a_x mul 672 moveto (HV.setInfo\(phaseStr[pdf_phase]+ ":Reach 2  FAILED \(reached the center without collision!!!!."\);) show
+16 mp_a_x mul 636 moveto (PDFcondKill\(\);) show
+16 mp_a_x mul 624 moveto (return;) show
+12 mp_a_x mul 612 moveto (} else ) show
+12 mp_a_x mul 600 moveto (if \(ntick>=babbleReach2MaxTick\) {) show
+16 mp_a_x mul 588 moveto (System.out.println\("Reach 2 FAILED \(did not hit the target\) FAILED!"\);HV.setInfo\(phaseStr[pdf_phase]+"Reach 2 FAILED \(did not hit the target\) FAILED!"\);) show
+16 mp_a_x mul 576 moveto (PDFcondKill\(\);) show
+16 mp_a_x mul 564 moveto (return;) show
+12 mp_a_x mul 552 moveto (} else {) show
+16 mp_a_x mul 540 moveto (//restoreAngles\(lastOK\);) show
+16 mp_a_x mul 528 moveto (double colv=this.segmentCollision\(obj\);) show
+16 mp_a_x mul 516 moveto (if \(colv>0\) System.out.println\("****GRASP SEGMENT COLLISION!!****"\);) show
+16 mp_a_x mul 504 moveto (if \(colv>0\) {) show
+20 mp_a_x mul 492 moveto (double w=0;) show
+20 mp_a_x mul 480 moveto (double newc=0;) show
+20 mp_a_x mul 468 moveto (do {) show
+24 mp_a_x mul 456 moveto (w=w+0.05;) show
+24 mp_a_x mul 444 moveto (weighted_restoreAngles\(lastOK,w\);) show
+24 mp_a_x mul 432 moveto (HV.cv.refreshDisplay\(\);) show
+24 mp_a_x mul 420 moveto (newc=segmentCollision\(obj\);) show
+20 mp_a_x mul 408 moveto (} while \(newc>0\);) show
+20 mp_a_x mul 396 moveto (pdf_chmod\(babble_REACH2OK\);) show
+16 mp_a_x mul 384 moveto (} else {) show
+20 mp_a_x mul 372 moveto (storeAngles\(lastOK\);) show
+16 mp_a_x mul 360 moveto (}) show
+12 mp_a_x mul 348 moveto (}) show
+8 mp_a_x mul 324 moveto (}) show
+8 mp_a_x mul 312 moveto (// ^^^^^^^^^^^^^^^^^^^^^^^^ phase  REACH2 ^^^^^^^^^^^^^^^^^^^^^^^^) show
+8 mp_a_x mul 300 moveto (else) show
+8 mp_a_x mul 288 moveto (if\(pdf_phase==bab_ph_GRASP1\) {  // grasp component) show
+12 mp_a_x mul 276 moveto (encloseTime=0;) show
+12 mp_a_x mul 264 moveto (h.root.unBlock\(\);) show
+12 mp_a_x mul 252 moveto (int ct;) show
+12 mp_a_x mul 240 moveto (do {) show
+12 mp_a_x mul 228 moveto (ct=0;) show
+12 mp_a_x mul 216 moveto (encloseTime++;) show
+12 mp_a_x mul 204 moveto (ct+=collisionRotate\(h.thumb         , mp.force[0][0]*cRATE,obj\);) show
+12 mp_a_x mul 192 moveto (ct+=collisionRotate\(h.thumb.child[0], mp.force[0][1]*cRATE,obj\);) show
+12 mp_a_x mul 180 moveto (ct+=collisionRotate\(h.thumb.child[0].child[0], mp.force[0][2]*cRATE,obj\);) show
+12 mp_a_x mul 156 moveto (ct+=collisionRotate\(h.index,          mp.force[1][0]*cRATE,obj\);) show
+12 mp_a_x mul 144 moveto (ct+=collisionRotate\(h.index.child[0], mp.force[1][1]*cRATE,obj\);) show
+12 mp_a_x mul 120 moveto (ct+=collisionRotate\(h.middle,          mp.force[2][0]*cRATE,obj\);) show
+12 mp_a_x mul 108 moveto (ct+=collisionRotate\(h.middle.child[0], mp.force[2][1]*cRATE,obj\);) show
+12 mp_a_x mul 96 moveto (collisionRotate\(h.ring,            mp.force[2][0]*cRATE,obj\);) show
+12 mp_a_x mul 84 moveto (collisionRotate\(h.ring.child[0],   mp.force[2][1]*cRATE,obj\);) show
+12 mp_a_x mul 72 moveto (collisionRotate\(h.pinky,            mp.force[2][0]*cRATE,obj\);) show
+12 mp_a_x mul 60 moveto (collisionRotate\(h.pinky.child[0],   mp.force[2][1]*cRATE,obj\);) show
+12 mp_a_x mul 48 moveto (HV.cv.refreshDisplay\(\);) show
+12 mp_a_x mul 36 moveto (//// System.out.println\("=====------------=== > blocked c:"+ct\);) show
+12 mp_a_x mul 24 moveto (} while  \(encloseTime<40 && ct<7\) ;) show
+12 mp_a_x mul 12 moveto (// Let's see how well we grasped in babble_GRASPOK) show
+12 mp_a_x mul 0 moveto (pdf_chmod\(babble_GRASPOK\);) show
+grestore
+restore
+showpage
+%%Page: 12 12
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 852 moveto (} // if ... ==bab_ph_GRASP1) show
+8 mp_a_x mul 828 moveto (// ----------------------- info for the user --------------------) show
+8 mp_a_x mul 816 moveto (//if \(ntick % infoRate == 0 || showInfo\) {) show
+8 mp_a_x mul 804 moveto (//    HV.setInfo\(phaseStr[pdf_phase]+ "\("+ntick+"\)"\);) show
+8 mp_a_x mul 792 moveto (//}) show
+8 mp_a_x mul 780 moveto (ntick++;) show
+8 mp_a_x mul 768 moveto (if \(ntick%1==0\) {) show
+12 mp_a_x mul 756 moveto (addWristData\(\);   ) show
+8 mp_a_x mul 744 moveto (}) show
+8 mp_a_x mul 732 moveto (if \(ntick%1==0\) HV.cv.refreshDisplay\(\);) show
+8 mp_a_x mul 720 moveto (if \(HV.traceon\) Mars.addStar\(\);) show
+8 mp_a_x mul 696 moveto (return;) show
+4 mp_a_x mul 684 moveto (}) show
+0 mp_a_x mul 672 moveto (public void  addWristData\(\) {) show
+1 mp_a_x mul 660 moveto (Hand hh=\(Hand\)this;) show
+1 mp_a_x mul 648 moveto (Point3d handtilt=VA.subtract\(hh.index.joint_pos,hh.pinky.joint_pos\);) show
+1 mp_a_x mul 636 moveto (Point3d objtilt=obj.X.duplicate\(\);) show
+1 mp_a_x mul 624 moveto (handtilt.z=0;) show
+1 mp_a_x mul 612 moveto (objtilt.z=0;) show
+1 mp_a_x mul 588 moveto (double cs=Math.acos\(Math.abs\(VA.cos\(handtilt,) show
+48 mp_a_x mul 588 moveto (obj.X\)\)\);) show
+1 mp_a_x mul 576 moveto (parnode.put\("hand-ori",hh.wristz.beta\);) show
+1 mp_a_x mul 564 moveto (parnode.put\("error",cs\);) show
+1 mp_a_x mul 552 moveto (parnode.advance\(\);) show
+1 mp_a_x mul 540 moveto (System.out.println\("hand-ori error:"+\(cs*180/Math.PI\)+" degrees"\);) show
+0 mp_a_x mul 528 moveto (}) show
+0 mp_a_x mul 516 moveto (public void pdf_chmod\(int newstat\) {) show
+8 mp_a_x mul 504 moveto (if \(newstat==babble_REACH1OK\) {) show
+12 mp_a_x mul 492 moveto (infoStr="REACH1 succeeded with dis:"+dis;) show
+12 mp_a_x mul 480 moveto (if \(HV.DLEV>0\) System.out.println\("## "+infoStr\);) show
+12 mp_a_x mul 468 moveto (storeAngles\(reach1Config\);) show
+12 mp_a_x mul 456 moveto (ntick=-1;   // will be zero soon) show
+12 mp_a_x mul 444 moveto (//jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+12 mp_a_x mul 432 moveto (//      reach1Config,reach2Config,segc,0.8\);) show
+12 mp_a_x mul 408 moveto (pdf_phase=bab_ph_REACH2; // PHASE CHANGE ) show
+12 mp_a_x mul 396 moveto (return;) show
+8 mp_a_x mul 384 moveto (}) show
+8 mp_a_x mul 360 moveto (if \(newstat==babble_REACH2OK\) {) show
+12 mp_a_x mul 348 moveto (infoStr="REACH2 * succeeded * with dis:"+dis;) show
+12 mp_a_x mul 336 moveto (pdf_phase=bab_ph_GRASP1; ) show
+12 mp_a_x mul 324 moveto (if \(HV.DLEV>0\) System.out.println\("## "+infoStr\);) show
+12 mp_a_x mul 312 moveto (ntick=-1;  // will be zero soon) show
+12 mp_a_x mul 300 moveto (return;) show
+8 mp_a_x mul 288 moveto (} ) show
+8 mp_a_x mul 264 moveto (if \(newstat==babble_GRASPOK\) {) show
+12 mp_a_x mul 240 moveto (// train the network) show
+12 mp_a_x mul 228 moveto (String s=mp.str\(\);) show
+12 mp_a_x mul 216 moveto (Point3d graspV=reinforceGrasp\(h, obj\);) show
+12 mp_a_x mul 204 moveto (// some info to the user) show
+12 mp_a_x mul 192 moveto (showInfo=true;infoStrC=0;) show
+12 mp_a_x mul 180 moveto (infoStr="GRASP \(cost, reward\) :"+Elib.snice\(graspV.x,1e3,4\)+","+) show
+16 mp_a_x mul 168 moveto (Elib.snice\(graspV.y,1e3,4\); ) show
+12 mp_a_x mul 156 moveto (System.out.println\(infoStr\);) show
+12 mp_a_x mul 132 moveto (storeAngles\(reach2Config\);) show
+12 mp_a_x mul 120 moveto (//jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+12 mp_a_x mul 108 moveto (//) show
+37 mp_a_x mul 108 moveto (reach1Config,reach2Config,) show
+12 mp_a_x mul 96 moveto (//) show
+37 mp_a_x mul 96 moveto (segc,0.5\);) show
+12 mp_a_x mul 72 moveto (jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+45 mp_a_x mul 60 moveto (reach2Config,) show
+45 mp_a_x mul 48 moveto (segc\);) show
+12 mp_a_x mul 36 moveto (HV.mcirc.showSomething\(\);) show
+12 mp_a_x mul 24 moveto (PDFcondKill\(\);) show
+12 mp_a_x mul 12 moveto (return;) show
+8 mp_a_x mul 0 moveto (}) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 840 moveto (System.out.println\(" I DONT KNOW this \(PDF\)newstat:"+newstat\);) show
+0 mp_a_x mul 828 moveto (}) show
+4 mp_a_x mul 780 moveto (/* tick Babble related variables */) show
+4 mp_a_x mul 756 moveto (private void newBabbleAttempt_init\(\) {) show
+8 mp_a_x mul 744 moveto (// reset the wrist and finger joints \(full open\)) show
+8 mp_a_x mul 732 moveto (Hand h=\(\(Hand\)this\);) show
+8 mp_a_x mul 720 moveto (resetRotCnt\(\);  // Wrist rotation starts from zero) show
+8 mp_a_x mul 696 moveto (h.root.unBlock\(\); // reset the blocked fingers from prior babbles) show
+8 mp_a_x mul 684 moveto (h.resetJoints\(\);) show
+8 mp_a_x mul 672 moveto (////setJointAngle\(h.j1,-60*Math.PI/180\);) show
+8 mp_a_x mul 660 moveto (//setJointAngle\(h.wristx,-80*Math.PI/180\);) show
+8 mp_a_x mul 648 moveto (babble_phase=bab_ph_REACH1;) show
+8 mp_a_x mul 636 moveto (babbleStatus=babble_REACH1ON;) show
+8 mp_a_x mul 624 moveto (System.out.println\("Babbles \( success/attempts\):"+babble_succ+"/"+babble_trials\);) show
+8 mp_a_x mul 612 moveto (if \(bj1==null\) { ) show
+12 mp_a_x mul 600 moveto (bj1=getJoint\("J1"\);) show
+12 mp_a_x mul 588 moveto (bj2=getJoint\("J2"\);) show
+12 mp_a_x mul 576 moveto (bj3=getJoint\("J3"\);) show
+12 mp_a_x mul 564 moveto (bj4=getJoint\("J4"\);) show
+8 mp_a_x mul 552 moveto (}) show
+8 mp_a_x mul 540 moveto (setJointAngle\(bj1,-Math.PI/2\);) show
+8 mp_a_x mul 528 moveto (//setJointAngle\(bj2,-Math.PI/4\);) show
+8 mp_a_x mul 516 moveto (//setJointAngle\(bj3,0\);) show
+8 mp_a_x mul 504 moveto (setJointAngle\(bj4,80*Math.PI/180\);) show
+8 mp_a_x mul 492 moveto (//setJointAngle\(h.thumb,90*Math.PI/180\);) show
+8 mp_a_x mul 480 moveto (//setJointAngle\(h.thumb.child[0],10.7*Math.PI/180\);) show
+8 mp_a_x mul 468 moveto (//setJointAngle\(h.thumb.child[0].child[0],55.7*Math.PI/180\);) show
+8 mp_a_x mul 456 moveto (h.makeBabblePose\(\);) show
+8 mp_a_x mul 444 moveto (HV.cv.refreshDisplay\(\);) show
+8 mp_a_x mul 432 moveto (//mp=HV.mcirc.nextMotorPlan\(h,obj\);) show
+8 mp_a_x mul 420 moveto (if \(location_trials==0\) { // get new input) show
+12 mp_a_x mul 408 moveto (System.out.println\("Getting the next random input...."\);) show
+12 mp_a_x mul 396 moveto (Point3d newinput=HV.mcirc.nextRandomInput\(\);) show
+13 mp_a_x mul 384 moveto (if \(HV.FANCY>0\) {) show
+16 mp_a_x mul 372 moveto (if \(Mars.starc>200\) Mars.clearStars\(\);) show
+13 mp_a_x mul 360 moveto (} else if \(Mars.starc>5\) Mars.clearStars\(\);) show
+13 mp_a_x mul 348 moveto (// Mars.addStar\(newinput\);) show
+8 mp_a_x mul 336 moveto (}) show
+8 mp_a_x mul 312 moveto (location_trials=\(location_trials+1\) % MAXREACH;) show
+8 mp_a_x mul 288 moveto (mp=HV.mcirc.nextNoisyMotorPlan\(h,obj,offRandomness,0,rotRandomness\);) show
+8 mp_a_x mul 276 moveto (//-> Mars.addComet\(obj.objectCenter,mp.reachTarget,1\);) show
+8 mp_a_x mul 264 moveto (if \(HV.DLEV>0\) mp.printInfo\(\);) show
+8 mp_a_x mul 252 moveto (//restoreAngles\(reachConfig\);) show
+8 mp_a_x mul 240 moveto (///constrainedRotate\(h.wristz, mp.bank-h.wristz.beta\); ) show
+8 mp_a_x mul 228 moveto (///constrainedRotate\(h.wristx, mp.tilt-h.wristx.beta\);) show
+8 mp_a_x mul 216 moveto (// to show the offset reaches) show
+8 mp_a_x mul 204 moveto (// ->Mars.addStar\(VA.add\(obj.objectCenter,mp.reachOffset\)\);) show
+8 mp_a_x mul 192 moveto (HV.cv.refreshDisplay\(\);) show
+12 mp_a_x mul 180 moveto (//Mars.addStar\(VA.add\(obj.objectCenter,mp.reachOffset\)\);) show
+12 mp_a_x mul 168 moveto (//System.out.println\("Reach offset:"+mp.reachOffset.str\(\)\);) show
+8 mp_a_x mul 156 moveto (obj.reachoffset\(mp.reachOffset\);) show
+8 mp_a_x mul 144 moveto (obj.beforeAction\(\);) show
+0 mp_a_x mul 132 moveto (//  ) show
+8 mp_a_x mul 132 moveto (if \(HV.FANCY>0\) {) show
+0 mp_a_x mul 120 moveto (//  ) show
+8 mp_a_x mul 120 moveto (if \(babble_trials % 100 == 0\) Mars.clearStars\(\);) show
+0 mp_a_x mul 108 moveto (//  ) show
+8 mp_a_x mul 108 moveto (Mars.addStar\(mp.reachTarget\);) show
+0 mp_a_x mul 96 moveto (//  ) show
+8 mp_a_x mul 96 moveto (}) show
+8 mp_a_x mul 84 moveto (ntick=0;) show
+8 mp_a_x mul 72 moveto (storeAngles\(initialConfig\);) show
+8 mp_a_x mul 60 moveto (if \(HV.FANCY>0 || HV.DLEV>0\) infoRate=1;) show
+8 mp_a_x mul 48 moveto (else infoRate=10;) show
+4 mp_a_x mul 36 moveto (}) show
+0 mp_a_x mul 12 moveto (static double babbleZero=3.0;) show
+grestore
+restore
+showpage
+%%Page: 13 13
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+0 mp_a_x mul 852 moveto (static int infoRate=1;) show
+0 mp_a_x mul 840 moveto (static int babbleGradIt=5;  //number of gradient descent cycles per call) show
+0 mp_a_x mul 828 moveto (static int babbleReach1MaxTick=250/babbleGradIt;) show
+0 mp_a_x mul 816 moveto (static int babbleReach2MaxTick=80/babbleGradIt;) show
+0 mp_a_x mul 792 moveto (static int bab_ph_NONE=0;) show
+0 mp_a_x mul 780 moveto (static int bab_ph_WRIST1=1;) show
+0 mp_a_x mul 768 moveto (static int bab_ph_WRIST2=2;; ) show
+0 mp_a_x mul 756 moveto (static int bab_ph_REACH1=10;) show
+0 mp_a_x mul 744 moveto (static int bab_ph_REACH2=11;) show
+0 mp_a_x mul 732 moveto (static int bab_ph_GRASP1=21;) show
+0 mp_a_x mul 708 moveto (String[] phaseStr=new String[50];) show
+0 mp_a_x mul 684 moveto (boolean showInfo=false;) show
+0 mp_a_x mul 672 moveto (String infoStr=null;) show
+0 mp_a_x mul 660 moveto (int infoStrC=0;;) show
+0 mp_a_x mul 648 moveto (int pdf_phase=bab_ph_NONE;   // reach only) show
+0 mp_a_x mul 636 moveto (int babble_phase=bab_ph_NONE;) show
+4 mp_a_x mul 624 moveto (int babble_steps=0;) show
+4 mp_a_x mul 612 moveto (int babble_trials=0;) show
+4 mp_a_x mul 600 moveto (int babble_succ=0;) show
+4 mp_a_x mul 588 moveto (int reach1failc=0;) show
+0 mp_a_x mul 576 moveto (int blockc=0;) show
+4 mp_a_x mul 564 moveto (boolean newBabbleAttempt=true;) show
+4 mp_a_x mul 552 moveto (Point3d babbleOffset;) show
+4 mp_a_x mul 540 moveto (int encloseTime=0;) show
+4 mp_a_x mul 528 moveto (double[] lastOK;) show
+4 mp_a_x mul 516 moveto (double[] initialConfig,reach1Config, reach2Config, rotateConfig,graspConfig,bestConfig;) show
+4 mp_a_x mul 504 moveto (double searchZ=0;) show
+4 mp_a_x mul 492 moveto (double goodZ=0;) show
+4 mp_a_x mul 480 moveto (double minTorque=1e10;) show
+0 mp_a_x mul 468 moveto (double minCost=1e10;  //minimum grasp cost) show
+0 mp_a_x mul 456 moveto (int MAXREACH=Resource.getInt\("MAXREACH"\);) show
+0 mp_a_x mul 444 moveto (int MAXBABBLE=Resource.getInt\("MAXBABBLE"\);) show
+0 mp_a_x mul 432 moveto (int MAXROTATE=Resource.getInt\("MAXROTATE"\);) show
+0 mp_a_x mul 420 moveto (int location_trials=0;) show
+0 mp_a_x mul 408 moveto (int rotate_trials=0;) show
+0 mp_a_x mul 396 moveto (int MAXFINGER=15;) show
+0 mp_a_x mul 384 moveto (int finger_trials=0;) show
+0 mp_a_x mul 372 moveto (double JACOBIAN_th=1e20;  // if dis less then this use JACOBIAN TRANSPOSE in babbling) show
+0 mp_a_x mul 360 moveto (public String toggleActionSelection\(\) {) show
+4 mp_a_x mul 348 moveto (if \(rotSave<0\) {) show
+8 mp_a_x mul 324 moveto (rotSave=rotRandomness;) show
+8 mp_a_x mul 312 moveto (offSave=offRandomness;) show
+8 mp_a_x mul 300 moveto (rotRandomness=0;) show
+8 mp_a_x mul 288 moveto (offRandomness=0.1; // let's keep some randomness for this) show
+8 mp_a_x mul 276 moveto (return "Will generate plans from \(almost\) full pdf's.[Now rotRandomness:"+) show
+12 mp_a_x mul 264 moveto (rotRandomness+"    offRandomness:"+offRandomness+"]";) show
+4 mp_a_x mul 252 moveto (} else {) show
+8 mp_a_x mul 240 moveto (rotRandomness = rotSave ;) show
+8 mp_a_x mul 228 moveto (offRandomness = offSave ;) show
+8 mp_a_x mul 216 moveto (rotSave=-1;) show
+8 mp_a_x mul 204 moveto (offSave=-1;) show
+8 mp_a_x mul 192 moveto (return "Will generate pure random \(uniform\) plans. [Now rotRandomness:"+) show
+12 mp_a_x mul 180 moveto (rotRandomness+"    offRandomness:"+offRandomness+"]";) show
+4 mp_a_x mul 168 moveto (}) show
+0 mp_a_x mul 156 moveto (}) show
+0 mp_a_x mul 84 moveto (/** 1 return: original randomness 0 return: 0 randomness */ ) show
+0 mp_a_x mul 72 moveto (public int getActionSelection\(\) {) show
+4 mp_a_x mul 60 moveto (if \(rotSave<0\) ) show
+8 mp_a_x mul 48 moveto (return 1;) show
+4 mp_a_x mul 36 moveto (else return 0;) show
+0 mp_a_x mul 24 moveto (}) show
+4 mp_a_x mul 12 moveto (synchronized public void tickBabble\(\) { ) show
+8 mp_a_x mul 0 moveto (h=\(Hand\)this;) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+8 mp_a_x mul 852 moveto (//HV.setInfo\("Babble ntick:"+ntick\);) show
+8 mp_a_x mul 840 moveto (if \(newBabbleAttempt\) {  // a new babble attemp starting) show
+12 mp_a_x mul 828 moveto (newBabbleAttempt=false;) show
+12 mp_a_x mul 816 moveto (babble_trials=0;) show
+12 mp_a_x mul 804 moveto (babble_succ=0;) show
+12 mp_a_x mul 792 moveto (reach1failc=0;) show
+12 mp_a_x mul 780 moveto (goodZ=0;) show
+12 mp_a_x mul 768 moveto (rotate_trials=0;) show
+12 mp_a_x mul 756 moveto (minTorque=1e10;) show
+12 mp_a_x mul 744 moveto (double minCost=1e10;) show
+12 mp_a_x mul 720 moveto (phaseStr[bab_ph_NONE]  ="NONE";) show
+12 mp_a_x mul 708 moveto (phaseStr[bab_ph_WRIST1]="WRIST1";) show
+12 mp_a_x mul 696 moveto (phaseStr[bab_ph_WRIST2]="WRIST2"; ) show
+12 mp_a_x mul 684 moveto (phaseStr[bab_ph_REACH1]="REACH1";) show
+12 mp_a_x mul 672 moveto (phaseStr[bab_ph_REACH2]="REACH2";) show
+12 mp_a_x mul 660 moveto (phaseStr[bab_ph_GRASP1]="GRASP1";) show
+12 mp_a_x mul 636 moveto (if \(initialConfig==null\)  {  // lets create our configuration ) show
+16 mp_a_x mul 624 moveto (initialConfig = new double[segc];) show
+16 mp_a_x mul 612 moveto (reach1Config  = new double[segc];) show
+16 mp_a_x mul 600 moveto (reach2Config  = new double[segc];) show
+12 mp_a_x mul 588 moveto (}) show
+12 mp_a_x mul 576 moveto (lasttr=new Trajectory\(\);  // this is the timewarping for REACH ) show
+12 mp_a_x mul 564 moveto (// button. Have to be sent to Reach but needs Jointpath as) show
+12 mp_a_x mul 552 moveto (// external to operate. Pretty much bad programming. ) show
+12 mp_a_x mul 528 moveto (infoStrC=0;  infoStr=null; // no old info) show
+12 mp_a_x mul 492 moveto (newBabbleAttempt_init\(\);) show
+8 mp_a_x mul 480 moveto (}) show
+8 mp_a_x mul 444 moveto (// ---------------- phase REACH1  ------------------------) show
+8 mp_a_x mul 432 moveto (if \(babble_phase==bab_ph_REACH1\) {   // reach component) show
+12 mp_a_x mul 420 moveto (dis=obj.reach_error\(\);) show
+12 mp_a_x mul 408 moveto (double rate=\(Elib.cube\(dis/50\)+10\)*obj.BASERATE; // 0.0002;) show
+12 mp_a_x mul 396 moveto (if \(rate>obj.RATE_TH\) rate=obj.RATE_TH; //0.05) show
+12 mp_a_x mul 372 moveto (if \(dis<JACOBIAN_th\) jacobianTranspose\(babbleGradIt,1.2*rate\); ) show
+12 mp_a_x mul 360 moveto (else        gradientDescent_arm\(babbleGradIt,1.2*rate\); ) show
+12 mp_a_x mul 336 moveto (//----> tickWrist\(h,mp\);) show
+12 mp_a_x mul 324 moveto (if \(dis<babbleZero\) {) show
+16 mp_a_x mul 312 moveto (chmod\(babble_REACH1OK\);) show
+12 mp_a_x mul 300 moveto (} else) show
+12 mp_a_x mul 288 moveto (if \(ntick>=babbleReach1MaxTick\) {) show
+16 mp_a_x mul 276 moveto (chmod\(babble_REACH1FAIL\);) show
+12 mp_a_x mul 264 moveto (}  ) show
+11 mp_a_x mul 252 moveto (// ^^^^^^^^^^^^^^^^ phase REACH 1 ^^^^^^^^^^^^^^^^^^^^^^^^ ) show
+11 mp_a_x mul 240 moveto (// ---------------- phase REACH 2 -----------------------) show
+8 mp_a_x mul 228 moveto (} else if \(babble_phase==bab_ph_REACH2\) {) show
+12 mp_a_x mul 216 moveto (if \(ntick==0\) {) show
+16 mp_a_x mul 204 moveto (if \(HV.DLEV>0 || \(babble_trials%500==0\)\) ) show
+20 mp_a_x mul 192 moveto (System.out.println\(\(MAXBABBLE-babble_trials\)+" Babble attempts left..."\);) show
+16 mp_a_x mul 180 moveto (babble_trials++;) show
+16 mp_a_x mul 168 moveto (encloseTime=0;) show
+16 mp_a_x mul 156 moveto (blockc=0;) show
+16 mp_a_x mul 144 moveto (h.root.unBlock\(\);) show
+16 mp_a_x mul 120 moveto (if \(babble_trials % weightSave==0\) {) show
+20 mp_a_x mul 108 moveto (// this will write more info ) show
+20 mp_a_x mul 96 moveto (HV.self.executeCommand\("dumpnet "+".LGM-"+System.currentTimeMillis\(\)/1000\);) show
+20 mp_a_x mul 84 moveto (//HV.mcirc.dumpNet\(".LGM-"+System.currentTimeMillis\(\)/1000\);) show
+20 mp_a_x mul 72 moveto (weightSave += weightSave ;) show
+16 mp_a_x mul 60 moveto (}) show
+16 mp_a_x mul 48 moveto (if \(babble_trials>=MAXBABBLE\) {) show
+20 mp_a_x mul 36 moveto (System.out.println\("We did the babble_trials"+babble_trials+) show
+39 mp_a_x mul 24 moveto (". Stopping now."\);) show
+20 mp_a_x mul 12 moveto (obj.afterAction\(\);) show
+20 mp_a_x mul 0 moveto (kill_ifActive\(\);) show
+grestore
+restore
+showpage
+%%Page: 14 14
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+20 mp_a_x mul 852 moveto (// this will write more info ) show
+20 mp_a_x mul 840 moveto (HV.self.executeCommand\("dumpnet "+".LGM-LAST-"+System.currentTimeMillis\(\)/1000\);) show
+20 mp_a_x mul 828 moveto (//HV.mcirc.dumpNet\(".LGM-"+System.currentTimeMillis\(\)/1000\);) show
+20 mp_a_x mul 816 moveto (return;) show
+16 mp_a_x mul 804 moveto (}) show
+16 mp_a_x mul 792 moveto (restoreAngles\(reach1Config\);) show
+16 mp_a_x mul 780 moveto (storeAngles\(lastOK\);) show
+16 mp_a_x mul 756 moveto (advanceRotCnt\(\);) show
+16 mp_a_x mul 744 moveto (if \(doneRotCnt\(\)\) {) show
+20 mp_a_x mul 732 moveto (storeAngles\(reach1Config\);) show
+20 mp_a_x mul 720 moveto (jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+53 mp_a_x mul 708 moveto (reach1Config,segc\);) show
+20 mp_a_x mul 696 moveto (newBabbleAttempt_init\(\);) show
+20 mp_a_x mul 684 moveto (return;  // continue in next cycle) show
+16 mp_a_x mul 672 moveto (} else {) show
+20 mp_a_x mul 660 moveto (pickNoisyRotation\(mp,rotRandomness\);) show
+19 mp_a_x mul 648 moveto (constrainedRotate\(h.wristz, mp.bank-h.wristz.beta\); ) show
+19 mp_a_x mul 636 moveto (constrainedRotate\(h.wristx, mp.tilt-h.wristx.beta\);) show
+20 mp_a_x mul 624 moveto (obj.reachoffsetByName\(Reach2Target\);  // reach to the center) show
+20 mp_a_x mul 612 moveto (obj.beforeAction\(\);) show
+20 mp_a_x mul 600 moveto (HV.cv.refreshDisplay\(\);) show
+20 mp_a_x mul 588 moveto (if \(HV.DLEV>0\) System.out.println\("New wrist motor com:"+mp.strRot\(\)\);) show
+20 mp_a_x mul 576 moveto (if \(HV.DLEV>0\)  System.out.println\("REACH2 has been started... "\);) show
+16 mp_a_x mul 564 moveto (}) show
+12 mp_a_x mul 552 moveto (}) show
+12 mp_a_x mul 540 moveto (//---------------- start enclose --------------) show
+12 mp_a_x mul 528 moveto (//tickWrist\(h,mp\);) show
+12 mp_a_x mul 516 moveto (encloseTime++;) show
+12 mp_a_x mul 504 moveto (blockc=0;) show
+12 mp_a_x mul 492 moveto (blockc+=collisionRotate\(h.thumb         , mp.force[0][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 480 moveto (blockc+=collisionRotate\(h.thumb.child[0], mp.force[0][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 468 moveto (blockc+=collisionRotate\(h.thumb.child[0].child[0], mp.force[0][2]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 444 moveto (blockc+=collisionRotate\(h.index,          mp.force[1][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 432 moveto (blockc+=collisionRotate\(h.index.child[0], mp.force[1][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 408 moveto (blockc+=collisionRotate\(h.middle,          mp.force[2][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 396 moveto (blockc+=collisionRotate\(h.middle.child[0], mp.force[2][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 384 moveto (collisionRotate\(h.ring,            mp.force[2][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 372 moveto (collisionRotate\(h.ring.child[0],   mp.force[2][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 360 moveto (collisionRotate\(h.pinky,            mp.force[2][0]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 348 moveto (collisionRotate\(h.pinky.child[0],   mp.force[2][1]*mp.fingerRate,obj\);) show
+12 mp_a_x mul 336 moveto (if \(blockc==0\) {  // this is new addition after kol3.11 with kol3.12) show
+16 mp_a_x mul 324 moveto (storeAngles\(lastOK\);) show
+12 mp_a_x mul 312 moveto (} ) show
+12 mp_a_x mul 300 moveto (//HV.cv.refreshDisplay\(\);) show
+12 mp_a_x mul 288 moveto (// -------------------------------------------) show
+12 mp_a_x mul 276 moveto (dis=obj.reach_error\(\);) show
+12 mp_a_x mul 264 moveto (double rate=\(Elib.cube\(dis/50\)+10\)*obj.BASERATE; // 0.0002;) show
+12 mp_a_x mul 252 moveto (if \(rate>obj.RATE_TH\) rate=obj.RATE_TH; //0.05) show
+12 mp_a_x mul 240 moveto (if \(dis<JACOBIAN_th\) jacobianTranspose\(babbleGradIt,1.2*rate\); ) show
+12 mp_a_x mul 228 moveto (else        gradientDescent_arm\(babbleGradIt,1.2*rate\); //gradientDescent_arm\(1,2*rate\);) show
+12 mp_a_x mul 216 moveto (//System.out.println\("Gradient FINISHED."\);) show
+12 mp_a_x mul 204 moveto (if \(dis<babbleZero\) {) show
+16 mp_a_x mul 192 moveto (if \(HV.DLEV>0\) System.out.println\("Reach 2 =========== FAILED \(reached the center without collision!!!!"\);) show
+16 mp_a_x mul 180 moveto (chmod\(babble_REACH2FAIL\); ) show
+12 mp_a_x mul 168 moveto (} else ) show
+12 mp_a_x mul 156 moveto (if \(ntick>=babbleReach2MaxTick\) {) show
+16 mp_a_x mul 144 moveto (if \(HV.DLEV>0\) System.out.println\("Reach 2 ========= \(did not hit the target\) FAILED!"\);) show
+16 mp_a_x mul 132 moveto (chmod\(babble_REACH2FAIL\); ) show
+12 mp_a_x mul 120 moveto (} else {) show
+16 mp_a_x mul 96 moveto (double colv=this.segmentCollision\(obj\);) show
+16 mp_a_x mul 72 moveto (if \(colv>0\) {) show
+20 mp_a_x mul 60 moveto (//System.out.println\("@Target touched."\);) show
+20 mp_a_x mul 48 moveto (double w=0;) show
+20 mp_a_x mul 36 moveto (double newc=0;) show
+20 mp_a_x mul 24 moveto (do {) show
+24 mp_a_x mul 12 moveto (w=w+0.05;) show
+24 mp_a_x mul 0 moveto (weighted_restoreAngles\(lastOK,w\);) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+24 mp_a_x mul 852 moveto (//HV.cv.refreshDisplay\(\);) show
+24 mp_a_x mul 840 moveto (newc=segmentCollision\(obj\); ) show
+24 mp_a_x mul 828 moveto (if \(HV.FANCY>0\) HV.cv.refreshDisplay\(\);) show
+24 mp_a_x mul 816 moveto (//System.out.println\("New collision:"+newc\);) show
+20 mp_a_x mul 804 moveto (} while \(newc>0\);) show
+20 mp_a_x mul 792 moveto (storeAngles\(lastOK\); //corrected fron interpenetration) show
+20 mp_a_x mul 780 moveto (chmod\(babble_REACH2OK\); ) show
+20 mp_a_x mul 768 moveto (//System.out.println\("This is before auto grasping..."\);) show
+20 mp_a_x mul 756 moveto (//try{Thread.sleep\(3000\);} catch\(InterruptedException e\) {}) show
+20 mp_a_x mul 744 moveto (//System.out.println\("Now starting auto grasping..."\);) show
+16 mp_a_x mul 732 moveto (} else {) show
+20 mp_a_x mul 720 moveto (storeAngles\(lastOK\);) show
+16 mp_a_x mul 708 moveto (}) show
+12 mp_a_x mul 696 moveto (}) show
+8 mp_a_x mul 672 moveto (} ) show
+8 mp_a_x mul 660 moveto (// ^^^^^^^^^^^^^^^^^^^^^^^^ phase  REACH2 ^^^^^^^^^^^^^^^^^^^^^^^^) show
+8 mp_a_x mul 648 moveto (else) show
+8 mp_a_x mul 636 moveto (if\(babble_phase==bab_ph_GRASP1\) {  // grasp component) show
+12 mp_a_x mul 624 moveto (encloseTime=0;) show
+12 mp_a_x mul 612 moveto (h.root.unBlock\(\);) show
+12 mp_a_x mul 600 moveto (int ct;) show
+12 mp_a_x mul 576 moveto (HV.cv.refreshDisplay\(\);) show
+12 mp_a_x mul 564 moveto (do {) show
+12 mp_a_x mul 552 moveto (ct=0;) show
+12 mp_a_x mul 540 moveto (encloseTime++;) show
+12 mp_a_x mul 516 moveto (ct+=collisionRotate\(h.thumb         , mp.force[0][0]*cRATE,obj\);) show
+12 mp_a_x mul 504 moveto (ct+=collisionRotate\(h.thumb.child[0], mp.force[0][1]*cRATE,obj\);) show
+12 mp_a_x mul 492 moveto (ct+=collisionRotate\(h.thumb.child[0].child[0], mp.force[0][2]*cRATE,obj\);) show
+12 mp_a_x mul 468 moveto (ct+=collisionRotate\(h.index,          mp.force[1][0]*cRATE,obj\);) show
+12 mp_a_x mul 456 moveto (ct+=collisionRotate\(h.index.child[0], mp.force[1][1]*cRATE,obj\);) show
+12 mp_a_x mul 432 moveto (ct+=collisionRotate\(h.middle,          mp.force[2][0]*cRATE,obj\);) show
+12 mp_a_x mul 420 moveto (ct+=collisionRotate\(h.middle.child[0], mp.force[2][1]*cRATE,obj\);) show
+12 mp_a_x mul 408 moveto (collisionRotate\(h.ring,            mp.force[2][0]*cRATE,obj\);) show
+12 mp_a_x mul 396 moveto (collisionRotate\(h.ring.child[0],   mp.force[2][1]*cRATE,obj\);) show
+12 mp_a_x mul 384 moveto (collisionRotate\(h.pinky,            mp.force[2][0]*cRATE,obj\);) show
+12 mp_a_x mul 372 moveto (collisionRotate\(h.pinky.child[0],   mp.force[2][1]*cRATE,obj\);) show
+12 mp_a_x mul 360 moveto (if \(HV.FANCY>0\) HV.cv.refreshDisplay\(\);  //if you wanna see it) show
+12 mp_a_x mul 348 moveto (//System.out.println\("=====------------=== > blocked c:"+ct\);) show
+12 mp_a_x mul 336 moveto (} while  \(encloseTime<40 && ct<7\) ;) show
+12 mp_a_x mul 324 moveto (// Let's see how well we grasped in babble_GRASPOK) show
+12 mp_a_x mul 312 moveto (chmod\(babble_GRASPOK\);) show
+8 mp_a_x mul 300 moveto (} // if ... ==bab_ph_GRASP1) show
+8 mp_a_x mul 276 moveto (// ----------------------- info for the user --------------------) show
+8 mp_a_x mul 264 moveto (if \(ntick % infoRate == 0 || \(showInfo && !\(HV.FANCY>0 || HV.DLEV>0\)\)\) {) show
+12 mp_a_x mul 252 moveto (if \(infoStr!=null\) {) show
+16 mp_a_x mul 240 moveto (if \(infoStrC==0\) infoStrC=75/infoRate;  //timer to stay on) show
+16 mp_a_x mul 228 moveto (if \(infoStrC--==1\) infoStr=null;) show
+12 mp_a_x mul 216 moveto (}) show
+12 mp_a_x mul 204 moveto (if \(infoStr==null\)) show
+16 mp_a_x mul 192 moveto (HV.setInfo\(phaseStr[babble_phase] + "\("+babble_succ+"/"+babble_trials+":" +) show
+27 mp_a_x mul 180 moveto (ntick+"\) error:"+Elib.snice\(dis,1e3,6\)\);) show
+12 mp_a_x mul 168 moveto (else) show
+16 mp_a_x mul 156 moveto (HV.setInfo\(phaseStr[babble_phase]+ "\("+babble_succ+"/"+babble_trials+":" +) show
+27 mp_a_x mul 144 moveto (ntick+"\) error:"+Elib.snice\(dis,1e3,6\)+) show
+27 mp_a_x mul 132 moveto (" [last:"+infoStr+"] "\);) show
+12 mp_a_x mul 120 moveto (showInfo=false;    ) show
+8 mp_a_x mul 108 moveto (}) show
+8 mp_a_x mul 84 moveto (ntick++;) show
+8 mp_a_x mul 72 moveto (if \(HV.FANCY==0\) {) show
+12 mp_a_x mul 60 moveto (if \(ntick%10==0\) HV.cv.refreshDisplay\(\);) show
+8 mp_a_x mul 48 moveto (} else {) show
+12 mp_a_x mul 36 moveto (if \(HV.FANCY>0\) { ) show
+17 mp_a_x mul 24 moveto (HV.cv.refreshDisplay\(\);) show
+17 mp_a_x mul 12 moveto (if \(HV.traceon\) Mars.addStar\(\);) show
+12 mp_a_x mul 0 moveto (}) show
+grestore
+restore
+showpage
+%%Page: 15 15
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+12 mp_a_x mul 852 moveto (else if \(ntick%25==0\) HV.cv.refreshDisplay\(\);) show
+8 mp_a_x mul 840 moveto (}) show
+8 mp_a_x mul 828 moveto (return;) show
+4 mp_a_x mul 816 moveto (}) show
+0 mp_a_x mul 780 moveto (public void chmod\(int newstat\) {) show
+8 mp_a_x mul 768 moveto (if \(newstat==babble_REACH1OK\) {) show
+12 mp_a_x mul 744 moveto (infoStr="REACH1 succeeded with dis:"+dis;) show
+12 mp_a_x mul 732 moveto (showInfo=true; infoStrC=0;) show
+12 mp_a_x mul 708 moveto (storeAngles\(reach1Config\);) show
+12 mp_a_x mul 696 moveto (ntick=-1;   // will be zero soon) show
+12 mp_a_x mul 684 moveto (jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+22 mp_a_x mul 672 moveto (reach1Config,reach2Config,segc,0.8\);) show
+12 mp_a_x mul 648 moveto (rotate_trials=0;) show
+12 mp_a_x mul 636 moveto (babble_phase=bab_ph_REACH2; // PHASE CHANGE ) show
+12 mp_a_x mul 624 moveto (HV.mcirc.resetRotGen\(\);) show
+11 mp_a_x mul 612 moveto (if \(HV.DLEV>0\) System.out.println\("##"+infoStr\);) show
+12 mp_a_x mul 600 moveto (return;) show
+8 mp_a_x mul 588 moveto (}) show
+8 mp_a_x mul 564 moveto (if \(newstat==babble_REACH1FAIL\) {) show
+12 mp_a_x mul 552 moveto (reach1failc++;) show
+12 mp_a_x mul 540 moveto (showInfo=true;infoStrC=0;) show
+12 mp_a_x mul 528 moveto (infoStr="REACH1 * failed * \(tot reach1 fails:"+reach1failc+"\)";) show
+12 mp_a_x mul 516 moveto (HV.mcirc.reinforceOff\(negReinforcement*10\);) show
+12 mp_a_x mul 504 moveto (if \(babble_trials<MAXBABBLE\) {) show
+16 mp_a_x mul 492 moveto (storeAngles\(reach1Config\); // ? why) show
+16 mp_a_x mul 480 moveto (jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+34 mp_a_x mul 468 moveto (reach1Config,segc\);) show
+16 mp_a_x mul 456 moveto (newBabbleAttempt_init\(\);) show
+12 mp_a_x mul 432 moveto (}) show
+12 mp_a_x mul 420 moveto (else {) show
+16 mp_a_x mul 408 moveto (System.out.println\("We did the babble_trials"+babble_trials+) show
+35 mp_a_x mul 396 moveto (". Stopping now.[tot reach1 fails:"+reach1failc+"]"\);) show
+16 mp_a_x mul 384 moveto (obj.afterAction\(\);) show
+16 mp_a_x mul 372 moveto (kill_ifActive\(\);) show
+16 mp_a_x mul 360 moveto (HV.mcirc.dumpNet\(".LGM-"+System.currentTimeMillis\(\)/1000\);) show
+12 mp_a_x mul 348 moveto (}) show
+12 mp_a_x mul 336 moveto (if \(HV.DLEV>0 || HV.FANCY>0\)System.out.println\("## "+infoStr\);) show
+12 mp_a_x mul 324 moveto (return;) show
+8 mp_a_x mul 312 moveto (}) show
+8 mp_a_x mul 288 moveto (if \(newstat==babble_REACH2OK\) {) show
+12 mp_a_x mul 276 moveto (showInfo=true;infoStrC=0;) show
+12 mp_a_x mul 264 moveto (if \(HV.DLEV>0\) infoStr="REACH2 * succeeded * with dis:"+dis;) show
+12 mp_a_x mul 252 moveto (babble_phase=bab_ph_GRASP1; ) show
+12 mp_a_x mul 240 moveto (if \(HV.DLEV>0\) System.out.println\("## "+infoStr\);) show
+12 mp_a_x mul 228 moveto (ntick=-1;  // will be zero soon) show
+12 mp_a_x mul 216 moveto (return;) show
+8 mp_a_x mul 204 moveto (} ) show
+8 mp_a_x mul 192 moveto (if \(newstat==babble_REACH2FAIL\) {) show
+12 mp_a_x mul 180 moveto (showInfo=true;infoStrC=0;) show
+12 mp_a_x mul 168 moveto (infoStr="REACH2 * failed * ";) show
+12 mp_a_x mul 156 moveto (System.out.println\("@mp.tilt:"+mp.tilt+"    mp.bank:"+mp.bank+"\(reach2 failed\)"+"    reward:-1/one"\);) show
+12 mp_a_x mul 144 moveto (HV.mcirc.reinforceAll\(negReinforcement,mp\);) show
+12 mp_a_x mul 132 moveto (if \(HV.DLEV>0\) System.out.println\("## "+infoStr\);) show
+12 mp_a_x mul 120 moveto (ntick=-1;) show
+12 mp_a_x mul 108 moveto (return;) show
+8 mp_a_x mul 96 moveto (}) show
+8 mp_a_x mul 84 moveto (if \(newstat==babble_GRASPOK\) {) show
+12 mp_a_x mul 60 moveto (babble_succ++;) show
+12 mp_a_x mul 36 moveto (// train the network) show
+12 mp_a_x mul 24 moveto (String s=mp.str\(\);) show
+12 mp_a_x mul 12 moveto (Point3d rew=reinforceGrasp\(h, obj\);) show
+12 mp_a_x mul 0 moveto (// some info to the user) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+12 mp_a_x mul 852 moveto (showInfo=true;infoStrC=0;) show
+16 mp_a_x mul 828 moveto (infoStr="GRASP \(cost, reward\) :"+Elib.snice\(rew.x,1e3,4\)+","+Elib.snice\(rew.y,1e3,4\); ) show
+16 mp_a_x mul 816 moveto (if \(rew.y>0\) {) show
+20 mp_a_x mul 804 moveto (System.out.println\("======> "+\(int\)\(180/Math.PI*mp.bank\)+","+\(int\)\(180/Math.PI*mp.tilt\)+" gives reward :"+infoStr\);) show
+16 mp_a_x mul 780 moveto (}) show
+12 mp_a_x mul 768 moveto (if \(HV.DLEV>0 || HV.FANCY>0\) System.out.println\("GraspOK, babbletrials:"+babble_succ+"/"+) show
+31 mp_a_x mul 756 moveto (babble_trials+" ["+infoStr+"]"\);) show
+12 mp_a_x mul 744 moveto (// let's create a reach action with this. So when the BABBLE is) show
+12 mp_a_x mul 732 moveto (// interrupted a REACH can generate the last grasp.) show
+12 mp_a_x mul 720 moveto (//storeAngles\(reach2Config\);) show
+12 mp_a_x mul 708 moveto (//jointpath=Trajectory.jointSpline\(seg,initialConfig,) show
+12 mp_a_x mul 696 moveto (//) show
+37 mp_a_x mul 696 moveto (reach1Config,reach2Config,segc,0.8\);) show
+12 mp_a_x mul 672 moveto (if \(\(babble_succ%30\)==1\)) show
+16 mp_a_x mul 660 moveto (HV.mcirc.showSomething\(\);) show
+12 mp_a_x mul 636 moveto (babble_phase=bab_ph_REACH2;) show
+12 mp_a_x mul 624 moveto (ntick=-1;  // will be zero soon) show
+12 mp_a_x mul 612 moveto (return;) show
+8 mp_a_x mul 600 moveto (}) show
+8 mp_a_x mul 576 moveto (if \(newstat==babble_GRASPFAIL\) {) show
+12 mp_a_x mul 564 moveto (babble_phase=bab_ph_REACH2;) show
+12 mp_a_x mul 552 moveto (ntick=-1;  // will be zero soon) show
+12 mp_a_x mul 540 moveto (return;) show
+8 mp_a_x mul 528 moveto (}) show
+8 mp_a_x mul 504 moveto (System.out.println\(" I DONT KNOW this newstat:"+newstat\);) show
+0 mp_a_x mul 492 moveto (}) show
+0 mp_a_x mul 456 moveto (public static final boolean ordered_pick=false;) show
+0 mp_a_x mul 432 moveto (private void resetRotCnt\(int max\) {) show
+4 mp_a_x mul 420 moveto (rotate_trials=0;) show
+4 mp_a_x mul 408 moveto (MAXROTATE=max;) show
+0 mp_a_x mul 396 moveto (}) show
+0 mp_a_x mul 384 moveto (private void resetRotCnt\(\) {) show
+4 mp_a_x mul 360 moveto (if \(!ordered_pick\) ) show
+8 mp_a_x mul 348 moveto (rotate_trials=0;) show
+4 mp_a_x mul 336 moveto (else) show
+8 mp_a_x mul 324 moveto (HV.mcirc.resetRotGen\(\);) show
+0 mp_a_x mul 312 moveto (}) show
+0 mp_a_x mul 288 moveto (// check here maybe buggy) show
+0 mp_a_x mul 276 moveto (private void advanceRotCnt\(\) {) show
+4 mp_a_x mul 264 moveto (if \(!ordered_pick\) {) show
+8 mp_a_x mul 252 moveto (rotate_trials++;) show
+8 mp_a_x mul 240 moveto (HV.mcirc.advancePass\(\);) show
+4 mp_a_x mul 228 moveto (}) show
+4 mp_a_x mul 216 moveto (else) show
+8 mp_a_x mul 204 moveto (HV.mcirc.advancePass\(\);) show
+0 mp_a_x mul 192 moveto (}) show
+0 mp_a_x mul 168 moveto (private boolean doneRotCnt\(\) {) show
+4 mp_a_x mul 156 moveto (if \(!ordered_pick\){) show
+8 mp_a_x mul 144 moveto (if \(rotate_trials>MAXROTATE\) return true;) show
+4 mp_a_x mul 132 moveto (} else) show
+8 mp_a_x mul 120 moveto (if \(HV.mcirc.doneRotGen\(\)\) return true;) show
+4 mp_a_x mul 96 moveto (return false;) show
+0 mp_a_x mul 84 moveto (}) show
+0 mp_a_x mul 48 moveto (private void pickRotation\(MotorPlan mp\) {) show
+4 mp_a_x mul 36 moveto (if \(babble_trials>-1000\) ) show
+8 mp_a_x mul 24 moveto (HV.mcirc.pickRotation\(mp\);) show
+4 mp_a_x mul 12 moveto (else ) show
+8 mp_a_x mul 0 moveto (HV.mcirc.pickOrdRotation\(mp\);) show
+grestore
+restore
+showpage
+%%Page: 16 16
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+0 mp_a_x mul 852 moveto (}) show
+0 mp_a_x mul 816 moveto (// Note: if ORD is on the c has no effect yet) show
+0 mp_a_x mul 804 moveto (private void pickNoisyRotation\(MotorPlan mp, double c\) {) show
+4 mp_a_x mul 792 moveto (if \(babble_trials>-1000\) ) show
+8 mp_a_x mul 780 moveto (HV.mcirc.pickNoisyRotation\(mp,c\);) show
+4 mp_a_x mul 768 moveto (else ) show
+8 mp_a_x mul 756 moveto (HV.mcirc.pickOrdRotation\(mp\);) show
+0 mp_a_x mul 744 moveto (}) show
+0 mp_a_x mul 708 moveto (synchronized public Point3d reinforceGrasp\(Hand h, Object3d obj\) {) show
+4 mp_a_x mul 696 moveto (double reward=0;) show
+4 mp_a_x mul 684 moveto (double cost=1e20;) show
+4 mp_a_x mul 672 moveto (h.contact\(obj\);) show
+4 mp_a_x mul 660 moveto (ContactList CL=h.cl;) show
+4 mp_a_x mul 648 moveto (if \(CL.contc<2\) {) show
+8 mp_a_x mul 636 moveto (reward=negReinforcement;) show
+4 mp_a_x mul 624 moveto (} else { ) show
+8 mp_a_x mul 612 moveto (double tn=VA.norm\(CL.netTorque\);) show
+8 mp_a_x mul 600 moveto (double fn=VA.norm\(CL.netForce\);) show
+8 mp_a_x mul 588 moveto (cost=CL.graspCost;) show
+8 mp_a_x mul 576 moveto (if \(cost<minCost && CL.contc>1\) {) show
+12 mp_a_x mul 564 moveto (minCost=cost;) show
+12 mp_a_x mul 552 moveto (storeAngles\(bestConfig\);) show
+8 mp_a_x mul 540 moveto (}) show
+8 mp_a_x mul 528 moveto (//reward=Math.exp\(-\(tn+fn\)/2\)-Math.exp\(-10/2\);) show
+8 mp_a_x mul 516 moveto (if \(cost < costThreshold\) {) show
+12 mp_a_x mul 504 moveto (reward=0.5+1-cost; ) show
+8 mp_a_x mul 492 moveto (}) show
+8 mp_a_x mul 480 moveto (else reward=negReinforcement;) show
+4 mp_a_x mul 468 moveto (}) show
+4 mp_a_x mul 456 moveto (if \(search_mode!=PDFGRASP\) ) show
+8 mp_a_x mul 444 moveto (HV.mcirc.reinforceAll\(reward,mp\);) show
+4 mp_a_x mul 432 moveto (return new Point3d\(cost,reward,0\);) show
+0 mp_a_x mul 420 moveto (}) show
+1 mp_a_x mul 396 moveto (double dis=1e10;) show
+1 mp_a_x mul 384 moveto (public void tickVisual\(Reach r\)) show
+1 mp_a_x mul 372 moveto ({) show
+2 mp_a_x mul 348 moveto (if \(search_phase==0\) dis=obj.reach_error\(\);) show
+6 mp_a_x mul 336 moveto (else     dis=obj.grasp_error\(\);) show
+2 mp_a_x mul 312 moveto (if \(\(dis < zeroError && dis<obj.GRASP_TH\) || ntick==450\)) show
+3 mp_a_x mul 300 moveto ({ if \(dis<zeroError\) System.out.println\("Target reached."\);) show
+12 mp_a_x mul 288 moveto (else  System.out.println\("Cannot reach; Trying my best."\);) show
+3 mp_a_x mul 276 moveto (Hand h=\(\(Hand\)this\);) show
+3 mp_a_x mul 264 moveto (h.contact\(obj\);) show
+4 mp_a_x mul 252 moveto (ContactList CL=h.cl;) show
+4 mp_a_x mul 240 moveto (double tn=VA.norm\(CL.netTorque\);) show
+4 mp_a_x mul 228 moveto (double fn=VA.norm\(CL.netForce\);) show
+4 mp_a_x mul 204 moveto (obj.afterAction\(\);) show
+5 mp_a_x mul 192 moveto (double[] sol=getAngleList\(\);) show
+5 mp_a_x mul 180 moveto (lasttr=trimTrajectory\(sol\);    ) show
+5 mp_a_x mul 168 moveto (kill_ifActive\(\);) show
+5 mp_a_x mul 156 moveto (return;) show
+3 mp_a_x mul 144 moveto (}) show
+2 mp_a_x mul 120 moveto (double rate=\(Elib.cube\(dis/50\)+1\)*obj.BASERATE; // 0.0002;) show
+2 mp_a_x mul 96 moveto (if \(rate>obj.RATE_TH\) rate=obj.RATE_TH; //0.05) show
+2 mp_a_x mul 84 moveto (if \(search_phase==0\) {) show
+6 mp_a_x mul 72 moveto (if \(dis<JACOBIAN_th\) jacobianTranspose\(1,1.2*rate\); ) show
+6 mp_a_x mul 60 moveto (else        gradientDescent_wrist\(1,1.2*rate\); //gradientDescent_wrist\(1,2*rate\);) show
+2 mp_a_x mul 48 moveto (}) show
+2 mp_a_x mul 36 moveto (else  gradientDescent\(1,rate\);) show
+2 mp_a_x mul 12 moveto (if \(search_phase==0 && dis<obj.GRASP_TH\) ) show
+4 mp_a_x mul 0 moveto ({search_phase=1;) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+5 mp_a_x mul 852 moveto (obj.afterReach\(\);) show
+5 mp_a_x mul 840 moveto (Hand me=\(Hand\)this;) show
+4 mp_a_x mul 828 moveto (}) show
+2 mp_a_x mul 816 moveto (if \(ntick%50==0\) if \(HV.DLEV>0\) System.out.println\("Step:"+ntick+" Distance to target:"+Elib.nice\(dis,1e5\)+" Aperture:"+Elib.nice\(VA.dist\(\(\(Hand\)this\).index.child[0].limb_pos,\(\(Hand\)this\).thumb.child[0].child[0].child[0].limb_pos\),1e4\)\);) show
+2 mp_a_x mul 804 moveto (ntick++;) show
+2 mp_a_x mul 792 moveto (if \(HV.traceon\) Mars.addStar\(\);) show
+1 mp_a_x mul 780 moveto (}) show
+1 mp_a_x mul 756 moveto (int slc;) show
+1 mp_a_x mul 744 moveto (public void tickSilent\(Reach r\)) show
+1 mp_a_x mul 732 moveto ({) show
+2 mp_a_x mul 720 moveto (double dis=1e5;) show
+2 mp_a_x mul 708 moveto (//dis=VA.dist\(target, goalLimb.limb_pos\);) show
+2 mp_a_x mul 696 moveto (if \(search_phase==0\) dis=obj.reach_error\(\);) show
+6 mp_a_x mul 684 moveto (else     dis=obj.grasp_error\(\);) show
+2 mp_a_x mul 672 moveto (if \(dis < zeroError\)) show
+3 mp_a_x mul 660 moveto ({ System.out.println\("Target reached."\);) show
+5 mp_a_x mul 648 moveto (System.out.println\("Angles must be restored!!!!!!!!!!!!!!!"\);) show
+4 mp_a_x mul 636 moveto (///kol.restoreChildren\(\);) show
+5 mp_a_x mul 624 moveto (enablePanels\(\);) show
+5 mp_a_x mul 612 moveto (HV.self.setTrace\(false\);) show
+5 mp_a_x mul 600 moveto (double[] sol=getAngleList\(\);) show
+5 mp_a_x mul 588 moveto (lasttr=trimTrajectory\(sol\);) show
+5 mp_a_x mul 576 moveto (restoreAngles\(save\);) show
+5 mp_a_x mul 564 moveto (HV.self.cv.refreshDisplay\(\);) show
+5 mp_a_x mul 552 moveto (kill_ifActive\(\);) show
+5 mp_a_x mul 540 moveto (if \(callexe\) ) show
+5 mp_a_x mul 528 moveto ({) show
+6 mp_a_x mul 516 moveto (fireExecution\(\);) show
+5 mp_a_x mul 504 moveto (}) show
+5 mp_a_x mul 492 moveto (return;) show
+3 mp_a_x mul 480 moveto (}) show
+2 mp_a_x mul 468 moveto (double rate=dis*dis*dis*0.0002;) show
+2 mp_a_x mul 456 moveto (if \(rate>0.05\) rate=0.05;) show
+2 mp_a_x mul 444 moveto (if \(search_phase==0\) gradientDescent_arm\(5,rate\);) show
+2 mp_a_x mul 432 moveto (else gradientDescent\(5,rate\);) show
+2 mp_a_x mul 408 moveto (if \(search_phase==0 && dis<20\)) show
+4 mp_a_x mul 396 moveto ({search_phase=1;) show
+5 mp_a_x mul 384 moveto (Hand me=\(Hand\)this;) show
+5 mp_a_x mul 372 moveto (kol.restoreChildren\(\);) show
+5 mp_a_x mul 360 moveto (chopped=false;) show
+5 mp_a_x mul 348 moveto (me.makeNeutral\(\);) show
+4 mp_a_x mul 336 moveto (}) show
+2 mp_a_x mul 324 moveto (if \(slc%5==0\) if \(HV.DLEV>0\) System.out.println\("Step:"+slc+" Distance to target:"+Elib.nice\(dis,1e5\)+" Aperture:"+Elib.nice\(VA.dist\(\(\(Hand\)this\).index.child[0].limb_pos,\(\(Hand\)this\).thumb.child[0].child[0].child[0].limb_pos\),1e4\)\);) show
+0 mp_a_x mul 312 moveto (/* not working don't understand why?? ) show
+1 mp_a_x mul 300 moveto (if \(slc%5==0\) ) show
+3 mp_a_x mul 288 moveto ({ Graphics g=HV.cv.getGfx\(\);) show
+5 mp_a_x mul 276 moveto (g.setColor\(Color.green\);) show
+5 mp_a_x mul 264 moveto (g.drawLine\(200+slc/5,250,500+slc/5,255\);) show
+3 mp_a_x mul 252 moveto (}) show
+0 mp_a_x mul 240 moveto (*/) show
+2 mp_a_x mul 228 moveto (slc++;) show
+4 mp_a_x mul 216 moveto (if \(\(slc%2\)==0\) HV.reachb.setBackground\(Color.white\);) show
+14 mp_a_x mul 204 moveto (else  HV.reachb.setBackground\(Color.red\);) show
+1 mp_a_x mul 180 moveto (}) show
+1 mp_a_x mul 144 moveto (public double gradientDescent\(int N,double lrate\)) show
+1 mp_a_x mul 132 moveto ({double rate;) show
+2 mp_a_x mul 120 moveto (rate=lrate;) show
+2 mp_a_x mul 108 moveto (for \(int k=0;k<N;k++\) {) show
+3 mp_a_x mul 96 moveto (for \(int i=0;i<segc;i++\)) show
+5 mp_a_x mul 84 moveto ({) show
+6 mp_a_x mul 72 moveto (//do {) show
+6 mp_a_x mul 60 moveto (if \(seg[i].userTag==Hand.ARMJOINT\) rate=lrate*0.3;) show
+6 mp_a_x mul 48 moveto (else rate=lrate;) show
+6 mp_a_x mul 36 moveto (if \(seg[i].joint_axis==null\) continue;) show
+6 mp_a_x mul 24 moveto (//if \(Math.random\(\)>0.8\) continue;) show
+6 mp_a_x mul 12 moveto (double dis=obj.grasp_error\(\); //VA.dist\(target, goalLimb.limb_pos\);) show
+6 mp_a_x mul 0 moveto (double dteta=\(Math.random\(\)-0.5\)*rate;) show
+grestore
+restore
+showpage
+%%Page: 17 17
+save
+0 setlinewidth
+ 20  20 moveto
+ 20 772 lineto
+592 772 lineto
+592  20 lineto
+closepath stroke
+ 20 396 moveto
+592 396 lineto
+stroke
+gsave
+24 768 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+6 mp_a_x mul 852 moveto (constrainedRotate\(seg[i],dteta\);) show
+6 mp_a_x mul 840 moveto (double newdis=obj.grasp_error\(\); //VA.dist\(target, goalLimb.limb_pos\);) show
+6 mp_a_x mul 828 moveto (if \(newdis>dis\) constrainedRotate\(seg[i],-1.5*dteta\);) show
+6 mp_a_x mul 816 moveto (//} while  \(seg[i].label.charAt\(0\)=='W' && Math.random\(\)>0.8\);) show
+5 mp_a_x mul 804 moveto (}) show
+3 mp_a_x mul 792 moveto (//System.out.println\("Gradient step."+k\);) show
+2 mp_a_x mul 780 moveto (}) show
+2 mp_a_x mul 768 moveto (return obj.grasp_error\(\); //VA.dist\(target, goalLimb.limb_pos\);) show
+1 mp_a_x mul 756 moveto (}) show
+1 mp_a_x mul 732 moveto (private double gradientDescent_wrist\(int N,double rate\)) show
+1 mp_a_x mul 720 moveto ({) show
+5 mp_a_x mul 708 moveto (for \(int k=0;k<N;k++\) {) show
+3 mp_a_x mul 696 moveto (for \(int i=0;i<segc;i++\)) show
+5 mp_a_x mul 684 moveto ({) show
+6 mp_a_x mul 672 moveto (if \(seg[i].userTag==Hand.HANDJOINT\) break;) show
+6 mp_a_x mul 660 moveto (if \(seg[i].joint_axis==null\) continue;) show
+6 mp_a_x mul 648 moveto (//if \(Math.random\(\)>0.8\) continue;) show
+6 mp_a_x mul 636 moveto (Point3d dis3=obj.reach_error\(softcon\); //VA.dist\(target, goalLimb.limb_pos\);) show
+6 mp_a_x mul 624 moveto (double dteta=\(Math.random\(\)-0.5\)*rate;) show
+6 mp_a_x mul 612 moveto (constrainedRotate\(seg[i],dteta\);) show
+6 mp_a_x mul 600 moveto (Point3d newdis3=obj.reach_error\(softcon\); //VA.dist\(target, goalLimb.limb_pos\);) show
+6 mp_a_x mul 588 moveto (if \(newdis3.z>dis3.z\) constrainedRotate\(seg[i],-1.5*dteta\);) show
+5 mp_a_x mul 576 moveto (}) show
+3 mp_a_x mul 564 moveto (//System.out.println\("Gradient_wrist step."+k\);) show
+5 mp_a_x mul 552 moveto (}) show
+2 mp_a_x mul 540 moveto (return obj.reach_error\(\); //VA.dist\(target, goalLimb.limb_pos\);) show
+1 mp_a_x mul 528 moveto (}) show
+0 mp_a_x mul 504 moveto (static public int softcon=Graspable.softcon_J2_45;) show
+1 mp_a_x mul 492 moveto (synchronized private double gradientDescent_arm\(int N,double rate\)) show
+1 mp_a_x mul 480 moveto ({) show
+5 mp_a_x mul 468 moveto (for \(int k=0;k<N;k++\) {) show
+3 mp_a_x mul 456 moveto (for \(int i=0;i<segc;i++\)) show
+5 mp_a_x mul 444 moveto ({) show
+6 mp_a_x mul 432 moveto (if \(seg[i].userTag==Hand.WRISTJOINT\) break;) show
+6 mp_a_x mul 420 moveto (if \(seg[i].joint_axis==null\) continue;) show
+6 mp_a_x mul 408 moveto (//if \(Math.random\(\)>0.8\) continue;) show
+6 mp_a_x mul 396 moveto (Point3d dis3=obj.reach_error\(softcon\); ) show
+6 mp_a_x mul 384 moveto (//System.out.println\("SoftCons error:"+dis3.str\(\)\);) show
+6 mp_a_x mul 372 moveto (double dteta=\(Math.random\(\)-0.5\)*rate;) show
+6 mp_a_x mul 360 moveto (// if \(seg[i]==bj2 && dteta>0\) dteta*=0.2;   // don't do too much duck move) show
+6 mp_a_x mul 348 moveto (constrainedRotate\(seg[i],dteta\);) show
+6 mp_a_x mul 336 moveto (Point3d newdis3=obj.reach_error\(softcon\); ) show
+6 mp_a_x mul 324 moveto (if \(newdis3.z>dis3.z && Math.random\(\)>0.01\) constrainedRotate\(seg[i],-1.5*dteta\);) show
+6 mp_a_x mul 312 moveto (// ERHAN jan 2002: inserted random>) show
+5 mp_a_x mul 300 moveto (}) show
+3 mp_a_x mul 288 moveto (//System.out.println\("Gradient_arm step."+k\);) show
+5 mp_a_x mul 276 moveto (}) show
+2 mp_a_x mul 264 moveto (return obj.reach_error\(\); ) show
+1 mp_a_x mul 252 moveto (}) show
+4 mp_a_x mul 228 moveto (private double pow\(double x, double pw\){) show
+8 mp_a_x mul 216 moveto (return Math.pow\(x,pw\);) show
+4 mp_a_x mul 204 moveto (}) show
+4 mp_a_x mul 180 moveto (double l1=800;) show
+4 mp_a_x mul 168 moveto (double l2=700;) show
+4 mp_a_x mul 156 moveto (double[][] J=new double[3][5];) show
+4 mp_a_x mul 144 moveto (double[] dTeta=new double[5];) show
+4 mp_a_x mul 132 moveto (synchronized private double jacobianTranspose\(int N,double rate\) {) show
+7 mp_a_x mul 120 moveto (for \(int k=0;k<N;k++\) {) show
+11 mp_a_x mul 108 moveto (//System.out.println\("Jac. Trans step."+k\);) show
+11 mp_a_x mul 96 moveto (//System.out.println\("seg[1].label:"+seg[1].label\);) show
+8 mp_a_x mul 84 moveto (double t1=seg[1].beta;) show
+8 mp_a_x mul 72 moveto (double t2=seg[2].beta;) show
+8 mp_a_x mul 60 moveto (double t3=seg[3].beta;) show
+8 mp_a_x mul 48 moveto (double t4=seg[4].beta;) show
+8 mp_a_x mul 36 moveto (double t5=seg[5].beta;) show
+8 mp_a_x mul 24 moveto (// ---from matlab) show
+0 mp_a_x mul 0 moveto (J[0][0] = 0.0;      ) show
+grestore
+gsave
+24 392 translate -90 rotate
+368 80 mp_a_x mul div 564 864 div scale
+0 -4 moveto 0 864 lineto 80 mp_a_x mul 864 lineto 80 mp_a_x mul -4 lineto
+closepath clip
+0 mp_a_x mul 852 moveto (J[0][1] = \(-Math.cos\(t2\)*Math.sin\(t4\)+Math.sin\(t2\)*Math.sin\(t3\)*Math.cos\(t4\)\)*l2-Math.cos\(t2\)*l1;      ) show
+0 mp_a_x mul 840 moveto (J[0][2] = -Math.cos\(t2\)*Math.cos\(t3\)*Math.cos\(t4\)*l2;      ) show
+0 mp_a_x mul 828 moveto (J[0][3] = \(-Math.sin\(t2\)*Math.cos\(t4\)+Math.cos\(t2\)*Math.sin\(t3\)*Math.sin\(t4\)\)*l2;      ) show
+0 mp_a_x mul 816 moveto (J[0][4] = 0.0;      ) show
+0 mp_a_x mul 792 moveto (J[1][0] = \(Math.sin\(t1\)*Math.cos\(t2\)*Math.sin\(t4\)+\(-Math.sin\(t1\)*Math.sin\(t2\)*Math.sin\(t3\)-Math.cos\(t1\)*Math.cos\(t3\)\)*Math.cos\(t4\)\)*l2+Math.sin\(t1\)*Math.cos\(t2\)*l1;      ) show
+0 mp_a_x mul 780 moveto (J[1][1] = \(Math.cos\(t1\)*Math.sin\(t2\)*Math.sin\(t4\)+Math.cos\(t2\)*Math.sin\(t3\)*Math.cos\(t1\)*Math.cos\(t4\)\)*l2+Math.cos\(t1\)*Math.sin\(t2\)*l1;      ) show
+0 mp_a_x mul 768 moveto (J[1][2] = \(Math.cos\(t1\)*Math.sin\(t2\)*Math.cos\(t3\)+Math.sin\(t1\)*Math.sin\(t3\)\)*Math.cos\(t4\)*l2;      ) show
+0 mp_a_x mul 756 moveto (J[1][3] = \(-Math.cos\(t1\)*Math.cos\(t2\)*Math.cos\(t4\)-\(Math.cos\(t1\)*Math.sin\(t2\)*Math.sin\(t3\)-Math.sin\(t1\)*Math.cos\(t3\)\)*Math.sin\(t4\)\)*l2;      ) show
+0 mp_a_x mul 744 moveto (J[1][4] = 0.0;      ) show
+0 mp_a_x mul 720 moveto (J[2][0] = \(-Math.cos\(t1\)*Math.cos\(t2\)*Math.sin\(t4\)+\(Math.cos\(t1\)*Math.sin\(t2\)*Math.sin\(t3\)-Math.sin\(t1\)*Math.cos\(t3\)\)*Math.cos\(t4\)\)*l2-Math.cos\(t1\)*Math.cos\(t2\)*l1;      ) show
+0 mp_a_x mul 708 moveto (J[2][1] = \(Math.sin\(t1\)*Math.sin\(t2\)*Math.sin\(t4\)+Math.cos\(t2\)*Math.sin\(t3\)*Math.sin\(t1\)*Math.cos\(t4\)\)*l2+Math.sin\(t1\)*Math.sin\(t2\)*l1;      ) show
+0 mp_a_x mul 696 moveto (J[2][2] = \(Math.sin\(t1\)*Math.sin\(t2\)*Math.cos\(t3\)-Math.cos\(t1\)*Math.sin\(t3\)\)*Math.cos\(t4\)*l2;      ) show
+0 mp_a_x mul 684 moveto (J[2][3] = \(-Math.sin\(t1\)*Math.cos\(t2\)*Math.cos\(t4\)-\(Math.sin\(t1\)*Math.sin\(t2\)*Math.sin\(t3\)+Math.cos\(t1\)*Math.cos\(t3\)\)*Math.sin\(t4\)\)*l2;      ) show
+0 mp_a_x mul 672 moveto (J[2][4] = 0.0;) show
+8 mp_a_x mul 636 moveto (// --from matlab up) show
+2 mp_a_x mul 624 moveto (Point3d DX=obj.error_vector\(\);) show
+2 mp_a_x mul 612 moveto (// VA._normalize\(DX\);) show
+2 mp_a_x mul 600 moveto (for \(int i=0;i<5;i++\) {) show
+6 mp_a_x mul 588 moveto (dTeta[i]=\(J[0][i]*DX.x+J[1][i]*DX.y+J[2][i]*DX.z\)*0.0000005;) show
+6 mp_a_x mul 576 moveto (if \(dTeta[i]>0.1\) dTeta[i]=0.1;) show
+6 mp_a_x mul 564 moveto (if \(dTeta[i]<-0.1\) dTeta[i]=-0.1;) show
+6 mp_a_x mul 552 moveto (//System.out.println\("seg["+i+"].label:"+seg[i].label\);) show
+7 mp_a_x mul 540 moveto (}) show
+2 mp_a_x mul 528 moveto (for \(int i=0;i<5;i++\)) show
+2 mp_a_x mul 516 moveto (constrainedRotate\(seg[i+1],dTeta[i]\);) show
+7 mp_a_x mul 504 moveto (}) show
+7 mp_a_x mul 492 moveto (double err=obj.reach_error\(\);) show
+7 mp_a_x mul 480 moveto (//System.out.println\("Err:"+err\);) show
+7 mp_a_x mul 468 moveto (return err;) show
+4 mp_a_x mul 456 moveto (}) show
+0 mp_a_x mul 420 moveto (/** Inverse kinematics. Find the joint angles given the target */) show
+1 mp_a_x mul 408 moveto (public double[] findJointAngles\(int giveup\)) show
+1 mp_a_x mul 396 moveto ({) show
+0 mp_a_x mul 384 moveto (/*) show
+2 mp_a_x mul 372 moveto (double[] angles=new double[segc];) show
+2 mp_a_x mul 360 moveto (Thread inverse=new Inverse\(this,giveup,angles\);) show
+2 mp_a_x mul 348 moveto (inverse.start\(\);) show
+2 mp_a_x mul 336 moveto (System.out.println\("inverse has born ."\);) show
+2 mp_a_x mul 324 moveto (try{) show
+2 mp_a_x mul 312 moveto (inverse.join\(\);) show
+2 mp_a_x mul 300 moveto (System.out.println\("inverse is dead."\);) show
+2 mp_a_x mul 288 moveto (} catch \(InterruptedException e\) {}) show
+2 mp_a_x mul 276 moveto (return angles;) show
+0 mp_a_x mul 264 moveto (*/) show
+1 mp_a_x mul 252 moveto (return null;) show
+1 mp_a_x mul 240 moveto (}) show
+1 mp_a_x mul 216 moveto (public int findSegment\(String s\)) show
+1 mp_a_x mul 204 moveto ({) show
+2 mp_a_x mul 192 moveto (for \(int i=0;i<segc;i++\)) show
+3 mp_a_x mul 180 moveto (if \(seg[i].label.equals\(s\)\) return i;) show
+2 mp_a_x mul 168 moveto (return -1;) show
+1 mp_a_x mul 156 moveto (}  ) show
+0 mp_a_x mul 144 moveto (}) show
+0 mp_a_x mul 108 moveto (/*) show
+1 mp_a_x mul 96 moveto (*) show
+1 mp_a_x mul 84 moveto (* Erhan Oztop, 2000-2002  <br>) show
+1 mp_a_x mul 72 moveto (* Source code by Erhan Oztop \(erhan@atr.co.jp\) <br>) show
+1 mp_a_x mul 60 moveto (* Copyright August 2002 under <br>) show
+1 mp_a_x mul 48 moveto (* University of Southern California Ph.D. publication copyright <br>) show
+1 mp_a_x mul 36 moveto (*/) show
+grestore
+restore
+showpage
+%%Trailer
+statusdict begin jobname print flush (: Job finished:\n) print
+(\tmpage time (s) = ) print flush usertime mp_stm sub 1000 div ==
+(\tmpage pages = ) print flush pagecount mp_pgc sub ==
+end flush
+%%Pages: 17

@@ -1,0 +1,383 @@
+[almaak src]% java HV
+RESOURCE: DLEV = 0
+RESOURCE: FANCY = 0
+RESOURCE: slipCost = 0.1
+RESOURCE: minPAR = -45
+RESOURCE: maxPAR = 45
+RESOURCE: minMER = -45
+RESOURCE: maxMER = 45
+RESOURCE: minRAD = 700
+RESOURCE: maxRAD = 1300
+RESOURCE: obj_locPAR_code_len = 10
+RESOURCE: obj_locMER_code_len = 10
+RESOURCE: obj_locRAD_code_len = 1
+RESOURCE: obj_encode_var = 1
+RESOURCE: minTILT = 0
+RESOURCE: maxTILT = 90
+RESOURCE: WeightFileDir = infant1/poorvision/
+RESOURCE: WeightFile = .LGM-1018940921
+RESOURCE: plotLabel = 1
+RESOURCE: plotKey = 1
+RESOURCE: motor.DLEV = 0
+RESOURCE: motor.PLOTLEV = 0
+RESOURCE: eta = 0.5
+RESOURCE: GVAR = 0.75
+RESOURCE: softVAR = 2
+RESOURCE: PDFthreshold = 0.2
+RESOURCE: WTA_ERR        = 0.0
+RESOURCE: hand_rotBANK_code_len = 9
+RESOURCE: hand_rotPITCH_code_len = 9
+RESOURCE: hand_rotHEADING_code_len = 1
+RESOURCE: hand_locMER_code_len = 7
+RESOURCE: hand_locPAR_code_len = 7
+RESOURCE: hand_locRAD_code_len = 1
+RESOURCE: newton_MAX_IT = 1000
+RESOURCE: MAXREACH = 30
+RESOURCE: MAXROTATE = 25
+RESOURCE: MAXBABBLE = 200000
+RESOURCE: weightSave = 4500
+RESOURCE: costThreshold = 0.75
+RESOURCE: palmThreshold = 150
+RESOURCE: negReinforcement = -0.05
+RESOURCE: Reach2Target = MIDDLE0
+RESOURCE: # = use
+RESOURCE: rotRandomness = 1
+RESOURCE: offRandomness = 1
+RESOURCE: softconGAIN = 250
+RESOURCE: # = adjust
+RESOURCE: bgColor_R = 0
+RESOURCE: bgColor_G = 255
+RESOURCE: bgColor_B = 255
+RESOURCE: fgColor_R = 0
+RESOURCE: fgColor_G = 0
+RESOURCE: fgColor_B = 0
+RESOURCE: drawCube = 0
+New axis:Obj-PAR added with size:3
+The actual layer size became:3
+The total # of dimensions became:1
+New axis:Obj-MER added with size:1
+The actual layer size became:3
+The total # of dimensions became:2
+New axis:Obj-RAD added with size:1
+The actual layer size became:3
+The total # of dimensions became:3
+New axis:Hand-PAR added with size:7
+The actual layer size became:7
+The total # of dimensions became:1
+New axis:Hand-MER added with size:7
+The actual layer size became:49
+The total # of dimensions became:2
+New axis:Hand-RAD added with size:1
+The actual layer size became:49
+The total # of dimensions became:3
+New axis:Hand-BANK added with size:9
+The actual layer size became:9
+The total # of dimensions became:1
+New axis:Hand-PITCH added with size:9
+The actual layer size became:81
+The total # of dimensions became:2
+New axis:Hand-HEADING added with size:1
+The actual layer size became:81
+The total # of dimensions became:3
+New axis:fingerRate added with size:1
+The actual layer size became:1
+The total # of dimensions became:1
+New axis:OtherForce added with size:1
+The actual layer size became:1
+The total # of dimensions became:2
+New axis:ThumbForce0 added with size:1
+The actual layer size became:1
+The total # of dimensions became:3
+New axis:ThumbForce1 added with size:1
+The actual layer size became:1
+The total # of dimensions became:4
+New axis:ThumbForce2 added with size:1
+The actual layer size became:1
+The total # of dimensions became:5
+random weight:81,3
+4#$%3453245
+all planes:1
+For BASE the segc:24 and segments:
+BASE J1 J2 J3 J4 WRISTz WRISTy WRISTx PINKY PINKY1 PINKY2 RING RING1 RING2 MIDDLE MIDDLE1 MIDDLE2 INDEX INDEX1 INDEX2 THUMB THUMBin THUMB2 THUMB3
+array len:8
+Making plane from Vector. N=4
+J2 limb dir :(0.0,0.0,-1.0)
+J2 joint_axis dir :(0.0,0.0,-1.0)
+J2 perp cover:(0.0,-0.0,0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+J3 limb dir :(0.0,-800.0,-1.0)
+J3 joint_axis dir :(0.0,-1.0,0.0)
+J3 perp cover:(0.0,-0.04999996093754577,39.99996875003662)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+J4 limb dir :(0.0,0.0,-1.0)
+J4 joint_axis dir :(1.0,0.0,0.0)
+J4 perp cover:(20.0,0.0,0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+WRISTz limb dir :(-1.0,0.0,700.0)
+WRISTz joint_axis dir :(0.0,0.0,1.0)
+WRISTz perp cover:(39.99995918373594,0.0,0.057142798833908486)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+PINKY limb dir :(83.0,0.0,144.0)
+PINKY joint_axis dir :(144.0,0.0,-83.0)
+PINKY perp cover:(17.32771692277018,0.0,-9.9875035040967)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+PINKY1 limb dir :(32.0,0.0,45.0)
+PINKY1 joint_axis dir :(45.0,0.0,-32.0)
+PINKY1 perp cover:(16.299106491375102,0.0,-11.590475727200074)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+PINKY2 limb dir :(39.0,0.0,50.0)
+PINKY2 joint_axis dir :(50.0,0.0,-39.0)
+PINKY2 perp cover:(15.770046120355822,0.0,-12.30063597387754)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+RING limb dir :(45.0,0.0,152.0)
+RING joint_axis dir :(152.0,0.0,-45.0)
+RING perp cover:(19.177234570163733,0.0,-5.677470760903738)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+RING1 limb dir :(22.0,0.0,91.0)
+RING1 joint_axis dir :(91.0,0.0,-22.0)
+RING1 perp cover:(19.439962721131263,0.0,-4.699771207306459)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+RING2 limb dir :(30.0,0.0,79.0)
+RING2 joint_axis dir :(79.0,0.0,-30.0)
+RING2 perp cover:(18.69724291418588,0.0,-7.100218828171851)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+MIDDLE limb dir :(0.0,0.0,159.0)
+MIDDLE joint_axis dir :(159.0,0.0,0.0)
+MIDDLE perp cover:(20.0,0.0,-0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+MIDDLE1 limb dir :(5.0,0.0,108.0)
+MIDDLE1 joint_axis dir :(108.0,0.0,-5.0)
+MIDDLE1 perp cover:(19.978600922591994,0.0,-0.9249352278977776)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+MIDDLE2 limb dir :(11.0,0.0,89.0)
+MIDDLE2 joint_axis dir :(89.0,0.0,-11.0)
+MIDDLE2 perp cover:(19.848969661364208,0.0,-2.4532434412922055)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+INDEX limb dir :(-43.0,0.0,156.0)
+INDEX joint_axis dir :(156.0,0.0,43.0)
+INDEX perp cover:(19.2809445168713,0.0,5.314619321958115)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+INDEX1 limb dir :(-16.0,0.0,87.0)
+INDEX1 joint_axis dir :(87.0,0.0,16.0)
+INDEX1 perp cover:(19.67012297925891,0.0,3.6174938812430177)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+INDEX2 limb dir :(-9.0,0.0,76.0)
+INDEX2 joint_axis dir :(76.0,0.0,9.0)
+INDEX2 perp cover:(19.861222463885383,0.0,2.3519868707232687)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+THUMB limb dir :(0.0,0.0,15.0)
+THUMB joint_axis dir :(0.0,0.0,1.0)
+THUMB perp cover:(0.0,0.0,0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+THUMBin limb dir :(-98.0,0.0,0.0)
+THUMBin joint_axis dir :(0.0,1.0,0.0)
+THUMBin perp cover:(0.0,20.0,0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+THUMB2 limb dir :(-90.0,0.0,0.0)
+THUMB2 joint_axis dir :(0.0,1.0,0.0)
+THUMB2 perp cover:(0.0,20.0,0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+THUMB3 limb dir :(-50.0,0.0,0.0)
+THUMB3 joint_axis dir :(0.0,1.0,0.0)
+THUMB3 perp cover:(0.0,20.0,0.0)
+Making plane from Vector. N=4
+Making plane from Vector. N=4
+pinky-wrist:166.2077
+index-wrist:165.4116
+index-pinky:138.5208
+The triangle wrist angle:9.82
+The triangle knuckle miss match:27.29
+pinky-wrist:156.9918
+index-wrist:159.7766
+index-pinky:97.8056
+NOW: The triangle wrist angle:6.94
+The triangle knuckle miss match:60.58
+suggested Fz,F,scale:0.0,9500.0,900.0
+all planes:6
+For BASE the segc:1 and segments:
+BASE
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+all planes:0
+For BASE the segc:1 and segments:
+BASE
+BASE limb dir :(700.0,0.0,0.0)
+BASE joint_axis dir :(0.0,0.0,1.0)
+BASE perp cover:(0.0,0.0,100.0)
+Making plane from Vector. N=6
+Making plane from Vector. N=6
+all planes:6
+For BASE the segc:1 and segments:
+BASE
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+all planes:12
+For BASE the segc:1 and segments:
+BASE
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+array len:10
+Making plane from Vector. N=5
+all planes:6
+For BASE the segc:1 and segments:
+BASE
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+array len:8
+Making plane from Vector. N=4
+all planes:0
+For BASE the segc:1 and segments:
+BASE
+BASE limb dir :(0.0,50.0,0.0)
+BASE joint_axis dir :(1.0,0.0,0.0)
+BASE perp cover:(100.0,0.0,0.0)
+Making plane from Vector. N=7
+Making plane from Vector. N=7
+all planes:0
+For BASE the segc:4 and segments:
+BASE HANDLE1 HANDLE2 HANDLE1
+BASE limb dir :(200.0,0.0,0.0)
+BASE joint_axis dir :(0.0,0.0,1.0)
+BASE perp cover:(0.0,0.0,50.0)
+Making plane from Vector. N=5
+Making plane from Vector. N=5
+HANDLE1 limb dir :(0.0,-350.0,0.0)
+HANDLE1 joint_axis dir :(0.0,0.0,1.0)
+HANDLE1 perp cover:(0.0,0.0,50.0)
+Making plane from Vector. N=5
+Making plane from Vector. N=5
+HANDLE2 limb dir :(-200.0,0.0,0.0)
+HANDLE2 joint_axis dir :(0.0,0.0,1.0)
+HANDLE2 perp cover:(0.0,0.0,50.0)
+Making plane from Vector. N=5
+Making plane from Vector. N=5
+HANDLE1 limb dir :(0.0,350.0,0.0)
+HANDLE1 joint_axis dir :(0.0,0.0,1.0)
+HANDLE1 perp cover:(0.0,-0.0,50.0)
+Making plane from Vector. N=5
+Making plane from Vector. N=5
+Font specified in font.properties not found [-b&h-lucida sans-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-b&h-lucida bright-medium-r-normal--*-%d-*-*-p-*-iso8859-1]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-b&h-lucida sans-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-b&h-lucida bright-medium-i-normal--*-%d-*-*-p-*-iso8859-1]
+Font specified in font.properties not found [-b&h-lucida sans-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Font specified in font.properties not found [-b&h-lucida sans-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1]
+Font specified in font.properties not found [-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific]
+Warning: Cannot convert string "MetaCtrl<Key>Insert" to type VirtualBinding
+Warning: Cannot convert string "-b&h-lucida sans-medium-r-normal-sans-*-140-*-*-p-*-iso8859-1" to type FontStruct
+move to spheric:  par:-10.0 mer:0.0 rad:1300.0
+off screen:550 x 412
+off screen:550 x 412
+Exception in thread "main" java.lang.NullPointerException
+        at sun.awt.image.BufferedImageGraphics2D.fillPolygon(Compiled Code)
+        at sun.java2d.SunGraphics2D.fillPolygon(Compiled Code)
+        at Object3d.drawSolid(Compiled Code)
+        at Object3d.drawSolid(Compiled Code)
+        at Mars.drawSolid(Compiled Code)
+        at HVCanvas.paint(HVCanvas.java:111)
+        at HVCanvas.repaint(HVCanvas.java:65)
+        at HVCanvas.refreshDisplay(HVCanvas.java:50)
+        at HV.updateScrollValues(HV.java:686)
+        at HV.setObject(HV.java:481)
+        at HV.setObject(Compiled Code)
+        at HV.domoreHV(HV.java:421)
+        at HV.main(HV.java:604)
+Exception occurred during event dispatching:
+java.lang.InternalError: Unsupported 16-bit depth
+
+        at sun.awt.motif.X11Graphics.X11LockViewResources(Native Method)
+        at sun.awt.motif.X11Graphics.lock(X11Graphics.java:847)
+        at sun.java2d.loops.LockableRaster.<init>(Compiled Code)
+        at sun.java2d.loops.RasterOutputManager$RenderImageCachedState.getDstLR(RasterOutputManager.java:368)
+        at sun.java2d.loops.RasterOutputManager.renderImage(RasterOutputManager.java:479)
+        at sun.java2d.SunGraphics2D.renderingPipeImage(Compiled Code)
+        at sun.java2d.SunGraphics2D.drawImage(SunGraphics2D.java:1633)
+        at sun.awt.motif.X11Graphics.drawImage(X11Graphics.java:591)
+        at HVCanvas.paint(HVCanvas.java:135)
+        at sun.awt.motif.MComponentPeer.handleEvent(Compiled Code)
+        at java.awt.Component.dispatchEventImpl(Compiled Code)
+        at java.awt.Component.dispatchEvent(Compiled Code)
+        at java.awt.EventQueue.dispatchEvent(Compiled Code)
+        at java.awt.EventDispatchThread.pumpOneEvent(Compiled Code)
+        at java.awt.EventDispatchThread.pumpEvents(Compiled Code)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:83)

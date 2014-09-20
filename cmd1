@@ -1,0 +1,4 @@
+awk <ii >kk '{ if(flag==1) {print $0; flag=0;} else if ($1=="@#@") flag=1; }' 
+
+echo "set noborder; set noztics; set noxtics; set noytics; set hidden3d; splot \"kk\" matrix with lines " | gnuplot  -geometry 275x255+0+640 -persist
+

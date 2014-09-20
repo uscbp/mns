@@ -1,0 +1,2 @@
+/usr/local/IBMJava2-13/bin/javadoc -notree -noindex -private -author -d doc *.java
+
